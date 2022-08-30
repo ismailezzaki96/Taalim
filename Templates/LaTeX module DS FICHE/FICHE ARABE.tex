@@ -1,0 +1,173 @@
+\documentclass[12pt,a4paper]{article}
+%\usepackage[top=.5cm,bottom=0cm,right=.5cm,left=.5cm]{geometry}
+\usepackage[margin=.5cm]{geometry}
+%==============================================
+\usepackage{tikz,xcolor,tcolorbox,graphicx,multicol}
+\tcbuselibrary{skins,xparse,hooks,vignette}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{setspace,longtable,colortbl}
+\usetikzlibrary{calc,shapes}
+\usepackage[tikz]{bclogo}
+\usepackage{lastpage,bbding}
+\pagestyle{empty}
+%==============================================
+\setlength\arrayrulewidth{2pt} \arrayrulecolor{black}
+\parindent=0mm
+\renewcommand{\labelitemi}{\scalebox{1}[1]{\HandPencilLeft}} %\bcplume
+%==============================================
+\newcounter{nachat} 
+\newcommand{\activite}{\refstepcounter{nachat} \vskip0pt \scalebox{0.7}[0.7]{\bcfleur}~{\large \bf نشاط \thenachat :} \hskip5mm}
+%==============================================
+\newcounter{tatbik}
+\newcommand{\application}{\refstepcounter{tatbik}
+\vskip0cm \scalebox{-0.7}[0.7]{\bcfleur}~{\large \bf تطبيق \thetatbik :}
+\hskip5mm}
+%==============================================
+\newcommand{\remarque}{ 
+\vskip0cm \scalebox{0.7}[0.7]{\bclampe}~{\large \bf ملاحظة :}
+\hskip5mm}
+%==============================================
+\newcommand{\exemple}{
+\vskip0cm \scalebox{0.7}[0.7]{\bccrayon}~{\large \bf  مثال :} 
+\hskip5mm}
+%==============================================
+\newcommand{\attention}{
+\vskip0cm \scalebox{0.7}[0.7]{\bctakecare}~{\large \bf تنبيه !}
+\hskip5mm}
+%==============================================
+\newcommand{\N}{\mathbb{N}} \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}} \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}} \newcommand{\C}{\mathbb{C}}
+%==============================================
+
+%==============================================
+\usepackage{polyglossia}
+\setdefaultlanguage[numerals=maghrib,locale=algeria]{arabic}
+\setotherlanguage{french}
+\newfontfamily\arabicfont[Script=Arabic,Scale=1.2]{Amiri}
+\newfontfamily\Ab[Script=Arabic,Scale=1.2]{AlBattar}
+\newfontfamily\As[Script=Arabic,Scale=1]{arabswell_1}
+%\newfontfamily\Ar[Script=Arabic,Scale=1.2]{Aref Ruqaa}
+\newfontfamily\Ad[Script=Arabic,Scale=1.4]{ae_Dimnah.ttf}
+%\newfontfamily\Az[Script=Arabic,Scale=1.2]{Aljazeera}
+%==============================================
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\makeatletter
+\renewcommand\thesection{\bf\textcolor{black}{\@Roman\c@section}}
+%\renewcommand\section{\@startsection{section}{1}
+%%{0mm}% Indentation
+%%{0ex \@plus -0ex \@minus -0ex}%espace au dessus du titre
+%%{0ex \@plus 0ex}%espace en dessous du titre
+%%{\large\bf}}%mise en forme taille Large, capitales, gras
+\renewcommand\thesubsection{\bf\textcolor{black}{\@arabic\c@subsection}}
+\renewcommand\thesubsubsection{\bf\textcolor{black}{\@alph\c@subsubsection}}
+%==============================================
+\setlength{\columnseprule}{0pt} \setlength{\columnsep}{0pt}
+%==============================================
+\newcommand{\preambole}{
+\begin{tcolorbox}[top=0mm,right=0mm,left=0mm,bottom=0mm,
+colback=white, colframe=black]
+\Ab 
+ ثانوية  الحسين بولنوار التأهيلية - حد بوحسوسن  \hfill السنة الدراسية : 2019-2020 \\
+\niveau \hfill ذ.بوشيار عبد الحكيم \\ \fbox{ رقم الدرس : \numcours} 
+\hfill \fbox{ المدة : \duree } \end{tcolorbox}
+\begin{center}{\LARGE \As \textcolor{black}{\titrecours}}\end{center}
+\begin{minipage}[t]{10cm}
+\bccrayon \quad {\Large  \Ad \color{black}{الأهداف }}
+\begin{itemize} \objectifs \end{itemize}\end{minipage}
+\begin{minipage}[t]{10cm} 
+\bccrayon \quad {\Large  \Ad \color{black}{ المكتسبات القبلية}}
+\begin{itemize} \prerequis \end{itemize} \end{minipage}
+\vskip.3cm
+\begin{minipage}[t]{10cm}
+\bccrayon \quad {\Large \Ad \color{black}{الإمتدادات}}
+\begin{itemize} \extentions \end{itemize} \end{minipage}
+\begin{minipage}[t]{10cm}
+\bccrayon  \quad {\Large  \Ad \color{black}{ المعينات الديداكتيكية }}
+\begin{multicols}{2} \begin{itemize} \outils \end{itemize} \end{multicols}\end{minipage}}
+%==============================================
+\newcommand{\Tableau}[3]{
+\begin{longtable}{|c|p{14,5cm}|p{3cm}|} 
+\hline  \rowcolor{gray!5} 
+\textbf{\As \hskip-1.5mm المراحـل}
+& \centering \textbf{\As الأنشطة و محتوى الدرس} 
+&\textbf{\As \qquad الملاحظات} \\ \hline 
+%\begin{minipage}[t]{1cm}
+%\begin{center} 
+\rotatebox{-90}{\scalebox{-1}[-1]{#1}}
+% \end{center} 
+%\end{minipage} 
+&\begin{minipage}[t]{1\textwidth-4cm} #2 \end{minipage} 
+&\begin{minipage}[t][\ltab][t]{3cm} #3 \end{minipage} 
+\\ \hline \end{longtable}}
+%==============================================
+\newdimen\ltab
+\newcommand{\Page}[3]{\ifthenelse{\thepage=1}
+{\ltab=3cm \preambole \Tableau{#1}{#2}{#3} \vspace*{-4mm} \hfill
+ \fbox{\pageref{LastPage}/\thepage}}{\ltab=26.5cm {\Ab  الدرس رقم : \numcours \hfill \titrecours} \vspace*{-4mm}\Tableau{#1}{#2}{#3} 
+ \vspace*{-4mm}{\Ab  \niveau \hfill ذ.بوشيار عبد الحكيم} \hfill \fbox{\pageref{LastPage}/\thepage}}\newpage}
+%==============================================
+\newcommand{\cadre}[2]{\begin{minipage}[h]{.91\textwidth}
+\begin{tcolorbox}[title=\textbf{#1},colback=white, colframe=orange, coltitle=black, enhanced, boxed title style={size=small,colback=white, colframe=white}, attach boxed title to top right={yshift=-3mm,xshift=-3mm}] #2
+\end{tcolorbox}\end{minipage}}
+%==============================================
+\begin{document} %%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\titrecours}{النهايات و الإتصال}
+\newcommand{\niveau}{الثانية باكالوريا علوم الحياة و الأرض}
+\newcommand{\numcours}{3}
+\newcommand{\duree}{9 ساعات}
+\newcommand{\objectifs}{
+\item بسم الله bismi llah
+\item
+\item
+}
+\newcommand{\prerequis}{
+\item
+\item
+\item
+}
+\newcommand{\extentions}{
+\item
+\item
+}
+\newcommand{\outils}{
+\item
+\item
+\item
+\item
+}
+\Page{%%%%%%%%%%%%%%%%%%%                   PAGE-1
+التشخيص 
+\hskip4cm
+البناء
+ \hskip3cm
+ملخص الدرس
+ \hskip3cm
+}{%===============Cours
+\activite الدالة المعرفة على $\N$ بما يلي:
+\exemple الدالة المعرفة على $\N$ بما يلي:
+\remarque الدالة المعرفة على $\N$ بما يلي:
+\application الدالة المعرفة على $\N$ بما يلي:
+\attention الدالة المعرفة على $\N$ بما يلي:
+\section{فقرة}
+\subsection{فقرة جزئية}
+\subsubsection{فقرة}
+\cadre{تعريف}{نقول }
+}{%Remarques
+ملاحظة
+}\Page{ %PAGE-2
+مرحلة
+}{%Cours
+\activite
+}{%Remarques
+ملاحظة
+}
+\Page{%PAGE-3
+مرحلة
+}{%Cours
+\activite
+}{%Remarques
+ملاحظة
+}\end{document}

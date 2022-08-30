@@ -1,0 +1,1269 @@
+ \documentclass[dvipsnames,mathserif]{beamer}
+\usepackage{pgf,tikz}
+\usepackage{pgfplots}
+\usepackage{mathrsfs}
+%\usepackage{movie}
+\usepackage{tikzpeople}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usetikzlibrary{shapes.callouts}
+\usepackage[charter]{mathdesign}
+%\usepackage{fontspec}
+\usepackage{euler}
+%\defaultfontfeatures{Mapping=tex-text}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usepackage{varwidth}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usetikzlibrary{shapes.geometric}
+\usepackage{pifont}
+\usepackage{colortbl}
+\hypersetup{pdfpagemode=FullScreen}
+\usepackage{ifthen}
+\usepackage{animate}
+\usepackage{empheq}
+\usepackage{lipsum,multicol}
+\usepackage{lipsum}
+\usepackage{tikzpeople}
+\usepackage{polyglossia}
+\setdefaultlanguage[locale=algeria]{arabic}
+\setotherlanguage{english}
+\newfontfamily\arabicfont[Script=Arabic,Scale=1.3]{Andalus}
+\newfontfamily\arabicfontsf[Script=Arabic]{Amiri}
+\newfontfamily\arabicfonttt[Script=Arabic]{Times New Roman}
+\newfontfamily\fonttiltle[Script=Arabic]{arabswell_1}%arabswell_1
+%\newfontfamily\aa[Script=Arabic,Scale=2.5]{Aldhabi}
+\newfontfamily\arabicfonttt[Script=Arabic,Scale=1]{ae_Granada}
+\usetheme{Frankfurt}%Frankfurt,CambridgeUS,Madrid
+\setbeamertemplate{footline}[frame number]
+\usefonttheme[]{serif}
+%\useoutertheme{miniframes}
+%\usecolortheme{crane}
+%\usecolortheme{whale}
+\setbeamercovered{transparent} 
+\usecolortheme{rose}%,wolverine,albatross,whale,seahorse,rose
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows,shapes}
+
+\usepackage[most]{tcolorbox}
+
+\usepackage{color}
+\usepackage{xcolor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{decorations.pathmorphing}
+\tcbuselibrary{skins}
+\newtcolorbox{bekhadda}[1][]{
+tile,
+colback=green!7,coltitle=blue!50!black,colbacktitle=blue!5,
+center title,
+toprule=1.25mm,bottomrule=1.25mm,
+extras unbroken and first={
+borderline north={0.25mm}{0.5mm}{blue,decoration={zigzag,amplitude=0.5mm},decorate}},
+extras unbroken and last={
+borderline south={0.25mm}{0.5mm}{blue,decoration={zigzag,amplitude=0.5mm},decorate}},
+#1
+} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtcolorbox{box4}[2][]{colback=green!5!white,
+colframe=green!75!black,fonttitle=\bfseries,
+colbacktitle=green!85!green,enhanced,
+attach boxed title to top center={yshift=-2mm},
+title=#2,#1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pspicture}
+\definecolor{monstertandark}{HTML}{F0DBB5}	
+\newtcolorbox{paperbox}[2][]{
+	frame hidden,
+	boxrule=0pt,
+	breakable,
+	enhanced,
+	before skip=11pt plus 1pt,
+	toptitle=2mm,
+	boxsep=-0.06cm,
+	left=8pt,
+	right=8pt,
+	fonttitle= \Large\sffamily \selectfont\scshape\bfseries\color{blue!50!black},
+	fontupper=\sffamily \selectfont,
+	title=#2,
+	arc=0mm,
+	parbox = false,
+	borderline north={1pt}{-0.7pt}{black},
+	borderline south={1pt}{-0.7pt}{black},
+	interior style image=goldshade.png,
+	colframe=monstertandark,
+	title style image=blueshade.png,
+	fuzzy shadow={0mm}{-3.5pt}{-0.5pt}{0.4mm}{black!60!white},
+	overlay={
+		\fill [fill=black] (frame.south west) -- ++(7pt,0) -- ++(0,-5pt) -- cycle;
+		\fill [fill=black] (frame.north west) -- ++(7pt,0) -- ++(0,5pt) -- cycle;
+		\fill [fill=black] (frame.north east) -- ++(-7pt,0) -- ++(0,5pt) -- cycle;
+		\fill [fill=black] (frame.south east) -- ++(-7pt,0) -- ++(0,-5pt) -- cycle;
+		},
+	after={\vspace{10pt plus 1pt}\noindent},
+	#1
+}  
+%%%%%%%%%%%%%%
+ 
+\newtcbox{\otherbox}[1][]{nobeforeafter,math upper,tcbox raise base,
+enhanced,frame hidden,boxrule=0pt,interior style={top color=green!10!white,
+bottom color=green!10!white,middle color=green!50!yellow},
+fuzzy halo=1pt with green,#1}
+\usepackage{empheq}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtcolorbox{box1}[2]{breakable,
+  enhanced,
+  leftrule=0pt,
+  toprule=0pt,
+  outer arc=0pt,
+  arc=0pt,
+  colframe=#2,
+  colback=#2!3,title=#1,coltitle=white,
+  attach boxed title to top right,
+  boxed title style={
+    colback=#2,
+    outer arc=0pt,
+    arc=0pt,
+    top=3pt,
+    bottom=3pt,
+    },
+  fonttitle=\sffamily \bfseries}
+\newtcolorbox{box2}[2]{enhanced,breakable,pad at break*=1mm,skin=enhancedlast jigsaw,
+attach boxed title to top right={xshift=4mm,yshift=-0.5mm},
+interior style={top color=#2!3!white,bottom color=white},
+boxed title style={empty,arc=0pt,outer arc=0pt,boxrule=0pt},
+underlay boxed title={
+\fill[#2] (title.north east) -- (title.north west)
+-- +(\tcboxedtitleheight-11.5mm,-\tcboxedtitleheight+1mm)
+-- ([xshift=-4mm,yshift=0.5mm]frame.north west) -- +(0mm,-1mm)
+-- (title.south east) -- cycle;
+\fill[#2!30!white!70!black] ([yshift=-0.5mm]frame.north west)
+-- +(-0.3,0) -- +(0,-0.2) -- cycle;
+\fill[#2!30!white!70!black] ([yshift=-0.5mm]frame.north east)
+-- +(0,-0.2) -- +(0.3,0) -- cycle; },
+colframe=#2,
+ ,title=#1,fonttitle=\sffamily ,rightrule=1mm} 
+ \newtcolorbox{box3}[2]{enhanced,
+attach boxed title to top right={xshift=-0.3cm,yshift=-3mm},
+fonttitle=\sffamily ,arc=10pt,sharp corners=uphill,
+colbacktitle=#2!45!white,coltitle=#2!10!black,colframe=#2!50!black,drop lifted shadow,
+interior style={top color=yellow!10!white,bottom color=#2!10!white},
+boxed title style={boxrule=0.75mm,colframe=#2!80!white,
+interior style={top color=#2!10!white,bottom color=#2!10!white,
+middle color=#2!50!white},
+drop fuzzy shadow},
+title=#1} 
+%%%%%%%%%%%%%%%%%%%
+
+ \newtcolorbox{ambox}[2]{enhanced,
+attach boxed title to top center={xshift=-0.3cm,yshift=-3mm},
+fonttitle=\sffamily ,arc=10pt,sharp corners=uphill,
+colbacktitle=#2!45!white,coltitle=#2!10!black,colframe=#2!50!black,drop lifted shadow,
+interior style={top color=yellow!10!white,bottom color=#2!10!white},
+boxed title style={boxrule=0.75mm,colframe=#2!80!white,
+interior style={top color=#2!10!white,bottom color=#2!10!white,
+middle color=#2!50!white},
+drop fuzzy shadow},
+title=#1} 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\tcbset{colback=red!5!white,colframe=red!75!black,
+arc=3mm}
+%%%%%%%%%%%%%%%%%%
+% \usepackage{varwidth}
+\newtcolorbox{mybox}[2][]
+{enhanced,
+before skip=2mm,after skip=2mm,
+colback=yellow!20!white,colframe=black!50,boxrule=0.2mm,
+attach boxed title to top right =
+    {xshift=-0.6cm,yshift*=1mm-\tcboxedtitleheight},
+    varwidth boxed title*=-3cm,
+    boxed title style={frame code={
+                        \path[fill=tcbcol@back!30!black]
+                            ([yshift=-1mm,xshift=-1mm]frame.north west)  
+                            arc[start angle=0,end angle=180,radius=1mm]
+                            ([yshift=-1mm,xshift=1mm]frame.north east)
+                            arc[start angle=180,end angle=0,radius=1mm];
+                        \path[left color=tcbcol@back!60!black,right color = tcbcol@back!60!black,
+                            middle color = tcbcol@back!80!black]
+                            ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+                            [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east) 
+                            -- (frame.south east) -- (frame.south west)
+                            -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+                            [sharp corners]-- cycle;
+                            },interior engine=empty,
+                    },
+fonttitle=\bfseries\sffamily,
+title={#2},#1}
+%%%%%%%%%%%%%%%%%%%%
+% for RTL liste
+\makeatletter
+\newcommand{\leftm}{\@totalleftmargin}
+\makeatother
+\newcommand{\RTListe}{\raggedleft\rightskip\leftm}
+%\input{chichamou}
+% RTL frame title
+\setbeamertemplate{frametitle}
+{\vspace*{-1mm}
+  \nointerlineskip
+    \begin{beamercolorbox}[sep=0.3cm,ht=2.2em,wd=\paperwidth]{frametitle}
+        \vbox{}\vskip-2ex%
+        \strut\hskip1ex\insertframetitle\strut
+       \vskip-0.8ex%
+    \end{beamercolorbox}
+}
+
+
+% align subsection in toc
+\makeatletter
+\setbeamertemplate{subsection in toc}
+{\leavevmode\rightskip=5ex%
+  \llap{\raise0.1ex\beamer@usesphere{subsection number projected}{bigsphere}\kern1ex}%
+  \inserttocsubsection\par%
+}
+\makeatother
+
+% RTL triangle for itemize
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleleft$}} 
+
+%\setbeamertemplate{itemize item}{\rule{4pt}{4pt}}
+
+\defbeamertemplate{enumerate item}{square2}
+{\LR{
+    %
+    \hbox{%
+    \usebeamerfont*{item projected}%
+    \usebeamercolor[bg]{item projected}%
+    \vrule width2.25ex height1.85ex depth.4ex%
+    \hskip-2.25ex%
+    \hbox to2.25ex{%
+      \hfil%
+      {\color{fg}\insertenumlabel}%
+      \hfil}%
+  }%
+}}
+
+\setbeamertemplate{enumerate item}[square2]
+
+\setbeamertemplate{navigation symbols}{}
+\usetikzlibrary{shapes.gates.logic.US,trees,positioning,arrows}
+\definecolor{BrickRed}{RGB}{132,31,39}
+\tcbuselibrary{skins,listings,breakable,xparse}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%==================================
+\lstdefinestyle{json}{
+   language=[LaTeX]TeX,
+,escapeinside=``,
+	keywordstyle=\color{blue},%
+	upquote=true,
+columns=flexible,
+texcsstyle=*\color{blue},
+	 basicstyle=\scriptsize,
+	stringstyle=\color{blue},
+	commentstyle=\color{red},	moretexcs={xymatrix,setbeamertemplate,usetheme,usefonttheme,,rotatebox,diagbox,newcolumntype,arraybackslash,underbracket,mathclap,closedcycle,setbeamercolor,url,rowcolors,appendix,filldraw,foreach,shade,path,definecolor,color,underset,textcolor,tikzstyle,tikzset,part,RL,LR,setdefaultlanguage,setotherlanguage,newfontfamily,arabicfont,text,iint,iiint,dfrac,tfrac,multirow,href,rhead,cfoot,thesection,lhead,fancyplain,leftmark,chapter,tableofcontents,savebox,maketitle,mathbb,includegraphics, systeme,setlength,contentsname,sysequivsign,sysaddeqsign,labelenumii,labelenumi,alph,textLR,
+arabicfontsf,arabicfonttt,draw,node, addcontentsline,addplot,numberwithin,bibname,sysautonum,syscodeextracol,sysextracolsign,syslineskipcoeff,efootnote,subsection,subsubsection,abstractname,textsubscript,mathcal}}
+\tcbset{enhanced,boxrule=1pt,sharp corners,rounded corners=all,bicolor,colback=green!10!white,colbacklower=white,colframe=BrickRed}
+\usepackage{newverbs}
+\newverbcommand{\cverb}{\color{blue}}{}
+%\AtBeginSection[]
+%{
+ % \begin{frame}{}
+   % \tableofcontents[currentsection]
+  %\end{frame}
+%}
+\let\origtheequation\theequation
+\makeatletter
+\def\tagform@#1{\maketag@@@{\ignorespaces#1\unskip\@@italiccorr}}
+\makeatother
+\renewcommand{\theequation}{(\origtheequation)}
+%\usepackage[colorlinks=true]{hyerref}
+\def\equationautorefname{Eq.}
+
+%===================================================================
+\begin{document}
+
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{YA1}}
+\begin{frame}[plain]
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{bas.png} 
+\end{figure}
+\begin{center}
+\vspace{-0.2cm}
+\begin{tikzpicture}
+\node[graduate,stripes=red,minimum size=2.5cm] at (0,0) {};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}
+{Large
+\node [draw,cloud callout,brown,callout pointer start size=.1] { بعد و طيبة تحية };
+}
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}
+\node[graduate,undershirt=red,minimum size=2.5cm] at (0,0){} ;
+\end{tikzpicture}
+\end{center}
+%\end{tikzpicture}
+%\begin{flushright}
+%\includegraphics[scale=0.50]{14.JPG} 
+%\end{flushright}
+\end{frame}
+%=======================================
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{w4}}
+\begin{frame}[plain]\transsplitverticalout
+$$\includegraphics[width=8cm, height=4cm]{0142.png}$$ 
+\begin{tcolorbox}[colback=white,drop large lifted shadow,top=.5cm,bottom=.5cm]
+{\begin{center}
+	{\Huge\emph{{نُـرَحِبُ بـِضِيــُوفِنَــا الـكِرَام}}}
+	\end{center}}
+\end{tcolorbox}
+\end{frame}
+\rightskip\rightmargin
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{web}}
+\begin{frame}[plain]{
+\large 
+\textbf{مُذكـّرةَ تخَـرج لنيَـل شهَـادة أُستَـاذ التَّـعلِيم الثَّانَـــوي
+ بِعُنــْــوَان :}
+}\transglitter[duration=0.5]
+
+\begin{tcolorbox}[colback=white,drop large lifted shadow,top=.5cm,bottom=.5cm]
+\begin{center}
+\begin{LARGE}
+%\pause
+\end{LARGE}\hfill\\
+ \begin{Large}
+المعادلات التفاضلية ذات الرتب الكسرية في فضاء بناخ
+ \end{Large}
+\end{center}
+\end{tcolorbox}
+\begin{small}
+\begin{columns}
+\begin{column}{0.5\linewidth}
+{\textbf{
+تحت إشراف الأستاذ :
+}}
+\begin{itemize}
+\item[$\textcolor{red!90!black}{\bigstar}$]
+بوسنة جلال
+\end{itemize}
+\end{column}
+\begin{column}{0.3\linewidth}
+{{\textbf{من إعداد الطالبين :}}}
+\begin{itemize}
+\item[$\textcolor{red!90!black}{\bigstar}$]
+بخدة أمـــــن
+~\item[$\textcolor{red!90!black}{\bigstar}$]
+يفرح عابــــد
+\end{itemize}
+\end{column}
+\end{columns}
+\end{small}
+\textbf{{{\emph{تناقش يوم 2018/07/02 ، من طرف لجنة المناقشة :}}}
+}
+\begin{small}
+\begin{itemize}\RTListe
+\item[$\textcolor{red}{\surd}$] 
+ بوسنة جلال
+ ..........
+ أستاذ بالمدرسة العليا للأساتذة
+ ..........
+  مشرفا.
+ 
+\item[$\textcolor{red}{\surd}$]
+منصوري بوزيد
+ ..........
+ أستاذ بالمدرسة العليا للأساتذة
+ ..........
+ رئيسا.
+\item[$\textcolor{red}{\surd}$]
+كناف أسماء
+ ..........
+ أستاذة بالمدرسة العليا للأساتذة
+ ..........
+مناقشة.
+\end{itemize}
+
+\end{small}
+\end{frame}
+%===========================
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{walid}}
+
+\begin{frame}{ مخطط العرض}
+\tableofcontents
+\end{frame}
+%[pausesubsections]
+%=============================
+
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{w4}}
+\section{\textcolor{red}{مقدمـــة}}
+
+\begin{frame}[plain]{{\Large{ \textbf{{مُقَـــدّمـــــــة}}}}}\transsplitverticalout
+\begin{paperbox}{مقدمة}
+ تظهر المعادلات التفاضلية ذات الرتب الكسرية بشكل تلقائي في مختلف الميادين العلمية مثل الكيمياء الكهربائية ،الطب ،الفيزياء ... 
+ 
+ الهدف من هذه المذكرة، هو دراسة بعض أنواع المعادلات التفاضلية ذات الرتب الكسرية في فضاء بناخ ، إذ قمنا بإعطاء نتائج وجود و وحدانية الحلول لبعض المسائل بمفهوم كابوتو في فضاء بناخ ، و ذلك إعتمادا على تقنية نظرية النقطة الثابتة .
+
+وأوجزنا هذا العمل في ثلاثة فصول كالتالــــــــي
+\end{paperbox}
+\end{frame}
+\begin{frame}
+%\begin{box4}[colback=yellow]{\textcolor{black}{الفصل الأول }}
+\begin{ambox}{الفصل الأول}{magenta}
+ تقديم الدالتين  Gamma و Béta و بعض التعاريف الأساسية،بالإضافة إلى نظريات النقطة الثابتة (بناخ ، شايفر ، مو نش) ثم التطرق إلى الإشتقاق و التكامل الكسريين و بعض الخواص .
+\end{ambox}
+\end{frame}
+\begin{frame}
+%\begin{box4}[colback=yellow]{\textcolor{black}{الفصل الثاني }}
+\begin{ambox}{الفصل الثاني}{magenta}
+ دراسة وجود و وحدانية حلول مسائل لمعادلات تفاضلية ذات رتب  كسرية  في فضاء بناخ ،
+إذ تطرقنا في هذه الدراسة إلى محورين ،حيث تناولنا في:
+\begin{tcolorbox}[enhanced,title=\,,
+frame style tile={width=1cm}{pink_marble.png}]
+{\LARGE\color{blue}{\ding{118}}}
+\underline{المحور الأول :}
+دراسة وجود و وحدانية الحلول للمسألة التالية:
+\begin{align*}
+{}^{c}D{}^{\alpha }y(t)=f\big(t,y(t)\big)\,,\,\forall t\in J=\big[0,T\big]\,,\,0<\alpha \le 1 , \\
+ay(0)+by(T)=c. \hspace{3cm} \,
+\end{align*}
+\tcblower
+{\LARGE\color{blue}{\ding{118}}}
+\underline{المحور الثاني :}
+دراسة وجود الحلول للمسألة التالية :
+\begin{align*}
+{}^c{D^\alpha }y(t) = f\big(t,y(t)\big)\,,\,t \in J = \big[ {0,T} \big],1 < \alpha  \le 2 ,\\
+y(0) = y_{0},\,\,\,\,\,\,\,\,\,\,\,\,\,\,y(T) = y_{T}.\hspace{2cm} \,
+\end{align*}
+\end{tcolorbox}
+\end{ambox}
+\end{frame}
+\begin{frame}
+%\begin{box4}[colback=yellow]{\textcolor{black}{الفصل الثالث }}
+\begin{ambox}{الفصل الثالث}{magenta}
+ دراسة الإستقرار التقريبي للحل البديهي للمسألة التالية:
+\begin{tcolorbox}[enhanced,title=\,,
+frame style tile={width=1cm}{pink_marble.png}]
+\begin{align*}
+{}^CD_{{0^ + }}^\alpha x(t)& = kx(t) + f\big(t,x(t),x\big(t - \tau (t)\big)\big) \\
+&+ {}^CD_{{0^ + }}^\alpha g\big(t,x\big(t - \tau (t)\big)\big)\,\,,\,t \ge 0,\\
+x'(0) &= 0\,,x(t) = \phi (t)\,\,,\,t \in \big[ {{m_0},0} \big].
+\end{align*}
+\end{tcolorbox}
+\end{ambox}
+\end{frame}
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{YA1}}
+\section{\textcolor{black}{مفاهيــــم عامة وتعاريـــــف}}
+\begin{frame}[containsverbatim]{الفصل الأول}\transsplithorizontalout[duration=0.5]
+
+\begin{tcolorbox}[colback=white,drop large lifted shadow,top=.5cm,bottom=.5cm]
+{\begin{center}
+	{\Huge\ttfamily\emph{{ مفاهيــــم عامة وتعاريـــــف}}}
+	\end{center}}
+\end{tcolorbox}
+\end{frame}
+%\section{الدالة Gamma و الدالة Béta}
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{im3}}
+\subsection{التوابع الخاصة}
+ \begin{frame}{الدالة Gamma}
+\begin{box3}{ تعريف}{magenta}
+{\LARGE{\ding{45}}}
+من أجل كل$z\in \mathbb{C}$ حيث 
+$\operatorname{Re}(z)>0$ 
+ ،الدالة Gamma تعطى بالعلاقة التالية: 
+\begin{center}
+ \otherbox{\Gamma \left(z \right)=\int\limits_{0}^{+\infty }{{{t}^{z-1}}{{e}^{-t}}dt}}
+\end{center}
+  \end{box3}
+  \end{frame}
+  \begin{frame}{الدالة Béta}
+\begin{box3}{ تعريف}{magenta}
+{\LARGE{\ding{45}}}
+من أجل كل $(u,v)\in {{\mathbb{C}}^{2}}$ حيث $\operatorname{Re}(u)>0$ و $\operatorname{Re}(v)>0$ ،نعرف الدالة Béta كمايلي:
+\begin{center}
+ \otherbox{B\big(u,v\big)=\int\limits_{0}^{1}{{{t}^{u-1}}{{(1-t)}^{v-1}}\,dt}.}
+\end{center}
+  \end{box3}
+  \end{frame}
+  \begin{frame}{ العلاقة بين الدالة Gamma و الدالة Béta}
+\begin{box2}{ خاصية}{red}
+{\LARGE{\ding{45}}}
+من أجل كل $(u,v)\in {{\mathbb{C}}^{2}}$ حيث   $\operatorname{Re}(v)>0$  و $\operatorname{Re}(u)>0$   
+،الدالتان  $\Gamma $  و $B$   تحققان العلاقة التالية:
+\begin{center}
+ \otherbox{B\big(u,v\big)=\dfrac{\Gamma (u)\Gamma (v)}{\Gamma (u+v)}.}
+\end{center}
+  \end{box2}
+  \end{frame}
+  \subsection{نظريات النقطة الثابة }
+    \begin{frame}{ نظريات النقطة الثابتة }
+\begin{mybox}[colbacktitle = green]{ نظرية بناخ}
+{\LARGE{\ding{45}}}
+ليكن $E$ فضاء بناخ و $A:\,E\to E$  تطبيق،
+إذا كان  $A$  مقلص على  $E$ فإن  $A$ يقبل نقطة ثابتة وحيدة على  
+$E$
+ أي  
+\begin{center}
+ \otherbox{\exists !\,x\in E\,\,\,,Ax=x \,.}
+\end{center}
+  \end{mybox}
+  \end{frame}
+  \begin{frame}{ نظريات النقطة الثابتة }
+   \begin{mybox}[colbacktitle = green]{ نظرية شايفر}
+{\LARGE{\ding{45}}}
+ليكن  $E$ فضاء بناخ و $A:\,E\to E$ تطبيق مستمر كليا ،
+إذا كانت المجموعة
+\begin{center}
+ \otherbox{ \xi=\left. \big\{ y\in E\,,\,y=\lambda Ay\,,\,\lambda \in \big] 0,1 \big[ \big. \right\}} 
+ \end{center}
+ محدودة
+فإن  $A$  يقبل على الأقل نقطة ثابتة في  $E$  أي 
+
+ \tcbhighmath{\exists x\in E\,\,\,,Ax=x}
+  \end{mybox}
+  \end{frame}
+  \begin{frame}{ نظريات النقطة الثابتة }
+   \vspace{-0.3cm}
+     \begin{mybox}[colbacktitle = green]{ نظرية مونش}
+{\LARGE{\ding{45}}}
+لتكن $D$ مجموعة جزئية محدودة ، مغلقة و محدبة من فضاء بناخ ، حيث $0\in D$ و $N$ تطبيق مستمر من $D$ نحو $D$ ، إذا كانت العلاقة
+ \begin{center}
+ \otherbox{ V=N\left( V \right)\cup \big\{ 0 \big\}\Rightarrow \alpha \left( V \right)=0}
+\end{center}
+أو 
+~~~~~~~~~~~~~~~~~~~~
+ \otherbox{V=\overline{conv}N\left( V \right)}   
+ 
+   محققة من أجل كل مجموعة جزئية $V$ من $D$ ، إذن$N$ يقبل نقطة ثابتة 
+حيث
+$\alpha $ هو القياس غير المتراص بمفهوم kuratowski
+.
+  \end{mybox}
+  \end{frame}
+ % \section{التكامل الكرسري و الإشتقاق الكسري }
+  \subsection{ التكامل و الإشتقاق الكسري }
+  \begin{frame}{التكامل الكسري على مجال  $\left[ a,b \right]$ }
+  \begin{box3}{ تعريف}{magenta}
+ {\LARGE{\ding{45}}}
+لتكن $f\in {{L}^{1}}\big( \left[ a,b \right] \big)$   و $\alpha \in {{\mathbb{R}}_{+}}$ ،
+تكامل الدالة $f$  من رتبة كسرية $\alpha$ بمفهوم
+ \LR { Riemman liouvile }
+ يرمز له بـ ${I}_{a}^{\alpha }$  و يعطى بالعبارة التالية:
+
+ \otherbox{{I}_{a}^{\alpha }f(x)=\dfrac{1}{\Gamma \left( \alpha  \right)}\int\limits_{a}^{x}{{{(x-t)}^{\alpha -1}}f(t)dt\,,\,x\in \big[ a,b \big]}.}
+ 
+إذا كان $\alpha =n\,\in \mathbb{N}$  العلاقة تصبح 
+ 
+ \otherbox{I_{a}^{n}f(x)= \dfrac{1}{(n-1)!}\int\limits_{a}^{x}{{{(x-t)}^{n-1}}f(t)dt\,,\,x>a}.} 
+  \end{box3}
+  \end{frame}
+  %\subsection{الإشتقاق الكسري }
+  \begin{frame}{{الإشتقاق الكسري من رتبة $\alpha >0$ } }
+  \begin{box3}{ تعريف}{magenta}
+ {\LARGE{\ding{45}}}
+لتكن $f\in {{L}^{1}}\big(\left[ a,b \right] \big)$ ، 
+يعرف المشتق الكسري ذو رتبة $\alpha $ ،حيث $n-1\le \alpha \le n$ بمفهوم  Riemman-liouvile  بالعبارة التالية 
+:
+\begin{empheq}[box=\tcbhighmath]{align}
+\nonumber  {}^{R}D_{a}^{\alpha }f(x)&= \dfrac{1}{\Gamma \left( n-\alpha  \right)}{{\left( \dfrac{d}{dx} \right)}^{n}}\int\limits_{a}^{x}{{(x-t)}^{n-\alpha -1}}f(t)\,dt \\ 
+ \nonumber &={{\left( \dfrac{d}{dx} \right)}^{n}}\left({I}_{a}^{n-\alpha }f(x) \right).
+\end{empheq}
+% \otherbox{I_{a}^{n}f(x)=\frac{1}{(n-1)!}\int\limits_{a}^{x}{{{(x-t)}^{n-1}}f(t)dt\,,\,x>a}.} 
+ حيث $n=\left[ \alpha  \right]+1$  ، $\left[ \alpha  \right]$ الجزء الصحيح للعدد $\alpha $ 
+  \end{box3}
+  \end{frame}
+  \begin{frame}{{الإشتقاق الكسري من رتبة $\alpha >0$ }}
+    \begin{box3}{ تعريف}{magenta}
+  {\LARGE{\ding{45}}}
+لتكن $f$ دالة  حيث  $f\in {{AC}^{n}}\bigg( \big[ a,b \big],\mathbb{R} \bigg)$،
+المشتق الكسري ذو الرتبة $\alpha >0$  للدلة $f$ بمفهوم كابوتو معرف بـ 
+
+\vspace{0.5cm}
+ \otherbox{{}^{C}D_{a}^{\alpha }\,f(x)=\dfrac{1}{\Gamma \left( n-\alpha  \right)}\int\limits_{a}^{x}{{{\left( x-t \right)}^{n-\alpha -1}}\,{{f}^{\left( n \right)}}\left( t \right)}\,dt .} 
+
+\vspace{0.5cm}
+حيث   $n=\left[ \alpha  \right]+1$  ، $\left[ \alpha  \right]$ الجزء الصحيح للعدد $\alpha $  
+.
+ \end{box3}
+  \end{frame}
+    \begin{frame}{العلاقة بين مشتق ريمان-ليوفيل و مشتق كابوتو}
+      \begin{mybox}[colbacktitle = green]{ نظرية }
+    {\LARGE{\ding{45}}}
+لتكن
+ $f\in {{C}^{n}}\big( \left[ a,b \right] \big)$
+ و
+ $\alpha > 0 $
+  حيث 
+ $n-1\le \alpha <n\,\,\,\,\,\,\,, n\in {{\mathbb{N}}^{*}}$ 
+،
+\vspace{0.5cm}
+العلاقة  بين  مؤثر كابوتو و مؤثر ريمان – ليوفيل تعطى بـ
+ 
+ \otherbox{{}^{C}D_{a}^{\alpha }\,f(t)={}^{R}D_{a}^{\alpha }\,f(t)-\sum\limits_{k=0}^{n-1}{\frac{{{\left( t-k \right)}^{k-\alpha }}}{\Gamma \left( k+1-\alpha  \right)}{{f}^{\left( k \right)}}\left( a \right)} .} 
+    \end{mybox}
+    \end{frame}
+    \begin{frame}
+\begin{box2}{\textcolor{white}{توطئة 1.2}}{blue}
+     {\LARGE{\ding{45}}}
+ لتكن الدالة~
+$h:\big[ 0,+\infty  \big[ \rightarrow \mathbb{R}$~،
+من أجل $\alpha >0$  لدينا 
+\begin{empheq}[box=\tcbhighmath]{align}
+\nonumber  & {{I}^{\alpha }}\left( ^{C}D_{a}^{\alpha }h\left( t \right) \right)={{c}_{0}}+{{c}_{1}}t+{{c}_{2}}{{t}^{2}}+...+{{c}_{n-1}}{{t}^{n-1}}+h\left( t \right) ,\\ 
+\nonumber & {{c}_{k}}\in \mathbb{R}\,\,,\,k=0,1,...,n-1\,\,\,\,,\,\,n=\left[ \alpha  \right]+1
+ . 
+\end{empheq}
+\end{box2}
+    \end{frame}
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{YA1}}
+\section{\textcolor{black}{المعادلات التفاضلية ذات الرتب الكسرية في فضاء بناخ}}
+\begin{frame}[containsverbatim]{الفصل الثاني }\transsplithorizontalout[duration=0.5]
+
+\begin{tcolorbox}[colback=white,drop large lifted shadow,top=.5cm,bottom=.5cm]
+{\begin{center}
+	{\Huge\ttfamily\emph{{ المعادلات التفاضلية ذات الرتب الكسرية في فضاء بناخ}}}
+	\end{center}}
+\end{tcolorbox}
+\end{frame}
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{im4}}
+\subsection{ المعادلات التفاضلية ذات الرتب الكسرية $0<\alpha \le 1$ }
+\begin{frame}{ المعادلات التفاضلية ذات الرتب الكسرية $0<\alpha \le 1$ }
+\vspace{-1.3cm}
+%\begin{box4}[colback=yellow]{\textcolor{black}{نضع المســــــــــــــــــــألة }}
+\begin{ambox}{نضع المســــــــــــــــــــألة }{magenta}
+\begin{align}
+\begin{cases}
+ {}^{c}D{}^{\alpha }y(t)=f\big(t,y(t)\big)\,,\,\forall t\in J=\big[0,T\big]\,,\,0<\alpha \le 1 , \\
+ ay(0)+by(T)=c. 
+\end{cases}
+\end{align}
+\end{ambox}
+\end{frame}
+\begin{frame}
+\vspace{-1cm}
+\begin{box2}{\textcolor{white}{توطئة 1.2}}{blue}
+%\begin{block}{توطئة}
+{\LARGE{\ding{45}}}
+ليكن
+$0<\alpha\le 1$
+و لتكن الدالة 
+$h:\big[0,T\big]\to E$
+مستمرة .
+ نقول أن الدالة $y$ هي حل للمعادلة التكاملية التالية 
+\begin{align*}
+ \nonumber y(t)&=\dfrac{1}{\Gamma (\alpha )}\int\limits_{0}^{t}{{{(t-s)}^{\alpha -1}}}h(s)\,ds\\
+\nonumber &-\frac{1}{a+b}\left[ \dfrac{b}{\Gamma (\alpha )}\int\limits_{0}^{T}{(T-s}{{)}^{\alpha -1}}h(s)\,ds-c \right]. 
+ \end{align*}
+%\end{block}
+إذا و فقط إذا كان $y$ حل للمسألة 
+\begin{align*}
+ & {}^{C}{{D}^{\alpha }}y(t)=h(t)\,,t\in J \\ 
+&ay(0)+by(t)=c.\hspace{3cm}
+\end{align*}
+\end{box2}
+\end{frame}
+\begin{frame}{نظرية}
+\begin{mybox}[colbacktitle = green]{نظرية 1.2}
+{\LARGE{\ding{45}}}
+نعتبر أن الفرضية التالية محققة :
+\\
+$\big(H_{1}$
+يوجد عدد ثابت $k>0$
+بحيث
+$$\forall t\in J\,,\,\forall u,\tilde{u} \,\in E\,,{{\big\| f\big(t,u\big)-f\big(t,\tilde{u} \big) \big\|}_{E}}\le \,k{{\big\| u-\tilde{u}\big\|}_{E}}.$$
+إذا كان 
+\begin{align*} 
+\dfrac{k{{T}^{\alpha }}\left( 1+\dfrac{\left| a \right|}{\left| a+b \right|} \right)}{\Gamma (\alpha +1)}\,\,<1,
+\end{align*} 
+فإن المسألة (1)
+تقبل حل وحيد على المجال
+$\big[0,T\big]$
+.
+\end{mybox}
+\end{frame}
+\begin{frame}{الإثبات}
+\begin{tcolorbox}[enhanced,arc=3mm,boxrule=1.5mm,boxsep=1.5mm,
+colback=yellow!20!white,
+colframe=blue,
+borderline={1mm}{1mm}{yellow},
+borderline={1mm}{2mm}{green} ]
+نعتبر المؤثر 
+$F:C\big(J,E\big) \to \,\,C\big(J,E\big)$
+المعرف بـ 
+\begin{align*}
+F\big(y\big)(t) &= \dfrac{1}{{\Gamma (\alpha )}}\int\limits_0^t {\big(t - s\big)^{\alpha -1}} f\big(s,y(s)\big)\,ds \\
+&- \dfrac{1}{{\big(a + b\big)}}\left[\dfrac{b}{{\Gamma (\alpha )}}\int\limits_0^T {\big(T - s\big)}^{\alpha  - 1}f\big(s,y(s)\big)ds - c\right].
+\end{align*}
+
+نبين أن $F$ هو تقلص 
+
+و بماأن $F$ هو تقلص إذن حسب نظرية النقطة الثابتة لـ Banach 
+فإن
+ $F$
+ يقبل نقطة ثابتة وحيدة ، و هي حل للمسألة(1)  
+\end{tcolorbox}
+\end{frame}
+\begin{frame}{نظرية}
+\begin{mybox}[colbacktitle = green]{نظرية 2.2}
+{\LARGE{\ding{45}}}
+نعتبر أن الفرضيات التالية محققة :
+
+$\big(H_{2}$
+الدالة 
+$f:\big[0,T\big]\times E\to \,E$ 
+مستمرة ،
+
+$\big(H_{3}$
+يوجد عدد ثابت 
+$ M>0 $
+بحيث 
+$${{\big\| f(t,u) \big\|}_{E}}\le M\,\,,\,\forall t\in J\,,\,\forall u\in E,$$ 
+إذن المسألة (1)
+تقبل حل واحد على الأقل في $J$.
+\end{mybox}
+\end{frame}
+\begin{frame}{الإثبات}
+\begin{tcolorbox}[enhanced,arc=3mm,boxrule=1.5mm,boxsep=1.5mm,
+colback=yellow!20!white,
+colframe=blue,
+borderline={1mm}{1mm}{yellow},
+borderline={1mm}{2mm}{green} ]
+نستخدم نظرية النقطة الثابتة لـ 
+Schaefer
+لإثبات أن المؤثر $F$ المعرف سابقا  يقبل  على الأقل نقطة ثابتة في $J$.
+
+يكفي إثبات
+أن المؤثر 
+$F$
+مستمر كليا
+
+و المجموعة 
+$$\xi  = \bigg\{y \in C(J,E)\,;\,y = \lambda F(y)\,;\,\forall \lambda  \in \big]0,1\big[\,\, \bigg\}$$
+محدودة .
+
+و بالتالي حسب نظرية النقطة الثابتة لـ
+Schaefer
+نستنتج أن 
+$F$
+يقبل نقطة ثابتة في $J$و هي حل للمسألة(1) 
+.
+\end{tcolorbox}
+\end{frame}
+\subsection{ المعادلات التفاضلية ذات الرتب الكسرية $1<\alpha \le 2$ }
+\begin{frame}
+%\begin{box4}[colback=yellow]{\textcolor{black}{نضع المســــــــــــــــــــألة }}
+\begin{ambox}{نضع المســــــــــــــــــــألة }{magenta}
+\begin{align}
+\begin{cases}
+{}^C{D^\alpha }y(t) = f\big(t,y(t)\big)\,,\,t \in J = \big[ {0,T} \big],1 < \alpha  \le 2 ,\\
+y(0) = y_{0}\;,\;y(T) = y_{T}.
+\end{cases}
+\end{align}
+\end{ambox}
+\end{frame}
+\begin{frame}{توطئة}
+\begin{box2}{\textcolor{white}{توطئة 3.2}}{blue}
+{\LARGE{\ding{45}}}
+ليكن
+$1 < \alpha  \le 2$
+و
+$h:J \to E$
+دالة مستمرة.
+المسألة الخطية
+\begin{align*}
+{}^CD^{\alpha }y(t) = h(t)\,,\,t \in J ,\\
+y(0) = y_{0}\,\,,\,\,\,y(T) = y_{T}.
+\end{align*}
+تقبل حل وحيد يعطى بالعلاقة 
+\begin{align*}
+y(t) = g(t) + \int\limits_0^T {G\big(T,s\big)} h(s)ds,
+\end{align*}
+\end{box2}
+\end{frame}
+\begin{frame}
+\begin{box2}{}{blue}
+حيث
+$$G(t,s) = \begin{cases}\dfrac{1}{{\Gamma (\alpha )}} 
+\bigg(\big(t - s\big)^{\alpha  - 1} - \dfrac{t}{T}{\big(T - s\big)^{\alpha  - 1}}\bigg)\,\,\;\;si\,\,0 \le s \le t ,\\
+ \dfrac{1}{{\Gamma \big(\alpha \big)}}\bigg(- \dfrac{t}{T}{\big(T - s\big)^{\alpha  - 1}}\bigg)\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\;\;\;si\,\,\,t \le s \le T.
+\end{cases}$$
+و~~~~~~~~~~~~~~~~~~~~~~~~~~
+$g(t) = \left( {1 - \dfrac{t}{T}} \right){y_0} + \dfrac{t}{T}{y_T}.$
+\end{box2}
+\end{frame}
+
+\begin{frame}{توطئة}
+\vspace{-0.5cm}
+\begin{box2}{\textcolor{white}{توطئة 4.2}}{blue}
+{\LARGE{\ding{45}}}  
+المسألة(2) تقبل حل
+$y$ 
+إذا وفقط إذا كان$y$ 
+يحقق المعادلة التكاملية
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~
+$y(t) = g(t) + {\displaystyle \int\limits_0^T} {G(T,s)} f\big(s,y(s)\big)ds,$
+
+حيث ~~~~~~~~
+$g(t) = \left( {1 - \dfrac{t}{T}} \right){y_0} + \dfrac{t}{T}{y_T},$
+و
+$$G(t,s) = \begin{cases}\dfrac{1}{{\Gamma (\alpha )}}\left( 
+{\big(t - s\big)^{\alpha  - 1}} - \dfrac{t}{T}{\big(T - s\big)^{\alpha  - 1}}\right)\,\,\,si\,\,0 \le s \le t,\\
+\dfrac{1}{{\Gamma (\alpha )}} \left(- \dfrac{t}{T}{\big(T - s\big)^{\alpha  - 1}}\right)\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,si\,\,t \le s \le T.
+\end{cases}$$
+\end{box2}
+\end{frame}
+\begin{frame}{نظرية}
+\begin{mybox}[colbacktitle = green]{نظرية 2.3}
+{\LARGE{\ding{45}}}
+نعتبر أن الفرضيات
+$\big({H_1}\big)$
+-
+$\big({H_3\big)}$
+محققة.
+إذا كان 
+\begin{align}
+{G^*}{\displaystyle \int\limits_0^T} {p(s)ds < 1}ة
+\end{align}
+إذن المسألة (2) تقبل على الأقل حل في $J$.
+\end{mybox}
+\end{frame}
+\begin{frame}{الإثبات}
+\begin{tcolorbox}[enhanced,arc=3mm,boxrule=1.5mm,boxsep=1.5mm,
+colback=yellow!20!white,
+colframe=blue,
+borderline={1mm}{1mm}{yellow},
+borderline={1mm}{2mm}{green} ]
+نحول المسألة (2)إلى مسألة نقطة ثابتة.
+نعتبر المؤثر
+
+~~~~~~~~~~~~~
+$N:C\big(J,E\big) \to C\big(J,E\big)$
+المعرف بـ 
+
+~~~~~~~~~~~~
+$N\big(y\big)(t) = g(t) + {\displaystyle \int\limits_0^T} {G(t,s)} f\big(s,y(s)\big)ds,$
+
+من 
+التوطئة 3.2
+النقاط الثابتة للمؤثر
+$N$
+هي عبارة عن حل للمسألة (2)
+.ليكن
+\begin{align*}
+R > \dfrac{{{g^*}}}{{1 - {G^*}{  \int\limits_0^T }{p(s)ds} }},
+\end{align*}
+\end{tcolorbox}
+\end{frame}
+\begin{frame}
+\begin{tcolorbox}[enhanced,arc=3mm,boxrule=1.5mm,boxsep=1.5mm,
+colback=yellow!20!white,
+colframe=blue,
+borderline={1mm}{1mm}{yellow},
+borderline={1mm}{2mm}{green} ]
+و المجموعة ~~~~~~~~
+$D_{R}=\bigg\{ y \in C\big( J,E\big):{\big\|y\big\|}_{\infty} \le R\bigg\} .$
+عبارة عن مجموعة جزئية مغلقة ،محدودة و محدبة .نبين أن المؤثر
+$N$
+يحقق شروط نظرية النقطة الثابتة لـ 
+Mönch 
+.
+\end{tcolorbox}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{im4}}
+\section{\textcolor{black}{ الإستقرار التقريبي بوجود تأخير للمعادلات التفاضلية ذات الرتب الكسرية لا خطية }}
+\begin{frame}[containsverbatim]{الفصل الثالث  }\transsplithorizontalout[duration=0.5]
+
+\begin{tcolorbox}[colback=white,drop large lifted shadow,top=.5cm,bottom=.5cm]
+{\begin{center}
+	{\Huge\ttfamily\emph{{ الإستقرار التقريبي بوجود تأخير للمعادلات التفاضلية ذات الرتب الكسرية لا خطية}}}
+	\end{center}}
+\end{tcolorbox}
+\end{frame}
+\begin{frame}
+%\begin{box4}[colback=yellow]{\textcolor{black}{نضع المســــــــــــــــــــألة }}
+\begin{ambox}{نضع المســــــــــــــــــــألة }{magenta}
+\begin{align}
+\begin{cases}
+{}^CD_{{0^ + }}^\alpha x(t) = kx(t) + f\big(t,x(t),x\big(t - \tau (t)\big)\big)\\
+ + {}^CD_{{0^ + }}^\alpha g\big(t,x\big(t - \tau (t)\big)\big)\,\,,\,t \ge 0,\\
+x'(0) = 0\,,x(t) = \phi (t)\,\,,\,t \in \big[ {{m_0},0} \big],
+\end{cases}
+\end{align}
+حيث 
+$1 < \alpha  < 2$
+و $k$ ثابت حقيقي معطى ،
+ نرمز لحل  المسألة 
+
+~~~~~~~~~~~~~~~~~~~~~~
+ بـ
+ $x\big(t,\phi,0\big)$
+ .
+ \end{ambox}
+\end{frame}
+\subsection{درسة إستقرار الحل البديهي}
+\begin{frame}
+\begin{tcolorbox}[enhanced,colback=yellow!10!white,boxrule=0pt,frame hidden,
+borderline north={1mm}{-2mm}{red},
+borderline south={1mm}{-2mm}{blue},
+borderline west={1mm}{-2mm}{green},
+borderline east={1mm}{-2mm}{yellow}]
+{\LARGE\ding{45}}
+  لتبيان الإستقرار التقريبي للحل البديهي نقوم بتحويل المسألة 
+  إلى معادلة تكاملية ثم نستخدم نظرية النقطة الثابتة لبناخ لتبيان وجود وحدانية الحل .
+
+نعتبر  الفضاء التالي 
+$$E = \left\{ {x \in C\bigg( {\big[{m_0}, + \infty \big[} \bigg):\mathop {\sup }\limits_{t \ge {m_0}} \big\{ h(t)\left| {x(t)} \right|\big\}  < +\infty } \right\}.$$
+و المجموعة 
+$$\xi (\varepsilon ) = \bigg\{ {x \in E:\big\| x \big\| \le \varepsilon ,x(t) = \phi (t),t \in \big[{m_0},0\big]}\;,\varepsilon  > 0 \bigg\}$$
+\end{tcolorbox}
+\end{frame}
+\begin{frame}
+\begin{mybox}[colbacktitle = green]{ تعريف}
+ {\LARGE{\ding{45}}}
+نقول عن حل بديهي 
+$x=0$
+للمسألة
+(7)
+أنه
+
+{\large{\ding{182}}}
+ مستقر في فضاء بناخ 
+$E$
+إذا تحقق مايلي 
+$$\forall \varepsilon  > 0\,,\,\exists \,\,\delta  = \delta (\varepsilon ) > 0\,,\,\left| {\phi (t)} \right| \le \delta ,$$
+فإن
+$x(t)=x\big(t,\phi,0\big)$
+موجود من أجل كل 
+$t \ge {m_0}$
+و يحقق 
+$\big\| x \big\| \le \varepsilon$
+.
+
+{\large{\ding{183}}}
+مستقر تقريبيا، إذا كان مستقر في فضاء بناخ 
+$E_{\star}$
+ويوجد 
+$\delta  > 0$
+، إذا كان
+$\left| {\phi (t)} \right| \le \delta $
+فإن 
+$\mathop {\lim }\limits_{t \to  + \infty } x(t) = 0$
+.
+\end{mybox}
+\end{frame}
+\begin{frame}
+\begin{box3}{توطئة 1.3}{magenta}
+\label{tw3}
+ {\LARGE{\ding{45}}}
+ليكن 
+$r \in C\big( \,{[{m_0}, + \infty [}\,\big)$
+.نقول عن الدالة 
+$x \in C\big( \,{[{m_0}, + \infty [}\, \big)$
+حل للمسألة 
+\begin{align}
+\begin{cases}
+{}^{C}D_{{0^{+}}}^\alpha x(t) = r(t)\,,\,\,t \in {\mathbb{R}^{+}}\,\,\,\,, \,1 < \alpha  < 2,\\
+x'(0) = 0\,,\,x(t) = \phi (t)\,\,\,,\,t \in \big[{m_0},0\big],
+\end{cases}
+\end{align}
+إذا و فقط إذاكان
+$x$ 
+حل للمسألة 
+\begin{align}
+\begin{cases}
+x'(t) = I_{{0^ + }}^{\alpha  - 1}r(t)\,\,,\,t \in {\mathbb{R}^{+}},\\
+\,\,\,x(t) = \phi (t)\,\,,\,\,t \in \big[{m_0},0\big].
+\end{cases}
+\end{align}
+\end{box3}
+\end{frame}
+\begin{frame}
+\vspace{-0.6cm}
+\begin{box3}{ توطئة 2.3}{magenta}
+ {\LARGE{\ding{45}}}
+إذا كان 
+$R \in C\big(\, {\big[0, + \infty \big[} \,\big)$
+يحقق المعادلة التكاملية 
+\begin{align}
+\label{4.3}
+R(t) = 1 + k\,I_{{0^ + }}^\alpha R(t),
+\end{align}
+إذن
+$x \in C\big( {\big[m_0, + \infty \big[} \,\big)$
+حل للمسالة (4)
+إذا وفقط إذا كان 
+\begin{align*}
+ &x(t) = R(t)\phi (0) - g\big(0,\phi \big( - \tau (0)\big)\big){\displaystyle \int\limits_0^t }R(s)ds\\
+ & +{\displaystyle \int\limits_0^t }{R(t - s)g\big(s,x\big(s - \tau (s)\big)\big)ds}  \\
+&+ \dfrac{1}{{\Gamma (\alpha  - 1)}}\,{\displaystyle\int\limits_0^t} {R(t - s){\displaystyle \int\limits_0^s }{{{(s - u)}^{\alpha  - 2}}\,f\big(u,x(u),x} } \big(u - \tau (u)\big)\big)\,du\,ds.\,~~~~~~~~
+\end{align*}
+\end{box3}
+\end{frame}
+\begin{frame}
+\begin{tcolorbox}[enhanced,colback=yellow!10!white,boxrule=0pt,frame hidden,
+borderline north={1mm}{-2mm}{red},
+borderline south={1mm}{-2mm}{blue},
+borderline west={1mm}{-2mm}{green},
+borderline east={1mm}{-2mm}{yellow}]
+نعرف المؤثر 
+$F:E \to E$
+كالتالي
+\begin{align*}
+\hspace{-0.5cm}
+\big(Fx\big)(t)=
+\begin{cases}
+\phi(t) \hspace{2cm} ,\,\,t\in \big[m_0 ,0\big],\\
+{\displaystyle\int\limits_0^t }\bigg[ R(t - s)g\big(s,x\big(s - \tau (s)\big)\big) + k(t - s)f\big(s,x(s)\\
+,x\big(s - \tau (s)\big)\big) \bigg]  \,ds\\
+ + R(t)\phi (0) - g\big(0,\phi \big( - \tau (0)\big)\big){\displaystyle\int\limits_0^t} {R(s)ds} 
+\,\,\,\,\,\,\,, t>0,
+\end{cases}
+\end{align*}
+حيث  
+$$k(t)=\dfrac{1}{\Gamma(\alpha-1)}\int\limits_{0}^{t} {\big(t-u\big)}^{\alpha-2} R(u)du.$$
+\end{tcolorbox}
+\end{frame}
+\begin{frame}
+\begin{tcolorbox}[enhanced,colback=yellow!10!white,boxrule=0pt,frame hidden,
+borderline north={1mm}{-2mm}{red},
+borderline south={1mm}{-2mm}{blue},
+borderline west={1mm}{-2mm}{green},
+borderline east={1mm}{-2mm}{yellow}]
+{\LARGE\ding{45}}
+نعتبر أن الفرضيات التالية محققة :
+
+{\large{$\big(H_1$}}
+يوجد ثابت 
+$M_1 >0$
+بحيث
+$$\sup\limits_{t\ge 0}{\displaystyle\int\limits_{0}^{t}} h(t) \big|R(s)\big|ds \le M_1.$$
+{\large{$\big(H_2$}}
+يوجد ثابت 
+$v\in \big]0,1\big[$
+بحيث 
+$$\mathop {\sup }\limits_{t \ge 0} \dfrac{{\big| k \big|}}{{\Gamma (\alpha )}}{\displaystyle\int\limits_0^t} {{{(t - s)}^{\alpha  - 2}}} h(t)\,{h^{ - 1}}(s)ds = v.$$
+\end{tcolorbox}
+\end{frame}
+\begin{frame}
+\begin{tcolorbox}[enhanced,colback=yellow!10!white,boxrule=0pt,frame hidden,
+borderline north={1mm}{-2mm}{red},
+borderline south={1mm}{-2mm}{blue},
+borderline west={1mm}{-2mm}{green},
+borderline east={1mm}{-2mm}{yellow}]
+{\large{$(H_3$}}
+$f$
+و
+$g$
+دالتين مستمرتين و 
+$f\big(t,0,0\big)=g\big(t,0\big)=0$
+.ويوجد كذلك ثابتين
+$\beta\in \big]0,1\big[$
+و 
+$ \ell >0$
+ودوال مستمرة 
+${L_{{f_1}}}\,,\,{L_{{f_2}}}\,,\,{L_{g\,}}:\mathbb{R}^{+}\to\mathbb{R}^{+}$
+
+بحيث
+\begin{align*}
+\hspace{-0.3cm}
+\mathop {\sup }\limits_{t \ge 0} \,{\displaystyle\int\limits_0^t} {h(t)\bigg( {\big| {R(t - s)} \big|{L_g}(s) + \big| {k(t - s)} \big|\bigg[{L_{{f_1}}}(s) + {L_{{f_2}}}(s)\bigg]} \bigg)} \,ds\, \le \beta , \\
+\big| {g(t,x) - g(t,y)} \big| \le h(t){L_g}(t)\big| {x - y} \big|,~~~~~~~~~~~~\\
+\begin{array}{l}
+\bigg| {f\big(t,x,y\big) - f\big(t,z,w\big)} \bigg| \le h(t)\bigg( {{L_{{f_1}}}(t)\left| {x - z} \right| + {L_{{f_2}}}(t)\left| {y - w} \right|} \bigg)\,,\\
+\,\,\,\,\,\,\,\,\,\,\,\,~~~~~~~~~~~~~~~~\forall \,t \ge 0\,,\,\left| x \right|,\left| y \right|,\left| z \right|,\left| w \right| \le l.
+\end{array}
+\end{align*}
+\end{tcolorbox}
+\end{frame}
+\begin{frame}
+\begin{mybox}[colbacktitle = green]{نظرية 1.3  }
+{\LARGE{\ding{45}}}
+نعتبر أن الفرضيات
+$~\big(H_1\big)$-$\big(H_3\big)$
+محققة،إذن الحل البديهي 
+$x=0$
+للمسألة 
+(4)
+مستقر في فضاء بناخ 
+$E$
+.
+\end{mybox}
+\end{frame}
+\begin{frame}{الإثبات}
+\begin{tcolorbox}[enhanced,arc=3mm,boxrule=1.5mm,boxsep=1.5mm,
+colback=yellow!20!white,
+colframe=blue,
+borderline={1mm}{1mm}{yellow},
+borderline={1mm}{2mm}{green} ]
+لتبيان أن الحل البديهي $x=0$ للمسألة مستقر في فضاء بناخ $E$ يكفي تبيان أن:
+المسألة تقبل حل وحيد في 
+$\xi\left( \varepsilon\right)$
+
+واضح أن 
+$\xi\left( \varepsilon\right) \subseteq E$
+مجموعة جزئية مغلقة و محدبة  و المؤثر $F$ مستمر 
+
+نبين أن
+$F:\xi\left( \varepsilon\right) \rightarrow \xi\left( \varepsilon\right)$
+و بعد ذلك نبين أن $F$ هو تقلص و بالتالي حسب نظريةنقطة ثابتة لبناخ نستنتج أن $F$ يقبل نقطة ثابتة وحيدة 
+$x\in \xi\left( \varepsilon\right)$
+ وهي حل للمسألة (4) 
+ \end{tcolorbox}
+ \end{frame}
+ \begin{frame}{الإثبات ...}
+ \begin{tcolorbox}[enhanced,arc=3mm,boxrule=1.5mm,boxsep=1.5mm,
+colback=yellow!20!white,
+colframe=blue,
+borderline={1mm}{1mm}{yellow},
+borderline={1mm}{2mm}{green} ]
+ ثانيا من أجل أي حل للمسألة (4) و من أجل كل 
+ $\varepsilon>0$
+يوجد 
+$$\delta  = \dfrac{{1 - \beta }}{{{M_2} + {M_1}{L_g}(0)}}\varepsilon ,$$
+يحقق
+$\big| {\phi (t)} \big| \le \delta $
+.
+
+فإن الحل الوحيد $x$ للمسألة  يحقق 
+$\| x\| \le \varepsilon$
+
+و بالتالي الحل البديهي  للمسألة مستقر  في الفضاء $E$
+\end{tcolorbox}
+\end{frame}
+
+\subsection{دراسة الإستقرارالتقريبي للحل البديهي}
+\begin{frame}{دراسة الإستقرارالتقريبي للحل البديهي}
+\begin{tcolorbox}[boxrule=2mm]
+{\LARGE\ding{45}}
+نعرف فضاءا بناخ 
+$E_{\star}$
+و
+$E_{\beta}$
+$$E_{\star} = \bigg\{ {x \in C\big( {\big[{m_0}, + \infty \big[}\, \big)\,\,:\,\mathop {\lim }\limits_{t \to  + \infty } x(t) = 0} \bigg\},$$
+و
+\begin{align*}
+{E_\beta } = \bigg\{ x \in C\big( {\big[{m_0}, + \infty \big[} \, \big)&:\,\mathop {\lim }\limits_{t \to  + \infty } {t^{\alpha  - \beta }}x(t) = 0\\
+&,0 < \beta  < 1 < \alpha  < 2 \bigg\},
+\end{align*}
+\end{tcolorbox}
+\end{frame}
+\begin{frame}
+\begin{tcolorbox}[boxrule=2mm]
+المزودين بالناظمين 
+${\big\| x \big\|_{E_{\star}}}$
+و
+${\big\| x \big\|_{{E_\beta }}}$
+التاليين:
+
+${\big\| x \big\|}_{E_ {\star}}  = \mathop {\sup }\limits_{t \ge {m_0}} \big\{{\big| {x(t)} \big|} \big\},$,
+${\big\| x \big\|_{{E_\beta }}} = \mathop {\sup\limits_{t \ge {m_0}} \big\{ {{t^{\alpha  - \beta }}\left| {x(t)} \right|} \big\}} $
+
+~~~~~~~~~~~~~~~~~~~
+واضح أن
+${E_\beta } \subseteq {E_\star } \subseteq E$
+.
+
+نضع
+${\xi _\star } = \bigg\{ {x \in {E_\star }:\,x(t) = \phi (t)\,,\,t \in \,\, \big[ {{m_0},0} \big]} \bigg\}.$
+\end{tcolorbox}
+\end{frame}
+\begin{frame}
+\begin{mybox}[colbacktitle = green]{نظرية 2.3  }
+ {\LARGE{\ding{45}}}
+نفرض أن الشرط 
+$\big(H_3\big)$
+من 
+(\textbf{نظرية 1.3})
+محقق مع أخذ
+
+~~~~~~~~~~~~
+$h(t)=1$
+،
+$1 <\alpha < 1 + \beta $
+
+$\mathop {\lim }\limits_{t \to  + \infty }{\displaystyle \int\limits_0^t} {\bigg( {\left| {R(t - s)} \big|{L_g}(s) + \big| {k(t - s)} \right| \bigg[{L_{{f_1}}}(s) + {L_{{f_2}}}(s)\bigg]} \bigg)}ds $
+\centerline{$= 0$}
+
+~~~~~~~~~~~~~
+$\mathop {\lim }\limits_{t \to  + \infty } \,{t^{\alpha  - \beta }}R(t) = 0$
+و
+$\mathop {\lim }\limits_{t \to  + \infty } \,{\displaystyle \int\limits_0^t}{R(s)} ds = 0$
+
+إذن الحل البديهي للمسألة 
+مستقر تقريبيا
+ في الفضاء 
+$E_\star$
+.
+\end{mybox}
+\end{frame}
+\begin{frame}{الإثبات }
+\begin{tcolorbox}[enhanced,arc=3mm,boxrule=1.5mm,boxsep=1.5mm,
+colback=yellow!20!white,
+colframe=blue,
+borderline={1mm}{1mm}{yellow},
+borderline={1mm}{2mm}{green} ]
+بكل سهولة يمكن إثبات أنه يوجد حل على الأقل للمسألة
+في الفضاء
+$E_\beta$ 
+و نبين أن الحل البديهي للمسألة (4) مستقر في الفضاء  $E_\star$ 
+
+إضافة إلى ذلك ،نبين أن 
+$F:{\xi _\star } \to {\xi _\star }$
+
+و بالتالي الحل البديهي للمسألة (4) مستقر تقريبيا في فضاء 
+$E_{\star}$ 
+\end{tcolorbox}
+\end{frame}
+\title{اكتب موضوع}
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{im3}}
+\section{\textcolor{red}{الخاتمة}} 
+ \begin{frame}{الخاتمة}
+\begin{bekhadda}[title=\textcolor{red}{الخاتمة}]
+  وفي الأخير كانت مذكرتنا عبارة عن رحلة جاهدة للإرتقاء بدرجات العقل
+ومعارج الأفكار ولا ندعي فيه الكمال ولكن عذرنا أننا بذلنا فيه قصارى
+جهدنا.
+
+فإن أصبنا فمن الله تعالى وإن أخطأنا فذلك من أنفسنا و الشيطان فلنا شرف المحاولة و التعلم. 
+\end{bekhadda}
+\end{frame}
+
+\setbeamertemplate{background canvas}{\includegraphics[width=\paperwidth,height=\paperheight]{072}}
+\begin{frame}[plain]
+\begin{center}
+\begin{tikzpicture}
+\node[graduate,minimum size=2.5cm] at (0,0) {};
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}
+\path[fill=yellow,draw=yellow!75!red] (0,0) circle (1cm);
+\fill[red] (45:5mm) circle (1mm);
+\fill[red] (135:5mm) circle (1mm);
+\draw[line width=1mm,red] (215:5mm) arc (215:325:5mm);
+\end{tikzpicture}
+\quad
+\begin{tikzpicture}
+\node[graduate,minimum size=2.5cm] at (0,0){} ;
+\end{tikzpicture}
+\end{center}
+\begin{tcolorbox}[colback=white,drop large lifted shadow,top=.2cm,bottom=.5cm]
+{\begin{center}
+	{\Huge\emph{{{شُكرًا علَى حُسْن الإِصْغَاء وَالمُتَابَعَة}}}}
+	\end{center}}
+\end{tcolorbox}
+\end{frame}
+\end{document}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,612 @@
+\documentclass[12pt,a4paper,oneside]{book}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\pagestyle{plain}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------------------------------- page de garde
+\thispagestyle{empty}
+\begin{center} 
+\includegraphics{LOGOumifs.png} \\
+\vspace{2\baselineskip} \\
+\textcolor{blue}
+{RAPPORT DE PROJET DE FIN D'ETUDE } \\
+\vspace{2\baselineskip} \\
+{\scriptsize EN} \\
+\vspace{2\baselineskip}  \\
+{\large \textcolor{blue}
+{SCIENCES MATHEMATIQUES ET APPLICATIONS}}\\
+\vspace{2\baselineskip} \\
+{\scriptsize SOUS LE THEME} \\
+\vspace{4\baselineskip}  \\
+\Huge \textcolor{red}
+{ETUDE DE LA SUITE DE KOLAKOSKI-(1,3)}\\
+\vspace{2\baselineskip}   \normalsize 
+\rule{0,55\textwidth}{2pt} \\
+\vspace{2\baselineskip} 
+\textcolor{green}{
+1333111333131...
+\left(\begin{array}{cccc}
+1 & 0 & 2 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 2
+\end{array} \right) 
+0,6027847152... \\ 
+\vspace{2\baselineskip} \\
+\rule{0,55\textwidth}{2pt} \\
+\vspace{2\baselineskip}}\\
+\end{center}
+\hspace{2\baselineskip}
+      \begin{tabular}{llll} 
+\textbf{PrÃ©sentÃ© par} &:& \textcolor{blue}
+              {Abdelhakim BOUCHIAR} & \\ 
+                     
+    & \\
+                     & & & \\
+\textbf{Devant le jury} & : & \textcolor{blue}{Pr. Abdellah HAMMAM} & \textcolor{blue}{(Encadrant)}\\
+& & \textcolor{blue}{Pr.} &  \\
+& & \textcolor{blue}{Pr.} & \\
+& & & \\
+      \end{tabular}\\
+\begin{flushright}
+\textcolor{blue}{\emph{AnnÃ©e Universitaire: 2016/2017.}}
+\end{flushright} 
+\pagebreak           
+%remerciements
+\rule{1\textwidth}{0pt} \\ 
+\rule{1\textwidth}{0pt} \\
+ \rule{1\textwidth}{0pt} \\
+ \rule{1\textwidth}{0pt} \\
+\rule{1\textwidth}{0pt} \\
+ \begin{center}
+%---------------------------------- Remerciements
+   {\Huge \textbf{Remerciements}}
+ \end{center}
+\vspace{8\baselineskip}  
+\par Au terme de ce travail, nous profitons de l'occasion pour remercier tout d'abord, notre \\ \rule{1\textwidth}{0pt} \\ professeur Monsieur Abdellah HAMMAM, qui n'a pas cessÃ© de nous encourager pendant la \\  
+\rule{1\textwidth}{0pt}} \\ durÃ©e du travail sur ce projet, ainsi nous le remercions pour l'encadrement et l'aide. \\ \vspace{3\baselineskip} \\
+\par Egalement, nous prÃ©sentons nos remerciements Ã  tous les membres du jury, qui nous ont  \\ \rule{1\textwidth}{0pt} \\fait l'honneur d'accepter de juger notre travail. \\  \vspace{3\baselineskip} \\
+\par Nous tenons Ã  remercier tous les professeurs des filiÃ¨res SMIA et SMA, pour les efforts qui \\ \rule{1\textwidth}{0pt} \\ nous assurent une formation efficace et complÃ¨te tout au long des annÃ©es d'Ã©tude.
+\thispagestyle{empty}
+\newpage
+%%---------------------------------------- rÃ©sumÃ©                     
+\rule{1\textwidth}{0pt} \\ \rule{1\textwidth}{0pt} \\ \rule{1\textwidth}{0pt} \\ \rule{1\textwidth}{0pt} \\
+\rule{1\textwidth}{0pt} \\
+     \begin{center}
+           {\Huge \textbf{RÃ©sumÃ©}}\\
+     \end{center} \\ 
+\vspace{10\baselineskip}
+\thispagestyle{empty}
+\par Parmi les problÃ¨mes rencontrÃ©s en mathÃ©matiques, on trouve la conjecture de \textbf{Keane}: Y 
+\rule{1\textwidth}{0pt} \\
+ a-t-il autant de 1 que de 2 dans le mot infini de \textbf{Kolakoski}?.  Jusqu'Ã  maintenant personne ne le 
+\rule{1\textwidth}{0pt} \\ 
+sait. La rÃ©solution d'un problÃ¨me de ce volume nÃ©cessite des Ã©tudes des cas simples afin d'avoir, 
+\rule{1\textwidth}{0pt} \\ 
+d'une part, des idÃ©es sur le comportement des mots de \textbf{Kolakoski} particuliers, et d'autre part, 
+\rule{1\textwidth}{0pt} \\
+ des rÃ©sultats que l'on essaiera de gÃ©nÃ©raliser. Par exemple, l'Ã©tude qu'on prÃ©sentera dans ce 
+ \rule{1\textwidth}{0pt} \\ 
+ rapport consiste Ã  traiter le cas de l'alphabet \{1,3\}, et on essaie de gÃ©nÃ©raliser les mÃ©thodes \rule{1\textwidth}{0pt} \\ 
+ employÃ©es sur les mots formÃ©s par deux lettres impaires. Notre objectif est la recherche de la 
+\rule{1\textwidth}{0pt} \\
+  frÃ©quence de 3. On utilisera deux mÃ©thodes, l'une se base sur la notion de suites et sous 
+\rule{1\textwidth}{0pt} \\ 
+  suites, et l'autre sur la notion de valeurs propres. 
+%------------------------------------table des matieres 
+\tableofcontents
+\thispagestyle{empty}
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\chapter*{}      
+%----------------------------------- introduction
+      \begin{center}
+            {\Huge \textbf{Introduction}}
+      \end{center}
+\rule{1\textwidth}{0pt} \\\rule{1\textwidth}{0pt} \\\rule{1\textwidth}{0pt} \\\rule{1\textwidth}{0pt} \\
+\addcontentsline{toc}{chapter}{Introduction}
+\section*{}
+\par Le travail prÃ©sentÃ© dans ce rapport entre dans le cadre de notre projet de fin d'Ã©tude pour \\ \rule{1\textwidth}{0pt} \\ l'obtention de la licence en sciences mathÃ©matiques et applications. Nous nous intÃ©ressons Ã  \\ \rule{1\textwidth}{0pt} \\ l'Ã©tude du mot infini de Kolakoski en utilisant l'alphabet \{1,3\}.
+\section*{}
+\par Dans ce rapport, nous prÃ©sentons notre investigation dans le but est de chercher la limite  \\ \rule{0,3\textwidth}{0pt} \\ de la densitÃ© de 3 dans le mot infini de \textbf{Kolakoski}.
+\section*{}
+\par Ce rapport comporte deux chapitres principaux. Le premier prÃ©sentera le sujet Ã©tudiÃ©, les \\ \rule{0,3\textwidth}{0pt} \\ notations et les dÃ©finitions de base, ainsi que des propriÃ©tÃ©s indispensables Ã  l'Ã©tude. Le deuxiÃ¨me \\ \rule{0,3\textwidth}{0pt} \\constitue la dÃ©marche de l'Ã©tude, dans lequel on donnera deux mÃ©thodes diffÃ©rentes pour la  \\ \rule{0,3\textwidth}{0pt} \\ recherche de la densitÃ©. On finira ce rapport par une conclusion.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------- chapitre 1 
+\begin{chapter}{PrÃ©sentation du sujet}
+\par Dans ce chapitre nous introduisons les concepts, les dÃ©finitions de base et les notations qui seront utilisÃ©es tout au long de ce travail.
+\section{GÃ©nÃ©ralitÃ©s}
+\subsection{DÃ©finitions et Notations}
+\subsubsection*{DÃ©finition}
+On appelle alphabet tout ensemble fini d'entiers, qui sont appelÃ©s des lettres.
+\subsubsection*{Remarque}
+Dans notre Ã©tude on a besoin d'un alphabet \(\Sigma=\{a,b\}\), oÃ¹ a et b sont deux entiers non nuls positifs distincts. A partir de la section 1.4 , on prend a=1 et b=3.
+\subsubsection*{Notation}
+On dÃ©signe par  \(\Sigma^*\), l'ensemble des mots formÃ©s par les lettres de $\Sigma$. 
+\subsubsection*{DÃ©finition (mots fini et infini)}
+On dÃ©finit un mot fini M sur $\Sigma$ comme une suite finie de lettres $(M_i)_{1\leq i\leq n}$, avec n fixÃ© dans $ \mathbb{N}$, telle que $\forall i=1,...,n$ : $M_i$ $\in\Sigma$, et on Ã©crit $M=M_1M_2...M_n$, oÃ¹ $M_n$ est la n-iÃ¨me lettre de M. On dit alors que M est de longueur n, et on note long(M)=n.
+\par De m\^eme on dÃ©finit un mot infini K sur $\Sigma$ comme Ã©tant une suite infinie des Ã©lÃ©ments de $\Sigma$, on le note: $K=K_1K_2...$, oÃ¹ $K_i \in \Sigma$, $\forall i\geq 1.$\\
+\par Soit $M \in \Sigma^*$, On adopte la convention qu'un mot vide est de longueur zÃ©ro, et on le not $\varepsilon$. Ensuite on dÃ©finit la somme partielle par: $$S_n=\sum_{i=1}^nM_i.$$
+\par Dans un mot M $\in \Sigma^*$ de longueur n, le nombre d'occurrences de $\alpha \in \Sigma$ est notÃ© $\alpha_n$, s'il s'agit d'une occurrence d'indice impair on le not $\alpha_n^i$, et s'il est d'indice pair, on le note $\alpha_n^p $, on a donc:
+$$\forall \alpha \in \Sigma : \alpha_n = \alpha_n^i + \alpha_n^p$$ 
+et en particulier pour a et b
+$$n= a_n + b_n = a_n^i + a_n^p + b_n^i + b_n^p$$ 
+\par On dÃ©finit aussi un bloc dans un mot M par toute sous partie de lettres identiques successives de longueur maximal.\\
+\par On termine cette partie par des exemples qui illustrent ces notions.
+ \subsection{Exemples}
+\par Soit $\Sigma = \{1,3\}$, alors le mot M = 1 3 3 3 1 1 1 est bien dans $\Sigma^*$, car il ne comporte que de 1 et de 3, par contre le mot N = 1 3 2 1 1 1 n'est pas dans $\Sigma^*$ car tout simplement contient 2 et 2 $\notin \Sigma$. Le mot M est fini et de longueur long(M)=7 et on a $$M_1 = 1,\hspace{0,5\baselineskip}  M_2 = 3,\hspace{0,5\baselineskip} M_3 = 3,\hspace{0,5\baselineskip} ... $$ et on a aussi \\
+ \[ 1_7^i=3 , \hspace{0,5\baselineskip}1_7^p=1 , \hspace{0,5\baselineskip} 3_7^i=1 ,\hspace{0,5\baselineskip}  3_7^p=2 \] 
+ et donc
+\[ 1_7 = 1_7^i + 1_7^p =3+1=4 , \hspace{0,5\baselineskip} 3_7=3_7^i+3_7^p=1+2=3,\hspace{0,5\baselineskip}   7=1_7+3_7 .\]
+\par Ce mot M contient trois blocs: \hspace{0,5\baselineskip} 1 \hspace{0,5\baselineskip} , \hspace{0,5\baselineskip} 333 \hspace{0,5\baselineskip} et\hspace{0,5\baselineskip} 111.
+\section{DensitÃ©}
+\par Nous arrivons maintenant Ã  l'objet de ce travail, il s'agit de la densitÃ© ou la frÃ©quence.
+\subsubsection{DÃ©finition}
+\par Avec les notations Ã©noncÃ©es au dÃ©but de ce chapitre, on dÃ©finit la densitÃ© d'une lettre $\alpha \in \Sigma$ dans un mot M fini de longueur n par \[ \rho_n = \frac{|\{ 1 \leq j \leq n : M_j =\alpha \} |}{n} ,\]   \\ 
+ou d'une autre faÃ§on \[ \rho_n = \frac{\alpha_n^i+\alpha_n^p}{n} .\]   \\
+\section{Fonction de codage par blocs et sa rÃ©ciproque}
+\subsection{Fonction de codage par blocs}
+\subsubsection*{DÃ©finition}
+\par La fonction de codage par blocs est dÃ©finie par l'opÃ©rateur: 
+ \[ \Delta: \Sigma^* \underset{M \longmapsto \Delta (M)}{\longrightarrow} \Sigma^*=\{a,b\}^*, \]
+avec $\Delta(M) = M' = M'_1 M'_2 ... $ en prenant pour tout $ i \geq 1$, ${M'}_i$ comme Ã©tant la longueur maximale du i-iÃ¨me bloc dans le mot M.
+\subsubsection*{Exemple}
+On considÃ¨re le mot M=133311333.\\
+on a
+ \begin{center}
+$M=B_1B_2B_3B_4$,\hspace{0,5\baselineskip} oÃ¹ $B_1=1$,\hspace{0,5\baselineskip} $B_2=333$,\hspace{0,5\baselineskip} $ B_3=11$ \hspace{0,5\baselineskip}et \hspace{0,5\baselineskip}$B_4=333$
+\end{center}\\ 
+avec 
+\begin{center}
+$long(B_1)=1$,\hspace{0,5\baselineskip} $long(B_2)=3$,\hspace{0,5\baselineskip} $long(B_3)=2$ \hspace{0,5\baselineskip} et \hspace{0,5\baselineskip} $long(B_4)=3$
+\end{center}
+  \\donc
+ $$\Delta(M)=\Delta(133311333)=1323$$
+\subsection{Inter\^et de \Delta}
+\par La fonction de codage par blocs est utilisÃ©e  comme moyen de compression des donnÃ©es. Par exemple, la premiÃ¨re Ã©tape qu'effectuent les photocopieuses afin de compresser les donnÃ©es consiste Ã  l'application de $\Delta$ Ã  chaque ligne de pixels.
+\subsubsection*{Remarques}
+\par $_*$ La fonction $\Delta$ est une contraction, c'est-Ã -dire que pour tout mot M dans $\Sigma^*$ on a 
+$$long(\Delta(M))\leq long(M).$$
+\par $_*$ Cette fonction n'est pas pratique pour notre Ã©tude, on utilise au lieu d'elle sa rÃ©ciproque qui s'appelle la fonction pseudo-inverse donnÃ©e dans la section suivante. 
+\subsection{Fonction pseudo-inverse}
+\par Avant d'Ã©noncer la dÃ©finition de la fonction pseudo-inverse on a besoin de dÃ©finir ce qu'on appelle un mot lisse.
+\subsubsection*{DÃ©finition}
+\par Un mot $M \in \Sigma^*$ est dit lisse si: $\forall k \geq 0:\Delta^k(M) \in \Sigma^*$.
+\subsubsection*{Exemple}
+\par Soit M=13331113331313331113331. On a:\\
+$ \Delta^0(M)=M\\
+\Delta^1(M)=13331113331\\
+\Delta^2(M)=13331\\
+\Delta^3(M)=131\\
+\Delta^4(M)=111\\
+\Delta^5(M)=3\\
+\Delta^6(M)=1\\
+\Delta^k(M)=1\hspace{0,5\baselineskip} \forall k \geq 7.$\\
+Donc M est un mot lisse.
+\subsubsection*{DÃ©finition (fonction pseudo-inverse)} 
+%\addcontentsline{toc}{subsubsection}{DÃ©finition(fonction pseudo-inverse)}
+\par C'est la fonction rÃ©ciproque de la fonction de codage par blocs $\Delta$ , on la note $\Delta^{-1}$.
+\par On a \\ \[ \Delta^{-1}: \Sigma^* \underset{M \longmapsto \Delta^{-1}(M)}{\longrightarrow} \Sigma^*=\{a,b\}^* \]\\
+avec $\Delta^{-1}(M)= W_1 W_2 ...$ oÃ¹ $W_1=w_1^1=a$, et $\forall i \geq 2$ on a: \\ $ W_i=w_1^iw_2^i...w_{M_i}^i$ est un bloc de longueur $M_i$ tel que pour $j=1,...,M_{i}$ \\
+\[
+\left\{ \begin{array}{lll} 
+w_j^i = a & si & w_1^{i-1} = b \\
+w_j^i = b & si & w_1^{i-1} = a
+\end{array} 
+\]
+ \subsubsection*{Exemple}
+Soit M=1333111, donc $\Delta^{-1}(M)$ composÃ© par 7 blocs $B_1,B_2,...,B_7$ \, tels que: \\
+
+\begin{center}
+\begin{tabular}{lcl}
+$
+M_1=1 & \Rightarrow & B_1=1\\
+M_2=3 & \Rightarrow & B_2=333\\
+M_3=3 & \Rightarrow & B_3=111\\
+M_4=3 & \Rightarrow & B_4=333\\
+M_5=1 & \Rightarrow & B_5=1\\
+M_6=1 & \Rightarrow & B_6=3\\
+M_7=1 & \Rightarrow & B_7=1$\end{tabular} \\
+\end{center}
+Donc $$\Delta^{-1}(M)=B_1B_2B_3B_4B_5B_6B_7=1333111333131$$
+\subsubsection*{Remarque}
+\par La fonction pseudo-inverse $\Delta^{-1}$ est une anti-contraction, c'est-Ã -dire que pour tout mot M dans $\Sigma^*$ on a $$long(M) \leq long(\Delta^{-1}(M)).$$ 
+\section{Mot infini de Kolakoski}
+\par Soit $\Sigma=\{1,3\}$ .
+\subsection{DÃ©finition}
+ \par On appelle mot de Kolakoski, le point fixe sous l'opÃ©rateur $\Delta$ ayant 1 comme premiÃ¨re lettre. On le note K.
+\subsection{Construction du mot de Kolakoski}
+\par Pour construire le mot de Kolakoski on utilise la notation suivante:
+ $$K^p=K_1K_2...K_p \hspace{1\baselineskip} \forall p \geq 1.$$
+\par On sait que K commence par 1, c'est-Ã -dire $K_1=1$, donc forcement $K_2=3$, ce qui implique que $K^2=13$, alors $(\Delta^{-1}(K_2))=1333=K^4$, donc en appliquant  
+$\Delta^{-1}$ Ã  $K^4$ on aura $K^{10}=1333111333$. \\ D'oÃ¹ par applications successives de $\Delta^{-1}$ on a \\
+$K^{22}=1333111333131333111333$\\
+$K^{52}=1333111333131333111333131333111333111333111333111333$ \\
+On peut continuer autant de fois que l'on veut pour avoir une certaine longueur.
+\subsection{PropriÃ©tÃ©s}
+\begin{tabular}{ll}
+\textbf{i)}   & Le mot de Kolakoski est un mot infini.\\
+\textbf{ii)} & Le mot de Kolakoki est unique.\\
+\textbf{iii)} & Le mot de Kolakoski est un mot lisse: $K=\Delta^k(K), \forall k \geq 0$.
+\end{tabular}
+\subsubsection*{Question: Quelle est la densitÃ© asymptotique de chaque lettre?}
+Nous allons essayer de rÃ©pondre Ã  cette question dans le cas particulier a=1, b=3. NotÃ© aussi Kol(1,3).
+\end{chapter}
+%chapitre 2 
+\begin{chapter}{Suite de KOLAKOSKI-(1,3)}
+\section*{Introduction}
+\par Ce chapitre prÃ©sente d'une maniÃ¨re dÃ©taillÃ©e le contenu principal de la recherche. Notre objectif est de traiter le problÃ¨me suivant: Quelle est la valeur de la densitÃ© de 3 dans le mot infini de Kolakoski dÃ©fini dans la section 1.4 . Pour rÃ©soudre ce problÃ¨me, on propose deux mÃ©thodes, la premiÃ¨re sera traitÃ©e dans la deuxiÃ¨me section de ce chapitre, alors que l'autre est dans la troisiÃ¨me, et on commence par tout ce qui commun dans la premiÃ¨re section.
+\section{Matrice de passage }
+\par Soit $K=K_1K_2...$ le mot infini de Kolakoski dÃ©fini au chapitre 1. Comme $n$ et $S_n$ ont la m\^eme paritÃ©. Donc on peut faire les identifications du Tableau 1, Annexe A. De ce tableau on peut extraire les relations suivantes:
+\[ \left\{ \begin{array}{l}
+1_{S_n}^i=1_n^i+2 \times 3_n^i \\ 
+1_{S_n}^p=3_n^i \\ 
+3_{S_n}^i=3_n^p \\ 
+3_{S_n}^p=1_n^p+2 \times 3_n^p
+\end{array} \]\\
+On Ã©crit se systÃ¨me sous la forme matricielle:
+\[ \left( \begin{array}{c}
+1_{S_n}^i \\ 
+1_{S_n}^p \\ 
+3_{S_n}^i \\ 
+3_{S_n}^p
+\end{array} \right) = 
+\left( \begin{array}{cccc}
+1 & 0 & 2 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 2
+\end{array} \right)
+\left( \begin{array}{c}
+1_n^i \\ 
+1_n^p \\ 
+3_n^i \\ 
+3_n^p
+\end{array} \right) \] \\
+On pose \,\ $X_{S_n}=\left( \begin{array}{c}
+1_{S_n}^i \\ 
+1_{S_n}^p \\ 
+3_{S_n}^i \\ 
+3_{S_n}^p
+\end{array} \right) \,\ , \,\ X_n=
+\left( \begin{array}{c}
+1_n^i \\ 
+1_n^p \\ 
+3_n^i \\ 
+3_n^p
+\end{array} \right)$ \,\ et \,\ $ M=
+\left( \begin{array}{cccc}
+1 & 0 & 2 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 2
+\end{array} \right)$.\\ \\Donc M est la  matrice de passage de $X_n$ Ã  $X_{S_n}$.\\
+En faisant appelle au Tableau 2, Annexe A, on vÃ©rifie les cas suivants respectivement pour n=1,2 et 3:\\
+\begin{footnotesize}
+$$ \left( \begin{array}{c}
+1 \\ 
+0 \\ 
+0 \\ 
+0
+\end{array} \right) = 
+\left( \begin{array}{cccc}
+1 & 0 & 2 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 2
+\end{array} \right)
+\left( \begin{array}{c}
+1 \\ 
+0 \\
+0\\ 
+0
+\end{array} \right) \left| \left|
+\left( \begin{array}{c}
+3 \\ 
+1\\ 
+1 \\ 
+2
+\end{array} \right) = 
+\left( \begin{array}{cccc}
+1 & 0 & 2 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 2
+\end{array} \right)
+\left( \begin{array}{c}
+1 \\ 
+0\\ 
+0\\ 
+1
+\end{array} \right) \left| \left|
+\left( \begin{array}{c}
+3 \\ 
+1 \\ 
+1\\ 
+2
+\end{array} \right) = 
+\left( \begin{array}{cccc}
+1 & 0 & 2 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 2
+\end{array} \right)
+\left( \begin{array}{c}
+1 \\ 
+0\\ 
+1 \\ 
+1
+\end{array} \right)$$
+\end{footnotesize}.
+\newpage 
+\section{MÃ©thode des valeurs propres}
+On a  \,\ $\left( \begin{array}{c}
+1_{S_n}^i \\ 
+1_{S_n}^p \\ 
+3_{S_n}^i \\ 
+3_{S_n}^p
+\end{array} \right) = 
+\left( \begin{array}{cccc}
+1 & 0 & 2 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 2
+\end{array} \right)
+\left( \begin{array}{c}
+1_n^i \\ 
+1_n^p \\ 
+3_n^i \\ 
+3_n^p
+\end{array} \right) $ \,\ , \,\
+avec \,\ $M=\left( \begin{array}{cccc}
+1 & 0 & 2 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 2
+\end{array} \right). $ \\
+\subsection{Polyn\^ome caractÃ©ristique}
+Le polyn\^ome caractÃ©ristique de M est le suivant: \[P_M(\lambda)=(\lambda -1)(\lambda^3-2\lambda^2-1) \]
+\subsection{Valeurs propres}
+\par Il est claire que 1 est une racine de $P_M$, on applique le thÃ©orÃ¨me  de cardan Ã©noncÃ©  dans l'Annexe B, au polyn\^ome $P(\lambda)=\lambda^3-2\lambda^2-1$ pour trouver ses racines, afin d'avoir toutes les racines de $P_M$, qui sont les valeurs propres de M.\\
+\par On a D=59, donc on est dans le cas oÃ¹ D>0, donc les racines de P sont: \\
+ $\begin{flushleft}
+\lambda_1=(\dfrac{43}{54}+\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}+(\dfrac{43}{54}-\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}+\dfrac{2}{3} $\\
+${\tiny \lambda_2= -\dfrac{1}{2}\left[ \left(\dfrac{43}{54}+\dfrac{\sqrt{177}}{18}\right)^{\dfrac{1}{3}}+\left(\dfrac{43}{54}-\dfrac{\sqrt{177}}{18}\right)^{\dfrac{1}{3}}\right]+i\dfrac{\sqrt{3}}{2} \left[ \left(\dfrac{43}{54}+\dfrac{\sqrt{177}}{18}\right)^{\dfrac{1}{3}}-\left(\dfrac{43}{54}-\dfrac{\sqrt{177}}{18}\right)^{\dfrac{1}{3}}\right]+\dfrac{2}{3}}$\\
+${\small \lambda_3=-\dfrac{1}{2}\left[ \left(\dfrac{43}{54}+\dfrac{\sqrt{177}}{18}\right)^{\dfrac{1}{3}}+\left(\dfrac{43}{54}-\dfrac{\sqrt{177}}{18}\right)^{\dfrac{1}{3}}\right]-i\dfrac{\sqrt{3}}{2} \left[ \left(\dfrac{43}{54}+\dfrac{\sqrt{177}}{18}\right)^{\dfrac{1}{3}}-\left(\dfrac{43}{54}-\dfrac{\sqrt{177}}{18}\right)^{\dfrac{1}{3}}\right]+\dfrac{2}{3}}$
+\end{flushleft} \\
+\par En valeurs approchÃ©es on a:\\
+\begin{center}
+$\lambda_1\simeq2,205569$\\
+$|\lambda_2|=|\lambda_3|\simeq0,67 $\\
+\end{center}
+D'oÃ¹ l'ensemble des valeurs propres, le spectre, de M est: $S_p(M)=\{ \lambda_1, \lambda_2, \lambda_3, 1 \}$.
+\subsection{Vecteur propre}
+On cherche un vecteur propre $\overrightarrow{V_1}=\left( \begin{array}{c}
+x \\ 
+y \\ 
+z \\ 
+t
+\end{array} \right)$, associÃ© Ã  la valeur propre  $\lambda_1$,\\
+ donc $\overrightarrow{V_1}$ est tel que $M\overrightarrow{V_1}=\lambda_1\overrightarrow{V_1}$, ce qui est Ã©quivalent au systÃ¨me suivant: \\
+\begin{center}
+$(S): \left\{ \begin{array}{rcl}
+x+2z & = & \lambda_1 x \\
+z & = & \lambda_1 y \\
+t & = & \lambda_1 z \\
+y+2t&= & \lambda_1 t
+\end{array} $
+\end{center}\\
+pour $y =1$, on a $z=\lambda_1$ donc $t=\lambda_1^2$ et alors $x=\dfrac{-2\lambda_1}{1-\lambda_1}$, avec $1+2\lambda_1^2=\lambda_1^3$,\\
+ d'oÃ¹ $\overrightarrow{V_1}=\left(\begin{array}{c}
+\dfrac{2\lambda_1}{\lambda_1-1} \\ 
+1 \\ 
+ \lambda_1\\ 
+\lambda_1^2
+\end{array} \right)$ est solution du systÃ¨me (S).\\
+ Donc $\overrightarrow{V_1}$ est un vecteur propre associÃ© Ã  la valeur propre $\lambda_1$.
+\subsection{DensitÃ© de 3}
+Soit $\overrightarrow{X_0}=\left( \begin{array}{c}
+1 \\ 
+0 \\ 
+0 \\ 
+1
+\end{array} \right)$, on pose pour tout n entier naturel: $\overrightarrow{X_{n+1}}=M\overrightarrow{X_n}$.\\
+Soient $\overrightarrow{V_1}$, $\overrightarrow{V_2}$, $\overrightarrow{V_3}$, et $\overrightarrow{V_4}$ respectivement les vecteurs propres associÃ©s aux valeurs propres $\lambda_1$, $\lambda_2$, $\lambda_3$ et $1$.\\
+Alors il existe des constantes a, b, c et d rÃ©elles telles que $$\overrightarrow{X_0}=a\overrightarrow{V_1}+b\overrightarrow{V_2}+c\overrightarrow{V_3}+d\overrightarrow{V_4}$$ 
+ceci implique que $$ 
+\begin{tabular}{rl}
+\overrightarrow{X_1}=M\overrightarrow{X_0}&=aM\overrightarrow{V_1}+bM\overrightarrow{V_2}+cM\overrightarrow{V_3}+dM\overrightarrow{V_4} \\
+&=a\lambda_1\overrightarrow{V_1}+b\lambda_2\overrightarrow{V_2}+c\lambda_3\overrightarrow{V_3}+d\overrightarrow{V_4}
+\end{tabular}$$
+donc $$
+\begin{tabular}{rl}
+\overrightarrow{X_2}=M\overrightarrow{X_1} & =a\lambda_1M\overrightarrow{V_1}+b\lambda_2M\overrightarrow{V_2}+c\lambda_3M\overrightarrow{V_3}+dM\overrightarrow{V_4} \\
+&=a\lambda_1^2\overrightarrow{V_1}+b\lambda_2^2\overrightarrow{V_2}+c\lambda_3^2\overrightarrow{V_3}+d\overrightarrow{V_4}.
+\end{tabular}$$
+de proche on proche, en multipliant par $M$ Ã  gauche les deux membres, on obtient 
+$$\overrightarrow{X_n}=M^n\overrightarrow{X_0}=a\lambda_1^n\overrightarrow{V_1}+b\lambda_2^n\overrightarrow{V_2}+c\lambda_3^n\overrightarrow{V_3}+d\overrightarrow{V_4}$$
+Quand n tend vers l'infini, puisque $\lambda_1$ est la seule valeur propre de module strictement supÃ©rieur Ã  1, on aura $$\overrightarrow{X_n}\underset{n\rightarrow + \infty}{\sim}a\lambda_1^n\overrightarrow{V_1}.$$
+c'est-a-dire $$\overrightarrow{X_n}\underset{n\rightarrow + \infty}{\sim}a\lambda_1^n\left(
+\begin{array}{c}
+\dfrac{-2\lambda_1}{1-\lambda_1} \\ 
+1 \\ 
+ \lambda_1\\ 
+\lambda_1^2
+\end{array} \right)$$ 
+Dans $\overrightarrow{X_n}$ on peut calculer $1_n^i$, $1_n^p$, $3_n^i$ et $3_n^p$. \\ D'oÃ¹ on peut calculer la densitÃ© de 1 ou de 3, celle de 3 est donnÃ©e par:
+
+\begin{center}
+ \begin{tabular}{rl}
+$\rho_3=$ & $\dfrac{\lambda_1+\lambda_1^2}{\dfrac{-2\lambda_1}{1-\lambda_1}+1+\lambda_1+\lambda_1^2}$ \\
+$=$ & $\dfrac{(1-\lambda_1)(\lambda_1+\lambda_1^2)}{-2\lambda_1+(1-\lambda_1)(1+\lambda_1+\lambda_1^2)}$ \\
+\end{tabular}
+ \end{center} or $$-2\lambda_1^2=1-\lambda_1^3=(1-\lambda_1)(1+\lambda_1+\lambda_1^2) $$ donc la densitÃ© devient $$\rho_3=\dfrac{(1-\lambda_1)(\lambda_1+\lambda_1^2)}{-2(\lambda_1+\lambda_1^2)}$$ en simplifiant par $\lambda_1+\lambda_1^2$, on aura
+ $$\fbox{\rho_3=\dfrac{\lambda_1-1}{2}}$$
+en valeur approximative on a
+ $$\rho_3\simeq0,6027847152$$
+\section*{}
+\section{MÃ©thode de rÃ©currence}
+\subsection{Principe}
+Le principe sur lequel on se base dans  cette mÃ©thode,
+ consiste Ã  Ã©tablir une relation de rÃ©currence entre 
+ $\rho_n ,\rho_{S_n}$ et $\rho_{S_{S_n}}=\rho_{S_{2,n}}$. 
+ Puis puisque  $(\rho_{S_n})_n$ et $(\rho_{S_{2,n}})_n$
+  sont deux suites extraites de $(\rho_n)_n$, 
+  alors si elles convergent, elles convergent vers la 
+  m\^eme limite. Et donc la limite de la densitÃ© est 
+  solution d'une equation Ã  rÃ©soudre.
+\subsection{DÃ©monstration}
+Soit $n \in N^*$, 
+on a $S_n=1_{S_n}^i+1_{S_n}^p+3_{S_n}^i+3_{S_n}^p $, 
+en appliquant les transformations Ã  l'aide de la matrice de passage, on trouve\\
+ $$S_n=1_n^i+1_n^p+3_n^i+3_n^p+2 \times (3_n^i+3_n^p) \\
+ =n+2n \rho_n\\ =n(1+2 \rho_n).$$ \\
+D'oÃ¹ $$S_n=n(1+2 \rho_n).$$\\
+On remplaÃ§ant n par $S_n$, on aura $$ S_{2,n}=S_n(1+2 \rho_{S_n}),$$\\
+et comme, par construction de K, $$ S_{2,n}=\sum_{j=1}^n K_j(2+(-1)^j), $$ 
+donc $$(1+2 \rho_{S_n})S_n= 2S_n+ \sum_{j=1}^n(-1)^jK_j,$$ \\
+donc $$ 
+ (2\rho_{S_n}-1)S_n =\sum_{j=1}^n(-1)^jK_j
+ =\sum_{j=1,K_j=3}^n(-1)^jK_j+\sum_{j=1,K_j=1}^n(-1)^jK_j
+ =3(3_n^p-3_n^i)+(1_n^p-1_n^i)
+$$ \\  
+Or, si on fait le bilan des indices dans $K^n$, on trouve $$ 3_n^p+1_n^p=3_n^i+1_n^i+\dfrac{(-1)^n-1}{2}$$ \\ donc 
+$$(2\rho_{S_n}-1)S_n=2(3_n^p-3_n^i)+\frac{(-1)^n-1}{2},$$\\ 
+et si l'on remplace $n$ par $S_n$, on obtient $$(2\rho_{S_{2,n}}-1)S_{2,n}=2(2 \times 3_n^p+1_n^p-3_n^p)+ \frac{(-1)^n-1}{2}=2(3_n^p+1_n^p)+\frac{(-1)^n-1}{2},$$
+Or $$3_n^p+1_n^p=3_n^i+1_n^i+\frac{(-1)^n-1}{2}=\frac{1}{2}(n+\frac{(-1)^n-1}{2})=\frac{n}{2}+\frac{(-1)^n-1}{4}$$\\ 
+donc $$(2\rho_S_{2,n}-1)S_{2,n}=n+\frac{(-1)^n-1}{2}+\frac{(-1)^n-1}{2}=n+(-1)^n-1.$$ 
+ou bien, sachant que $S_{2,n}=(1+2\rho_{S_n})(1+2\rho_n),$
+\begin{equation}
+(2 \rho_{S_{2,n}}-1)(1+2\rho_{S_n})(1+2\rho_n)=1+\frac{(-1)^n-1}{n}.\end{equation}
+\par On pose: $u_n= \frac{(-1)^n-1}{n}$, $\forall n \geq 1$. Comme $\forall k \geq 1: u_{2k}=0$ \,\ et \,\ $ u_{2k+1}=\frac{-2}{2k+1}\underset{k\rightarrow + \infty}{\longrightarrow} 0$.\\
+ donc $ u_n\underset{n \longmapsto + \infty}{\longrightarrow} 0$.\\
+\par On suppose que $(\rho_n)_n$ converge, soit alors $l=\underset{n\rightarrow + \infty}{l i m}\rho_n$, \\
+ donc 
+$\underset{n\rightarrow + \infty}{l i m}\rho_{S_n}=\underset{n\rightarrow + \infty}{l i m}\rho_{S_{2,n}}=l$, car $(\rho_{S_n})_n$ et $(\rho_{S_{2,n}})_n$ sont deux sous suites de $(\rho_n)_n$.\\ 
+\par En faisant tendre n vers l'infini dans la formule $(2.1)$, on obtient
+\[(2l-1)(1+2l)^2=1\]
+\par Ceci est Ã©quivalent, aprÃ¨s un dÃ©veloppement et simplification, Ã 
+\[(2l)^3+(2l)^2-(2l)-2=0.\]
+\par On pose alors $L=2l$. donc on aura
+\begin{equation}
+L^3+L^2-L-2=0.
+\end{equation}
+\par Pour rÃ©soudre l'Ã©quation (2.2) on utilise le thÃ©orÃ¨me Ã©noncÃ© dans l'Annexe B.
+\\ On a D=59>0, donc il y a deux racines complexes et une racine rÃ©elle. \\ D'oÃ¹ la densitÃ© est 
+$\rho_3=l=\dfrac{L}{2}$, oÃ¹ L est la racine rÃ©elle de l'Ã©quation (2.2). \\ \\ \\
+Finalement 
+$$\fbox{\rho_3=\dfrac{1}{2} 
+\left[(\dfrac{43}{54}+\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}+(\dfrac{43}{54}-\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}-\dfrac{1}{3}\right]}$$ \\ 
+$$\rho_3\simeq0,6027847152$$
+\section{Conclusion}
+\par Dans ce chapitre on a traitÃ© le m\^eme problÃ¨me par deux mÃ©thodes, ce qui nous permet d'Ã©valuer le rÃ©sultat obtenu, On termine par cette reprÃ©sentation graphique de la suite $(\rho_n)_{n \geq 1}$ qui illustre la valeur de la densitÃ© obtenue dans les deux mÃ©thodes citÃ©es.\\ 
+\begin{center}
+ \begin{tabular}{c} 
+\includegraphics[scale=1]{KOLAKO13.jpg} \\ 
+Evaluation du rÃ©sultat obtenu par les deux mÃ©thodes. 
+\end{tabular}
+ \end{center} 
+\end{chapter}
+                  %conclusion
+\newpage                  
+\rule{1\textwidth}{0pt}\\ 
+\rule{1\textwidth}{0pt}\\ 
+\rule{1\textwidth}{0pt}\\ 
+\rule{1\textwidth}{0pt}\\
+\rule{1\textwidth}{0pt}\\
+    \begin{center}
+          {\Huge \textbf{Conclusion}}
+    \end{center}
+\rule{1\textwidth}{0pt} \\ 
+\rule{1\textwidth}{0pt} \\
+ \rule{1\textwidth}{0pt} \\
+ \rule{1\textwidth}{0pt} \\
+  \rule{1\textwidth}{0pt} \\ 
+  \rule{1\textwidth}{0pt} \\
+   \rule{1\textwidth}{0pt} \\ 
+   \rule{1\textwidth}{0pt} \\
+\addcontentsline{toc}{chapter}{Conclusion} 
+\par Dans ce travail on a Ã©tudiÃ© la suite $Kol(1,3)$, et on a donnÃ© deux mÃ©thodes qui se basent sur \rule{1\textwidth}{0pt} \\ le fait que $n$ et $S_n$ ont la m\^eme paritÃ©. Cette propriÃ©tÃ© se conserve m\^eme pour un alphabet Ã  \rule{1\textwidth}{0pt} \\ deux lettres impaires, ce qui facilite l'Ã©tude de la suite $Kol(2p+1,2q+1)$. Il suffit de gÃ©nÃ©raliser \rule{1\textwidth}{0pt} \\ les deux mÃ©thodes employÃ©es. Pour la suite $Kol(2p,2q)$, $S_n$ est toujours pair indÃ©pendemment \rule{1\textwidth}{0pt} \\ de la paritÃ© de n, ce qui rend l'Ã©tude de cette suite trÃ¨s facile, on montre que les densitÃ©s des \rule{1\textwidth}{0pt} \\ deux lettres sont identiques et sont Ã©gales Ã  $0,5$. Il reste le cas oÃ¹ l'une des lettres est paire et \rule{1\textwidth}{0pt} \\ l'autre est impaire, qui n'a pas Ã©tÃ© rÃ©solu Ã  cause de l'instabilitÃ© de la paritÃ© de $S_n$ par rapport \rule{1\textwidth}{0pt} \\Ã  celle de $n$.
+%annexes
+\chapter*{Annexe A}
+\addcontentsline{toc}{chapter}{Annexe A}
+\section*{}
+\begin{center}
+\begin{tabular}{||c||c||}
+\multicolumn{2}{l}{Tableau 1: Identifications des lettres de K et de \Delta^{-1}(K).} \\  
+\hline \hline
+K & \Delta^{-1}(K) \\
+\hline \hline
+ (1)^i &(1)^i \\ 
+\hline 
+ (1)^p & (3)^p\\ 
+\hline 
+(3)^i  & (111)=2\times (1)^i+(1)^p \\ 
+\hline 
+(3)^p & (333)=2\times(3)^p+(3)^i \\ 
+\hline \hline
+\end{tabular} 
+\end{center} \\
+\vspace{8\baselineskip} \\
+\section*{}
+\begin{center}
+\begin{tabular}{||c||c||l||l||c|c|c|c||c|c|c|c||}
+\multicolumn{12}{l}{Tableau 2: Comment les lettres de K se transforment par $\Delta^{-1}$.} \\
+\hline \hline 
+n & $S_n$ & $K^n=K_1...K_n$ & $K^{S_n}=K_1...K_{S_n}$ & $1_n^i$ & $1_n^p$ & $3_n^i$ & $3_n^p$ & $1_{S_n}^i$ & $1_{S_n}^p$ & $3_{S_n}^i$ & $3_{S_n}^p$ \\ 
+\hline \hline
+1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 
+\hline 
+2 & 4 & 13 & 1333 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 2 \\ 
+\hline 
+3 & 7 & 133 & 1333111 & 1 & 0 & 1 & 1 & 3 & 1 & 1 & 2 \\ 
+\hline 
+4 & 10 & 1333 & 1333111333 & 1 & 0 & 1 & 2 & 3 & 1 & 2 & 4 \\ 
+\hline 
+5 & 11 & 13331 & 13331113331 & 2 & 0 & 1 & 2 & 3 & 1 & 2 & 4 \\ 
+\hline 
+6 & 12 & 133311 & 133311133313 & 2 & 1 & 1 & 2 & 4 & 1 & 2 & 5 \\ 
+\hline 
+7 & 13 & 1333111 & 1333111333131 & 3 & 1 & 1 & 2 & 5 & 1 & 2 & 5 \\ 
+\hline \hline
+\end{tabular} 
+\end{center}
+\chapter*{Annexe B}
+\addcontentsline{toc}{chapter}{Annexe B}
+\section*{ThÃ©orÃ¨me de Cardan}
+ Soit $$ P(X)=X^3+bX^2+cX+d $$ un polyn\^ome Ã  coefficients rÃ©els, et soit \\ 
+  \begin{center}
+\( p=c-\frac{b^2}{3}\) \hspace{1,5\baselineskip} et \hspace{1,5\baselineskip} \(q=d-\frac{bc}{3}+\frac{2b^3}{27}\).
+\end{center} \\
+On dÃ©signe par $\Delta$ le discriminant de  
+\[R(T)=T^2+qT-\frac{p^3}{27}.\]\\
+On pose \begin{center}
+$D=27\Delta=4p^3+27q^2.$
+\end{center} \\
+Alors: \\
+$_*$ Si D > 0, R possÃ¨de deux racines rÃ©elles distinctes t et t'.\\ Alors les racines de P sont:\\
+ \begin{center}
+ $t^{\frac{1}{3}}+{t'}^{\frac{1}{3}}-\frac{b}{3}$ \hspace{2\baselineskip},\hspace{2\baselineskip}  $j^2t^{\frac{1}{3}}+j {t'}^{\frac{1}{3}}-\frac{b}{3}$ \hspace{2\baselineskip},\hspace{2\baselineskip} $j+t^{\frac{1}{3}}+j^2{t'}^{\frac{1}{3}}-\frac{b}{3}.$ 
+  \end{center} \\
+ $_*$ Si D < 0, R admet deux racines complexes conjuguÃ©es x et $\overline{x}$.\\ soit t et $\overline{t}$ tels que: $x={t}^{\frac{1}{3}}$ et $\overline{x}={\overline{t}}^{\frac{1}{3}}$.\\
+ Alors les racines de P sont:\\
+ \begin{center}
+ $x+\overline{x}-\frac{b}{3}$\hspace{1,5\baselineskip} ,\hspace{1,5\baselineskip} $jx+j^2 \overline{x}-\frac{b}{3}$ \hspace{1,5\baselineskip} , \hspace{1,5\baselineskip} $j^2x+j\overline{x}-\frac{b}{3}$.
+ \end{center}
+ $_*$ Si D=0, R Ã  une racine double $t_0=-\frac{q}{2}$.
+ \\ Alors les racines de P sont:\\
+ \begin{center}
+ $2{t_0}^{\frac{1}{3}}$ \hspace{1,5\baselineskip} , \hspace{1,5\baselineskip} $-t_0^{\frac{1}{3}}$
+ \end{center} \\
+  N.B: \hspace{2\baselineskip} $j=-\dfrac{1}{2}+i\dfrac{\sqrt{3}}{2}$
+\end{titlepage}
+\end{document}

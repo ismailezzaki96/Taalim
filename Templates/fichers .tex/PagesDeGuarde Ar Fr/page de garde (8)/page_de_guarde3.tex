@@ -1,0 +1,85 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[margin=3cm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,mathrsfs,tikz}
+\pagestyle{empty}
+\usepackage{polyglossia}
+\setmainlanguage[numerals=maghrib]{arabic}
+\setotherlanguage{french}
+\newfontfamily\arabicfont[Script=Arabic,Scale=1.2]{Arial}
+\newfontfamily\frenchfont{Times New Roman}
+\def\sh{\tikz{
+\draw [line width=5pt,color=red!75!black](-.3,0)--(1,0)|-(1.5,.5)--(1.5,1.8);
+\draw [line width=5pt,color=red!75!black](-.3,0.1)--(.35,0.1)|-(.85,.6)|-(1.4,1.17)--(1.4,1.8);
+}}
+\begin{document}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate(1)at([shift={(225:2)}]current page.north east);
+\coordinate(2)at([shift={(-45:2)}]current page.north west);
+\coordinate(3)at([shift={(45:2)}]current page.south west);
+\coordinate(4)at([shift={(135:2)}]current page.south east);
+\foreach \i in {1,...,4}{
+\node[rectangle,fill=blue!25,minimum size=1cm] at (\i){};}
+\draw[double=green!15,double distance=6.5pt] (1)rectangle(3);
+\foreach \i in {1,...,79}{
+\path (3)|-node[sloped,pos=\i/80,scale=0.55]{$|$}(1);
+\path (3)-|node[sloped,pos=\i/80,scale=0.55]{$|$}(1);}
+\draw[double=green,double distance=3pt,gray,line width=1.5pt] ([shift={(45:4.5mm)}]3)rectangle([shift={(225:4.5mm)}]1);
+\foreach \j/\m[count=\i] in {225/-90,-45/0,45/90,135/180}{
+\node[draw,circle,fill=white,inner sep=2mm] at (\i){};
+\node[circle,fill=violet,inner sep=1.2mm] at (\i){};
+\node [rotate=\m,scale=.7]at ([shift={(\j:.7)}]\i){\sh};
+}
+\end{tikzpicture}
+
+\begin{minipage}{.5\textwidth}
+\centering
+وزارة التعليم العالي والبحث العلمي
+\\[3mm]
+المدرسة العليا للأساتذة
+\\[3mm]
+القـــبــة - الجزائر
+\vskip5mm\flushright
+قـــســـم الـــريــاضـيـات
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+\includegraphics[width=5cm,height=3cm]{ens}
+\end{minipage}
+\vfill
+\fboxsep=5mm
+\fboxrule=5pt
+\fbox{
+\parbox{\textwidth-3cm}{
+\Huge\centering
+دراسة بعض التوابع متعددة القيم
+}}
+\vskip4mm\centering
+مذكرة تخرج لنيل شهادة أستاذ تعليم ثانوي
+\vskip2cm
+\begin{minipage}[t]{.45\textwidth}
+من إعداد:
+\begin{itemize}
+\item [$\bullet$]
+......
+\item [$\bullet$]
+......
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.35\textwidth}
+تحت إشراف الأستاذ:
+\\[0.3cm]$\ \bullet\quad$
+.........
+\end{minipage}
+\vfill
+\centering
+لجنة المناقشة:
+\\\flushright\rightskip=2cm\leftskip=2cm
+........\hfill  رئيسا \\[3mm]
+........\hfill ممتحنا \\[3mm]
+........\hfill مشرفا 
+\vfill
+\centering 
+السنة الدراسية: 2018/2017
+\\[.5cm]
+(دفعة جوان)
+\end{document}

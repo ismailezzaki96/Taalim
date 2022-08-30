@@ -1,0 +1,38 @@
+% حجم الصفحة و بعد الهامش 
+\documentclass[12pt, a4paper,oneside]{article}
+\usepackage[left=2cm,rigth=2cm,top=2cm,boutton=2cm]{geometry}
+% الحزمات الخاصة بالعربية
+\usepackage{polyglossia}
+\setdefaultlanguage[calendar=gregorian, numerals=maghrib]{arabic}
+\setotherlanguage{french}         \newfontfamily 
+\arabicfont[script=Arabic, scale=1.0}{amiri}
+% الحزمات الخاصة لكتابة التعابير الرياضياتية
+\usepackage{amsmath,amssymb}
+% الحزمات الخاصة لادخال او رسم الاشكال
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\begin{document} %%%%%%%%%%%%%%%%%
+% رأس الورقة
+
+% التمارين
+\section{ :التمرين الاول} 
+لتكن ....... 
+ \begin{enumerate}
+\item  ارسم ....
+\item انشئ ......
+\item  ....... \\
+           \begin{itemize}
+             \item  ...
+             \item ....
+             \item  ......
+          \end{itemize}
+\end{enumerate} 
+\section{ :التمرين الثاني}
+........
+\section{ :التمرين الثالث}
+.........
+% عبارة بالتوفيق
+
+\end{document} %%%%%%%%%%%%%%%%%%
+% compiler avec xelatex

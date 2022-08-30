@@ -1,0 +1,146 @@
+
+\documentclass[10pt,fr]{article}
+%------------------|  les bibliothèque |-------------%
+\usepackage[left=0.5cm,right=0.5cm,top=0.5cm,bottom=0.5cm]{geometry}
+\usepackage{multirow}
+\usepackage{multicol}  
+\usepackage{tabularx}
+\usepackage{enumerate}
+\usepackage{fancybox}
+\usepackage{enumitem}
+\usepackage{tablists}
+\usepackage{graphicx}
+\usepackage{Pstricks}
+\usepackage{tikz}
+\usepackage{framed} 
+\usepackage{array}
+\usepackage{lastpage}
+\usepackage{polyglossia}
+\usepackage{fancyheadings}
+\usepackage{alertmessage}
+\usepackage{amsmath,amssymb}
+\usepackage{tcolorbox,varwidth}
+\tcbuselibrary{skins,breakable}
+
+%---------------------|cercle outeur la question|---------------------------%
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{%        
+        \node[circle,fill=blue!20,draw,inner sep=3pt,opacity=0.5,text opacity=1] (char) {#1};}}
+
+
+%---------------------|carree outeur la question|------------------------%
+\newcommand*\squared[1]{\tikz[baseline=(char.base)]{%        
+        \node[rectangle,fill=red2!20,draw,inner sep=4pt,opacity=0.8,text opacity=1] (char) {#1};}}
+%--------------------| conteur arabic |--------------------%
+\def\cnt{\stepcounter{enumi}\arabic{enumi}}
+
+%------------------|  les langues |-------------%
+
+\setdefaultlanguage[numerals=maghrib, calendar=gregorian]{arabic}
+\setotherlanguage{english}
+
+%------------------| vecteur|--------------------------------%
+
+\newcommand*{\norme}[1]{\left\lVert\overrightarrow{#1}\right\rVert} 
+
+%------------------| norme|--------------------------------%
+
+\newcommand*{\vect}[1]{\overrightarrow{#1}} 
+
+%------------------|  les ensembles des nombres |-------------%
+\def\N{\mathbb{N}}
+\def\Z{\mathbb{Z}}
+\def\D{\mathbb{D}}
+\def\Q{\mathbb{Q}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+\def\K{\mathbb{K}}
+
+%------------------| Les Fonts |-------------%
+
+\newfontfamily\arabicfont[Script=Arabic]{Simplified Arabic}
+\newfontfamily\arabicfontsf[Script=Arabic]{Tahoma}
+\newfontfamily\arabicfonttt[Script=Arabic]{Simplified Arabic Fixed}
+\newfontfamily\amiri[Script=Arabic]{Amiri}
+%------------------| Les couleures |-------------%
+
+\definecolor{myblue}{RGB}{0,163,243}
+\definecolor{hos}{RGB}{37, 138, 221}
+\definecolor{hos1}{RGB}{255, 139, 45}
+\definecolor{red2}{RGB}{234, 59, 22}
+\definecolor{def_color}{HTML}{194D6C}
+\definecolor{def_shade_color}{HTML}{DFE9EF}
+\definecolor{orange}{RGB}{244, 161, 66}
+
+%------------------|  cadre d'exercice |-------------%
+
+\newtcolorbox{exercice}[1]
+{title=#1 ,
+enhanced jigsaw,
+breakable,
+colback=def_shade_color,
+colframe=def_color,
+coltitle=def_color,
+fonttitle=\bfseries,
+colbacktitle=def_shade_color,
+borderline={0.5mm}{0mm}{def_color},
+borderline={0.5mm}{0mm}{def_color},
+attach boxed title to top right={yshift=-2mm,xshift=2mm},
+boxed title style={boxrule=0.4pt},
+varwidth boxed title,
+parbox=false
+}
+%---------------------------------------------------------
+\setlength{\columnseprule}{2pt}
+\def\columnseprulecolor{\color{hos}}
+\begin{document}
+\begin{tcolorbox}[colback=def_shade_color]
+\begin{center}
+\amiri{
+\begin{large}
+
+\begin{tabular}{p{6.5cm}p{6.5cm}p{5.5cm}} 
+%\hline  
+%\raggedright 
+\begin{center}
+الثالثة اعدادي
+\\
+الأستاذ:  
+عبد الحكيم بوشيار
+\end{center}
+&
+%\raggedright	
+\begin{center}
+\begin{Large}
+الفرض المحروس رقم $1$
+\end{Large}
+\\
+
+الدورة الأولى
+\end{center}
+&%_____________________________________
+%\raggedright	
+\begin{center}
+ثانوية مولاي رشيد التاهلية 
+\\ 
+السنة الدراسية: 
+ $2018 - 2019$
+\end{center}
+%\tabularnewline
+% \hline
+\end{tabular}
+
+\end{large}
+}
+\end{center}
+
+\end{tcolorbox}
+
+ \begin{exercice}{ التمرين 1}
+ \end{exercice}
+ 
+ \begin{exercice}{ التمرين 2}
+ \end{exercice}
+ 
+ \begin{exercice}{ التمرين 3}
+ \end{exercice}
+ \end{document}

@@ -1,0 +1,57 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage [utf8]{inputenc}
+\usepackage[margin=.5cm]{geometry}
+\pagestyle{empty} 
+\parindent=0cm
+\usepackage{multicol}
+\setlength{\columnseprule}{2pt}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx,tikz}
+
+\usepackage{palatino}
+\usepackage{pstricks,fancybox} %entourer un texte
+\usepackage{xcolor,colortbl,tcolorbox}
+\usepackage[tikz]{bclogo}
+\tcbuselibrary{skins,xparse,hooks,vignette}
+\newcounter{parti}\makeatletter % \@Roman\c@section
+\newcommand\partie{
+\underline{الجزء~\@Roman\c@parti}\addtocounter{parti}{1}}
+\renewcommand{\labelenumi}{\textcircled{\theenumi}~}
+\renewcommand{\labelenumii}{\fbox{\theenumii}~}
+\newcommand{\note}[1]{\hfill{\small #1~ن}}
+\newcommand{\Note}[1]{\hfill #1~ن}
+\newcounter{exe}
+\newenvironment{exercice}{
+\addtocounter{exe}{1} \setcounter{parti}{1}
+\begin{tcolorbox}[title={\As تمرين \theexe},colback=white, colframe=orange, coltitle=black, boxed title style={size=small,colback=white, colframe=white}, enhanced, attach boxed title to top right={yshift=-3mm,xshift=-3mm}] }
+{\end{tcolorbox}}
+
+%\begin{bclogo}[couleur=white,logo=\bcfleur ,arrondi=0,epBord=0,
+%sousTitre=~~\dotfill \Large \color{black}{(#1~نقط)} 
+%,epBarre=3.5,barre = motif ,motifBarre=$\star$,blur,epOmbre=0, couleurBarre=black,couleurOmbre=white]
+%{\Large \color{black}{~تمرين~\theexe}}}{\end{bclogo}}
+\usepackage{polyglossia}
+\setdefaultlanguage[numerals=maghrib,locale=algeria]{arabic}
+\setotherlanguage{french}
+\newfontfamily\arabicfont[Script=Arabic,Scale=1.2]{Amiri}
+\newfontfamily\As[Script=Arabic,Scale=1]{arabswell_1}
+\begin{document}     
+\begin{tcolorbox}[colback=white,top=0mm,bottom=0mm]
+ثانوية الحسين بولنوار التأهيلية
+\hfill السنة الدراسية: 2020-2021
+\vskip1mm \hrule \hrule \vskip1mm  %%%%       EN TÊTE
+\scalebox{-1}[1]{\bcplume}\hfill
+{\huge \color{black}{                                 فرض محروس رقم 1
+}} \hfill \bcplume 
+\hrule \hrule \vskip1mm                          الثانية باكالوريا علوم الحياة و الارض 
+\hfill                                                          \fbox{  المدة : ساعتان  }
+\hfill ذ.بوشيار عبد الحكيم
+\end{tcolorbox}
+\begin{exercice}{0}
+\partie
+\end{exercice}
+
+\bclampe~                       يسمح باستعمال الالة الحاسبة
+%\bctakecare~                    A rendre avant Le: 00/00/2020 ! 
+\hfill \bccrayon {~\Large حظ موفق}
+\end{document}

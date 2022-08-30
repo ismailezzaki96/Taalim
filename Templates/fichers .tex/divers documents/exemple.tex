@@ -1,0 +1,80 @@
+% pour genree un pdf: faire
+% pdflatex exemple.tex
+\documentclass{article}
+
+%% Paquets LateX utiles
+
+\usepackage[utf8]{inputenc} 		% encodage des caracteres utilise (pour les caracteres accentues) -- non utilise ici.
+%\usepackage[latin1]{inputenc} 		% autre encodage
+\usepackage[french]{babel}		% pour une mise en forme "francaise"
+\usepackage{amsmath,amssymb,amsthm}	% pour les maths
+\usepackage{graphicx}			% pour inclure des graphiques
+\usepackage{hyperref}			% si vous souhaitez que les references soient des hyperliens
+\usepackage{color}			% pour ajouter des couleurs dans vos textes
+
+
+\def \R {\mathbb R}					% definit un nouveau mot cle LateX. Ici, \R designera l'ensemble des reels
+\newcommand \fonctionsContinues[2] {C^0(#1,#2)}		% Une nouvelle commande avec un argument
+
+
+\title{Exemple LateX}
+\author{Olivier Pantz\footnote{Universit\'e de Nice}}	% pour les accents, on peut soit preciser l'encodage et utiliser des caracteres accentues, soit utilise \'e pour un e accent aigu, \`e pour un e accent grave, etc...
+
+\begin{document}
+\maketitle						% Genere le titre
+
+\tableofcontents					% si on veut une table des matieres
+\listoffigures						% si on veut la liste des figures
+%\listoftables						% si on veut la liste des tableaux
+
+
+\begin{center}
+\textbf{R\'esum\'e}
+\end{center}
+Un exemple de fichier {\LaTeX} de quelques lignes.
+
+\section{Introduction}
+{\LaTeX} permet d'\'ecrire des articles scientifiques (ou non). On pr\'esente ici quelques exemples.
+Ce n'est pas un WYSIWYG (What You See Is What You Get).  {\LaTeX} interpr\`ete le code
+pour g\'en\'erer un fichier (pdf ou autre), un peu \`a l'image d'un navigateur qui interpr\`ete le code HTML.
+Cependant, la syntaxe {\LaTeX}  n'est pas de type XML, m\^eme si l'esprit est comparable.
+
+\section{Les formules}
+\subsection{Int\'egrale}
+\subsubsection{En ligne}
+Une formule en ligne telle que $\int_0^1 x\,dx=1/2$.
+\subsubsection{Num\'erot\'ee}
+\begin{equation}\label{Formule1}
+\int_0^1 x\,dx=\frac 1 2.
+\end{equation}
+\paragraph{R\'ef\'erence} On peut faire r\'ef\'erence \`a la formule (\ref{Formule1}) [il faut compiler deux fois].
+\subsection{Les nouvelles commandes}
+\paragraph{Def} On note $\R$ l'ensemble des r\'eels.
+\paragraph{Newcommand} On d\'esign par $\fonctionsContinues{[0,1]}{\R}$ l'enesmble des fonctions continues de $[0,1]$ vers $\R$.
+
+\section{Figures}
+On peut aussi inclure des figures sous diff\'erents formats. La figure \ref{cercle} est de format \textbf{pdf}  et a \'et\'e g\'en\'er\'ee avec \href{xwww.xfig.org}{Xfig}.
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.3\textwidth]{cercle.pdf}
+\includegraphics[width=1cm]{cercle.pdf}
+\caption{Des cercles}\label{cercle}
+\end{center}
+\end{figure}
+{\LaTeX} optimise le placement des figures. C'est en g\'en\'eral une mauvaise id\'ee d'essayer de le contrarier.
+\section{Conclusion}
+Un bon manuel
+est \cite{NotSoShort} qu'on peut trouver en ligne. Il faut toujours citer ses sources.
+On peut \'egalement r\'ealiser des pr\'esentations de types PowerPoint avec {\LaTeX} en utilisant beamer.
+Une alternative est de faire une présentation web (avec \href{http://lab.hakim.se/reveal-js/}{reveal.js} et \href{https://www.mathjax.org/}{MathJax}).
+
+\bibliographystyle{abbrv}	% style utiise pour genere la page des references
+\begin{thebibliography}{99}
+\bibitem{NotSoShort} Tobias Oetiker, Hubert Partl, Irene Hyna and Elisabeth Schlegl
+\href{https://tobi.oetiker.ch/lshort/lshort.pdf}{\emph{The Not So Short
+Introduction to \LaTeX $2\varepsilon$}},
+ (2015)
+\end{thebibliography}
+\end{document}
+
+

@@ -1,0 +1,369 @@
+% !TEX encoding = IsoLatin                     
+%cette première ligne permet au compilateur (souvent, dépend du compilateur) \LaTeX de reconnaitre l'encodage de votre fichier. 
+%\documentclass[12pt,titlepage,twoside]{book}       %pour un livre
+\documentclass[12pt,twoside]{article}          %pour un article
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{amsmath, amssymb, amsthm}            
+\usepackage{amstext, amsfonts, a4}
+
+%%%%algorithmes / pseudo code%%%
+\usepackage[french,ruled]{algorithm2e}
+
+%%%%Liens hypertexte%%%%%
+ \usepackage[colorlinks=true]{hyperref}
+\hypersetup{urlcolor=blue, citecolor=red}
+
+%%%%%
+\usepackage{color,transparent}
+%%%%%
+\usepackage{graphics,graphicx,subfigure}
+
+\usepackage{comment}
+\usepackage{float} 
+\setcounter{MaxMatrixCols}{30}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%        Dimensions du texte (à adapter selon votre goût/le goût de l'éditeur)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength\textwidth{17cm}          % largeur du texte
+\setlength\topmargin{-2cm}          % marge en haut
+\setlength\evensidemargin{+0cm}     % marge de gauche
+\setlength\textheight{24cm}         % hauteur du texte
+\setlength\oddsidemargin{\evensidemargin}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         D\'ecoupage des mots           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hyphenation{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  Th\'eor\`emes, d\'efinitions, etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Il y a différents types d'énoncés qui méritent un environnement spécifique, voici une liste assez exhaustive. 
+\theoremstyle{plain}
+	\newtheorem{Theo}{Th\'eor\`eme}[section] %compteur commençant par le numéro de la section (on pourrait aussi faire commencer par le numéro de la sous-section - remplacer "section" par "subsection")
+	\newtheorem{Prop}[Theo]{Proposition}        %même compteur que pour les théorèmes      
+	\newtheorem{Prob}[Theo]{Probl\`eme}	    %idem
+	\newtheorem{Lemm}[Theo]{Lemme}            %etc...
+	\newtheorem{Coro}[Theo]{Corollaire}
+	\newtheorem{Propr}[Theo]{Propri\'et\'e}
+	\newtheorem{Conj}[Theo]{Conjecture}
+	\newtheorem{Aff}[Theo]{Affirmation}
+
+        \newtheorem{TheoPrinc}{Th\'eor\`eme}     %compteur spécifique pour les théorèmes les plus importants du papier
+        
+\theoremstyle{definition}
+	\newtheorem{Defi}[Theo]{D\'efinition}
+        \newtheorem{Exem}[Theo]{Exemple}
+	\newtheorem{Nota}[Theo]{Notation}
+
+\theoremstyle{remark}
+	\newtheorem{Rema}[Theo]{Remarque}
+	\newtheorem{NB}[Theo]{N.B.}
+	\newtheorem{Comm}[Theo]{Commentaire}
+	\newtheorem{question}[Theo]{Question}
+	\newtheorem{exer}[Theo]{Exercice}
+
+	\newtheorem*{Merci}{Remerciements}	      %l'étoile indique qu'on ne veut pas de numérotation.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  Accolades, guillemets, etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\ogg~{{\rm \og}}   % guillemets ouvrants
+\def\fgg{{\rm \fg}}  % guillemets fermants
+
+
+
+\def\nl{\newline}
+\def\nn{\noindent}
+
+\def\q{\nn}
+\def\qq{\nn\quad}
+\def\qqq{\nn\quad\quad}
+\def\qqqq{\nn\quad\quad\quad}
+\def\ce{\centerline}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%  Lettres et symboles math\'ematiques
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\emptyset{\varnothing}
+
+%%%% Raccourcis pour les caractères gras mathématiques (ensembles R, N, Z, C etc)
+
+\def\NN{{\mathbb N}}    %naturels
+\def\ZZ{{\mathbb Z}}     %entiers relatifs
+\def\RR{{\mathbb R}}    %réels
+\def\QQ{{\mathbb Q}}    %réels
+\def\CC{{\mathbb C}}    %complexes
+\def\HH{{\mathbb H}}    %quaternions / espace hyperbolique
+\def\AA{{\mathbb P}}     %espace projectif
+\def\KK{{\mathbb K}}     %corps quelconques
+
+%%%%%%raccourcis lettres calligraphiées
+\def\cA{{\mathcal A}}  \def\cG{{\mathcal G}} \def\cM{{\mathcal M}} \def\cS{{\mathcal S}} \def\cB{{\mathcal B}}  \def\cH{{\mathcal H}} \def\cN{{\mathcal N}} \def\cT{{\mathcal T}} \def\cC{{\mathcal C}}  \def\cI{{\mathcal I}} \def\cO{{\mathcal O}} \def\cU{{\mathcal U}} \def\cD{{\mathcal D}}  \def\cJ{{\mathcal J}} \def\cP{{\mathcal P}} \def\cV{{\mathcal V}} \def\cE{{\mathcal E}}  \def\cK{{\mathcal K}} \def\cQ{{\mathcal Q}} \def\cW{{\mathcal W}} \def\cF{{\mathcal F}}  \def\cL{{\mathcal L}} \def\cR{{\mathcal R}} \def\cX{{\mathcal X}} \def\cY{{\mathcal Y}}  \def\cZ{{\mathcal Z}}
+
+%%%%%%raccourcis lettres gothiques
+
+\def\mfA{{\mathfrak A}} \def\mfA{{\mathfrak P}} \def\mfS{{\mathfrak S}}\def\mfZ{{\mathfrak Z}} \def\mfM{{\mathfrak M}} \def\mfQ{{\mathfrak Q}} \def\mfE{{\mathfrak E}} \def\mfL{{\mathfrak L}} \def\mfW{{\mathfrak W}} \def\mfR{{\mathfrak R}} \def\mfK{{\mathfrak K}} \def\mfX{{\mathfrak X}} \def\mfT{{\mathfrak T}} \def\mfJ{{\mathfrak J}} \def\mfC{{\mathfrak C}} \def\mfY{{\mathfrak Y}} \def\mfH{{\mathfrak H}} \def\mfV{{\mathfrak V}}\def\mfU{{\mathfrak U}}\def\mfG{{\mathfrak G}} \def\mfB{{\mathfrak B}} \def\mfI{{\mathfrak I}} \def\mfF{{\mathfrak F}} \def\mfN{{\mathfrak N}} \def\mfO{{\mathfrak O}} \def\mfD{{\mathfrak D}} 
+
+\def\mfa{{\mathfrak a}} \def\mfp{{\mathfrak p}} \def\mfs{{\mathfrak s}}  \def\mfz{{\mathfrak z}} \def\mfm{{\mathfrak m}} \def\mfq{{\mathfrak q}}  \def\mfe{{\mathfrak e}} \def\mfl{{\mathfrak l}} \def\mfw{{\mathfrak w}} \def\mfr{{\mathfrak r}} \def\mfk{{\mathfrak k}} \def\mfx{{\mathfrak x}} \def\mft{{\mathfrak t}} \def\mfj{{\mathfrak j}} \def\mfc{{\mathfrak c}} \def\mfy{{\mathfrak y}} \def\mfh{{\mathfrak h}} \def\mfv{{\mathfrak v}} \def\mfu{{\mathfrak u}} \def\mfg{{\mathfrak g}} \def\mfb{{\mathfrak b}} \def\mfi{{\mathfrak i}} \def\mff{{\mathfrak f}} \def\mfn{{\mathfrak n}} \def\mfo{{\mathfrak o}} \def\mfd{{\mathfrak d}} 
+
+%%raccourcis texte
+\newcommand{\nbh}{\nobreakdash-\hspace*{0pt}}	% trait d'union insécable
+\newcommand{\cad}{c'est\nbh \`a\nbh dire}		% c.-??-d.
+\newcommand{\Cad}{C'est\nbh \`a\nbh dire}		% C.-??-d.
+
+%%opérateurs   (ajoutez les raccourcis que vous voulez pour les opérateurs dont avez besoin)
+\newcommand{\pgcd}{\operatorname{pgcd}}
+\newcommand{\ppcm}{\operatorname{ppcm}}
+\newcommand{\GL}{\operatorname{GL}}             %groupe linéaire
+\newcommand{\Sp}{\mathsf{Sp}}			    %spectre
+\newcommand{\End}{\operatorname{End}}         %Endomorphismes
+\newcommand\Aut{\operatorname{Aut}}		  %etc...
+\newcommand\ct{\operatorname{cotan}}         %cotangente
+\newcommand{\dx}{\partial_x}                    
+\newcommand{\dy}{\partial_y}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Id}{\operatorname{Id}}
+\def\Im{\operatorname{Im}}                            %dans ce cas, \newcommand ne va pas marcher car la commande \Im existe déjà. On utilise alors  \def de tex.
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+
+
+\SetKwInput{KwData}{Données}
+\SetKwInput{KwResult}{Resultat}
+\SetKwInput{KwIn}{Entrées}
+\SetKwInput{KwOut}{Sorties}
+\SetKw{KwTo}{à}
+\SetKw{KwRet}{retourner}
+\SetKw{Return}{retourner}
+\SetKwBlock{Begin}{debut}{fin}
+\SetKwIF{If}{ElseIf}{Else}{si}{alors}{sinon si}{alors}{finsi}
+\SetKwSwitch{Switch}{Case}{Other}{suivant}{faire}{cas ou}{autres cas}{fin cas}{fin cas alternatif}
+\SetKwFor{For}{pour}{faire}{finpour}
+\SetKwFor{While}{tant que}{faire}{fintq}
+\SetKwFor{ForEach}{pour chaque}{faire}{finprch}
+\SetKwFor{ForAll}{pour tous}{faire}{finprts}
+\SetKwRepeat{Repeat}{repeter}{jusqu'à}
+
+\begin{document}
+\title{Fichier \LaTeX ~type pour un article de maths}
+
+\author{Nicolas Gourmelon}
+\date{ le 15 mars 2014}
+
+
+\maketitle
+
+\begin{abstract}
+Je reprends les conventions d'écriture d'un article mathématique selon l'AMS (American Math. Soc.). Tous les articles de maths dignes de ce nom sont écrits de cette manière, avec des  variations mineures. Vous pouvez utiliser sans risque l'entête du fichier \TeX ~(en l'adaptant quand vous écrirez en anglais et en ajoutant les quelques packages dont vous aurez éventuellement besoin) pour tous les rapports/articles/cours/livres de maths du reste de votre vie.
+\end{abstract}
+
+
+\tableofcontents
+
+
+En principe, lorsque l'article fait moins de 10 pages, on omet la table des matières.
+\bigskip
+
+
+\section{Introduction}\label{s.introduction}       %on labelise la section introdution
+
+
+Un {\em définition simple} est une définition très classique, et/ou très brièvement énonçable. Il n'est pas nécessaire de mettre une définition simple dans un environnement "définition". On peut ainsi inclure un paquet de définitions simples dans un paragraphe introductif, ou juste avant la première fois qu'on va utiliser le ou les objet en question. On va réserver l'environnement "définition" pour les définitions les plus importantes ou les plus compliquées.
+
+Qu'une définition soit simple ou non, on met en valeur le nom de objet défini par l'environnement \verb+emphasize+. Suit un exemple :
+
+\bigskip
+
+Etant donné un groupe $G$, le {\em commutateur} de deux éléments  $x,y\in G$ est l'élément 
+$$[x,y]=xyx^{-1}y^{-1}\in G.$$
+Le {\em groupe dérivé} d'un groupe $G$ est le groupe engendré par l'ensemble des commutateurs de $G$, il est noté $D(G)$. 
+
+\begin{Defi}
+Un groupe $G$  est {\em résoluble} si il existe $n\in \NN$ tel que telle que la suite ${G_i}_{i\geq 0}$ définie par
+\begin{align}
+\begin{cases}
+G_0&=G,\\
+G_{i+1}&= D(G_i)
+\end{cases}
+\end{align}
+vérifie $G_n=\{1_G\}$, où $1_G$ est le neutre du groupe $G$.
+\end{Defi}
+
+\begin{Exem}
+Les groupes abéliens (par ex. $\RR,\ZZ,\QQ$ \footnote{On a défini des raccourcis \LaTeX ~dans le préambule du fichier .tex pour les caractères $\RR,\ZZ,\QQ$.} munis de l'addition) sont résolubles.
+\end{Exem}
+
+\begin{Defi}[Groupe nilpotent]
+Un groupe est {\em nilpotent} si...
+\end{Defi}
+
+\begin{Rema}
+Tout groupe nilpotent est évidemment résoluble.
+\end{Rema}
+
+
+\begin{TheoPrinc}[Théorème important]
+Ce théorème est important. Remarquez la numérotation indépendante des numéros des sections, des définitions et autres remarques.
+\end{TheoPrinc}
+
+La note en bas de page est pratique\footnote{N'abusez pas des notes en bas de page !} lorsque vous ne savez pas où caser telle remarque sans briser le flot de votre prose.
+
+
+
+\section{Préliminaires}
+
+Nous rappelons quelques définitions et résultats élémentaires de théorie des trucs et bidules.
+Notez que les preuves ont un environnement spécifiques, et ne sont pas en italique. Les théorème, lemmes, propositions, sont elles en italique. 
+
+Apprenez aussi à utiliser les \verb+\label+ et les \verb+\ref+ pour référencer. Tout est labélisable et référençable : sections, sous-sections, figures, lemmes, définitions, propositions, etc... ainsi, je peux vous renvoyer à la section~\ref{s.introduction} s'il m'en prend l'envie. 
+
+
+\subsection{Les trucs}
+
+Depuis la nuit des temps on s'intéresse aux trucs.
+Un truc est dit {\em du premier ordre} s'il n'est pas alsacien. Il est dit {\em du second ordre} sinon.  
+Euclide~\cite{Euc1,Euc2} a donné une première caractérisation des trucs du premier ordre :
+
+\begin{Theo}[Euclide]\label{t.euclide}
+Un truc est du premier ordre si et seulement si il vérifie la propriété bidule.
+\end{Theo}
+
+
+
+Le Théorème~\ref{t.euclide} se démontre à l'aide du résultat suivant:
+
+\begin{Lemm}\label{t.trucsbleus}
+Les trucs du second ordre ne sont pas rouges.
+\end{Lemm}
+
+
+
+
+
+\begin{proof}
+%les preuves ne doivent pas être écrites en italique
+%nous avons prédéfini un environnement.
+Supposons par l'absurde qu'un truc du second ordre soit blanc, alors cela contredirait la propriété d'Archimède (voir~\cite[Lemme~4.8, page 354]{Arch}). 
+\end{proof}
+
+Nous avons maintenant tous les outils pour la preuve du Théorème~\ref{t.euclide}.
+
+\begin{proof}[Démonstration du Théorème~\ref{t.euclide}]
+L'implication directe est triviale. Réciproquement, Thalès~\cite{Tha} a montré qu'un truc vérifiant la propriété bidule est rouge. En particulier, par le Lemme~\ref{t.trucsbleus}, il est du premier ordre.
+\end{proof}
+
+
+\begin{Prop}
+Blabla
+\end{Prop}
+
+\begin{Coro}
+bla.
+\end{Coro}
+
+
+
+\subsection{Les bidules}
+
+Un bidule {\em complet} est un bidule auquel il ne manque rien, comme le montre la figure~\ref{f.bidulecomplet}.
+On peut facilement inclure une figure dans un fichier \LaTeX. Si vous disposez d'un .pdf (bien cadré ! c'est important), copiez-collez ceci :
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=1.6]{benoist_pavage3D01.pdf}   %on peut évidemment changer l'échelle 
+\end{center}
+\caption{Bidule Complet.}
+\label{f.bidulecomplet}              %ATTENTION !!! En raison d'un incohérence de \LaTeX, le label d'une figure doit TOUJOURS se trouver APRES le caption. 
+\end{figure}
+
+Plus compliqué : vous voulez faire vous même un dessin qui contient des annotations mathématiques en \LaTeX.
+Une façon simple (la plus simple que je connaisse à ce jour) est de faire votre dessin annoté sous Inkscape et d'enregistrer votre fichier en eps+tex (aussi pdf+tex). Vous obtiendrez un fichier \verb+mondessin.eps+ qui contient le dessin, et un fichier \verb+mondessin.eps_tex+ qui contient les annotations. Placez ces fichiers dans le répertoire de votre fichier \TeX  ~principal, et incorporez ceci dans votre fichier :
+
+\begin{figure}[H]
+\begin{center}
+\def\svgwidth{220pt}           %échelle du dessin
+\input{mondessin.eps_tex}
+\end{center}
+\caption{Plan Hyperbolique.}
+\label{f.planhyperb}
+\end{figure} 
+
+Pour adapter/déplacer les annotations, ouvrez et modifiez le fichier \verb+mondessin.eps_tex+.
+
+\section{Algorithmes}
+
+Nous pouvons écrire du pseudo-code en utilisant par exemple le package  \href{https://www.tug.org/texlive/Contents/live/texmf-dist/doc/latex/algorithm2e/algorithm2e.pdf}{algorithm2e} (voici une \href{http://www.latex-howto.be/files/LaTeX-HowTo-ch9.pdf}{introduction} au package en question) :
+
+\begin{algorithm}
+\caption{Voici un algorithme.}
+\KwIn{Truc}
+\KwOut{Chose}
+\BlankLine
+$sum \gets 0$ \;
+\For{$x \gets 0$ \KwTo $N$}{
+\eIf{$x$ est pair}{
+$sum \gets sum / 2$ \;
+}{
+$sum \gets sum + 1$ \;
+}
+}
+\Return{$x$}
+\end{algorithm}
+
+
+
+\section{Remarques diverses}
+
+Au vu des rapports de l'an dernier, je vous préviens :
+\begin{itemize}
+\item On ne commence {\bf jamais} une phrase par une formule ou un symbole mathématique. Changez de tournure au besoin. 
+\item Le produit cartésien ne s'écrit pas $X\mbox{x}Y$, encore moins $XxY$, mais $X\times Y$.
+
+\item Certains sortent {\em ex nihilo} des locutions latines, grecques, {\em et caetera}... C'est à proscrire puisque toute expression en langue étrangère s'écrit en italique et que l'italique est réservé aux définitions. {\em Quidquid latine dictum sit, altum sonatur}, mais surtout ça sonne pédant. Sont autorisées, mais en caractères droits : idem, i.e., etc... (auxquels s'ajoutent, lorsqu'on écrit en anglais : e.g., QED, ...).
+\item Plein d'autres choses que ma mémoire a effacées.
+\end{itemize}
+
+\begin{Merci}
+Merci à Euclide.
+\end{Merci}
+
+
+%bibliographie
+\begin{thebibliography}{60000}
+\addcontentsline{toc}{section}{Bibliographie}
+
+
+%Voici comment on référence des LIVRES (avec éventuellement des liens vers des pages internet, si des pdf y sont disponibles)
+\bibitem{Arch} Archimède, Jean-Luc.
+\emph{\OE uvres complètes}, Tome n$^{\text{o}}$13, 
+Ellipses, 2001.
+
+\bibitem{Euc1} Euclide, Moustapha.
+\emph{Encyclopédie des Trucs et Bidules}, Progress in Mathematics n$^{\text{o}}$183, 
+Springer-Pessac, 2001. \url{http://www.yahoo.com/people/les_trucs_à_moustapha.html}
+
+
+%Et voici comment on référence des ARTICLES publiés dans des revues.
+
+\bibitem{Euc2} Euclide, M.
+\emph{An application of an Archimedes lemma}, Proceedings of the Nebraska Math. Society {\bf 87} 
+(2004), p.~339-374.
+
+\bibitem{Tha} Thalès, Martine.  \emph{Le rouge et le blanc}, Inventiones Matematic\ae  ~et \OE nologic\ae ~Saint-Emilionensis  {\bf 120} 
+(2003), p.~97-120. \href{https://www.facebook.com/MulekeResenhista?fref=ts}{Page perso de Mme Thalès}.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,164 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.5cm,bottom=1cm,right=2mm,left=2mm]{geometry}
+\usepackage{fancyhdr,ifthen,lastpage}
+\usepackage{longtable,colortbl,array,tcolorbox}
+\usepackage{frcursive}
+\usepackage{bclogo,graphicx,multicol,setspace}
+\usepackage{fancybox}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage[explicit]{titlesec}
+\tcbuselibrary{skins}
+\usetikzlibrary{scopes,positioning}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\parindent=0mm
+\arrayrulewidth=1.5pt
+\headsep=2mm
+\arrayrulecolor{brown}
+%\pagecolor{lime}
+
+\pagestyle{fancy}
+\rhead{\textcolor{violet}{\Ab\ifthenelse{\thepage=1}{\etablissement}{\quad\numcours}}}
+\lhead{\textcolor{violet}{\Ab\ifthenelse{\thepage=1}{\annee}{\titrecours\quad}}}
+\chead{}
+\rfoot{\ifthenelse{\thepage=1}{}{\Ab\quad\textcolor{violet}{\niveau}}}
+\cfoot{\textcolor{violet}{\fbox{\pageref{LastPage}/\thepage}}}
+\lfoot{\ifthenelse{\thepage=1}{}{\Ab\textcolor{violet}{\prof}\quad}}
+
+\usepackage{polyglossia}
+\setdefaultlanguage[numerals=maghrib,locale=algeria]{arabic}
+\setotherlanguage{french}
+\newfontfamily\arabicfont[Script=Arabic]{Amiri}
+\newfontfamily\At[Script=Arabic,Scale=1]{Times New Roman}
+\newfontfamily\Ab[Script=Arabic,Scale=1]{AlBattar}
+\newfontfamily\As[Script=Arabic,Scale=1]{arabswell_1}
+\newfontfamily\Ad[Script=Arabic,Scale=1]{ae_Dimnah.ttf}
+
+%\titleformat{\section}{}{}{0pt}{\tikz[baseline=(1.base)]{
+%\draw[fill=red!40,draw=none] (0,0)circle(0.4cm)node[midway](1)
+%{\Large\bf\Roman{section}};}~{\Large\bf \textcolor{red}{#1}}\vspace*{-.4cm}}
+%\titleformat{\subsection}{}{}{0pt}{~~\tikz[baseline=(1.base)]{
+%\draw[fill=green!40,draw=none] (0,0)rectangle(0.5,0.5)node[midway](1)
+%{\large\bf\arabic{subsection}};}~{\large\bf \textcolor{green}{#1}}\vspace*{-.3cm}}
+%\titleformat{\subsubsection}{}{}{0pt}{
+%~~~{\bf\alph{subsubsection}~)~ \textcolor{blue}{#1}}\vspace*{-.3cm}}
+\renewcommand{\section}[1]{\stepcounter{section}
+\vskip0pt{\LARGE\color{red!80!yellow}\fbox{\bf\Roman{section}}~\bf#1}\vskip2pt}
+\renewcommand{\subsection}[1]{\stepcounter{subsection}
+\vskip0pt{\Large\color{green!90!olive}\shadowbox{\bf\arabic{subsection}}~\bf#1}\vskip0pt}
+\renewcommand{\subsubsection}[1]{\stepcounter{subsubsection}
+\vskip0pt{\large\color{blue}\textcircled{\alph{subsubsection}}~\bf#1}\vskip0pt}
+
+
+\newcommand{\ppartie}[3]{
+\begin{minipage}[t]{1,5cm}#1\end{minipage} 
+&\begin{minipage}[t]{14cm}#2\end{minipage}
+&\begin{minipage}[t]{3.5cm}\vspace*{2mm}#3\end{minipage}\\}
+
+\newenvironment{monbloc}[3]{
+\begin{minipage}[t]{#1}
+\begin{tcolorbox}[title={\large\Ad\color{purple}#3},colback=white ,coltitle=black, colframe=brown, enhanced, boxed title style={colback=white, colframe=white}, attach boxed title to top center={yshift=-2mm,xshift=0mm}, right=0pt,left=0pt]
+\begin{minipage}[t][#2][t]{#1-3mm}\begin{At}}
+{\end{At}\end{minipage}\end{tcolorbox}\end{minipage}}
+
+\newcommand{\cadre}[2]{\vskip-1pt\begin{minipage}{\textwidth}
+\begin{tcolorbox}[title=\textbf{\large\color{orange}#1},colback=white, colframe=gray, coltitle=black, enhanced,top=0pt,bottom=0pt,left=0pt,right=0pt, boxed title style={colback=white, colframe=white}, attach boxed title to top right={yshift=-3mm,xshift=-3mm}]#2\end{tcolorbox}\end{minipage}}
+
+\renewcommand{\labelitemi}{\large *}
+\newcommand{\pp}{\scalebox{.5}[.5]{\bcplume}~~}
+\newcommand{\ppp}{\\\hspace*{4mm}}
+\newcommand{\fr}[1]{\textfrench{\small\cursive #1}}
+\newcommand{\pv}{~~; ~~}
+\newcommand{\exercices}[1]{\textcolor{magenta}{.~\dotfill~~
+\underline{\bf تقديم و إنجاز بعض التمارين من السلسة رقم #1}~~\dotfill~.}}
+\newcommand{\etape}[1]{
+\centerline{\rotatebox{-125}{\scalebox{-1}[-1]{\Large\textcolor{magenta}{#1}}}}}
+
+\newcounter{nachat} 
+\newcommand{\activite}{\refstepcounter{nachat} \scalebox{0.6}[0.6]{\bcfleur}~{\large\bf\textcolor{orange}{ نشاط \thenachat :}} \hskip5mm}
+\newcounter{tatbik} \numberwithin{tatbik}{section}
+\newcommand{\application}{\stepcounter{tatbik}
+\vskip0pt \scalebox{-0.6}[0.6]{\bcfleur}~{\large\bf\textcolor{orange}{تطبيق \arabic{tatbik} :}}\hskip5mm}
+\newcommand{\remarque}{\vskip0pt
+\scalebox{0.6}[0.6]{\bclampe}~{\large\bf\textcolor{orange}{ملاحظة :}}
+\hskip5mm}
+\newcommand{\exemple}{\vskip0pt
+\scalebox{0.6}[0.6]{\bccrayon}~{\large\bf\textcolor{orange}{مثال :}}
+\hskip5mm}
+\newcommand{\resultat}{\vskip0pt
+\scalebox{0.6}[0.6]{$\Leftarrow$}~{\large\bf\textcolor{orange}{نتيجة :}}
+\hskip5mm}
+\newcommand{\resultats}{\vskip0pt
+\scalebox{0.6}[0.6]{$\Leftarrow$}~{\large\bf\textcolor{orange}{نتائج :}}
+\hskip5mm}
+\newcommand{\attention}{
+\vskip0pt \scalebox{0.6}[0.6]{\bctakecare}~{\large\bf\textcolor{orange}{ تنبيه !}}\hskip5mm}
+
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\D}{\ensuremath{\mathbb{D}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+
+\everymath{\displaystyle}
+\newcommand{\fdeun}[3]{
+$\left\{\begin{array}{lll} #1&;& #2\\ #3&& \end{array}\right.$}
+\newcommand{\fdex}[4]{
+$f(x)=\left\{\begin{array}{lll} #1&;& #2\\ #3&;&#4\end{array}\right.$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\titrecours}{اتصال دالة عددية}
+\newcommand{\niveau}{الثانية باكالوريا علوم الحياة و الأرض}
+\newcommand{\numcours}{رقم الدرس : 1 }
+\newcommand{\duree}{المدة : 10 ساعات}
+\newcommand{\prof}{ذ. بوشيار عبد الحكيم}
+\newcommand{\etablissement}{ثانوية  الحسين بولنوار التأهيلية - حد بوحسوسن}
+\newcommand{\annee}{السنة الدراسية : 2020-2021}
+\begin{document}
+\textcolor{violet}{\Ab\niveau\hfill\prof}
+\centerline{\LARGE\As\textcolor{red}{\titrecours}}
+\centerline{\fr{\textcolor{red}{Continuité d'une fonction numérique}}}
+{\Ab\fbox{\textcolor{violet}{\numcours}}\hfill\fbox{\textcolor{violet}{\duree}}}\\
+\begin{monbloc}{10.5cm}{3,8cm}{أهداف الدرس}
+
+
+\end{monbloc} \hfill
+\begin{monbloc}{9.8cm}{3.8cm}{القدرات المنتظرة}
+
+\end{monbloc} \\
+\begin{monbloc}{7.5cm}{1.3cm}{المكتسبات القبلية}
+\begin{tabular}{rr}
+\pp  & \pp  \\
+\pp   & \pp \\
+\pp   &
+\end{tabular}
+\end{monbloc} 
+\begin{monbloc}{6.7cm}{1.3cm}{الإمتدادات}
+\begin{tabular}{rr}
+\pp   & \pp  \\
+\pp   & \pp  \\
+\pp  & \pp  
+\end{tabular}
+\end{monbloc}
+\begin{monbloc}{5.9cm}{1.3cm}{المعينات الديداكتيكية}
+\begin{tabular}{rr}
+\pp السبورة & \pp  \\
+\pp  الأقلام بالألوان & \pp   \\ 
+\end{tabular}
+\end{monbloc}
+\begin{longtable}{|wc{1,5cm}|wc{14cm}|wc{3.5cm}|}
+\hline \rowcolor{gray!5}
+{\bf \Ad\color{purple}  المراحـل}&{\bf \Ad\color{purple} الأنشطة و محتوى الدرس }&{\bf \Ad\color{purple} الملاحظات}\\\hline\endhead \hline \rowcolor{gray!5}
+{\bf \Ad\color{purple}  المراحـل}&{\bf \Ad\color{purple} الأنشطة و محتوى الدرس }&{\bf \Ad\color{purple} الملاحظات}\\\hline\endfirsthead & & \\\hline  \endfoot & & \\\hline \endlastfoot%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ppartie{\etape{نشاط تمهيدي}}
+{\activite نعتبر المنحنيات التالية:\\ \hspace*{7mm}
+\remarque 
+}{
+}
+\end{longtable}
+\end{document}

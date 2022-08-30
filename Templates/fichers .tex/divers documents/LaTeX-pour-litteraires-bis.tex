@@ -1,0 +1,888 @@
+\input{gabaritlatin1.tex}
+\input{macroslatin1.tex}
+
+\title{\LaTeX, tout un programme...}
+
+\author{Éric Guichard\\Maître de conférences à l'ENSSIB,\\ 
+Responsable de l'équipe \RST \ de l'ENS.}
+
+\begin{document}
+
+\maketitle
+
+\emph{Ce document est la variante du fichier \url{LaTeX-pour-litteraires.pdf}; il utilise le préambule importé  \url{gabaritlatin1.tex} et intègre un style bibliographique à la française.}
+
+Ces notes d'initiation à \LaTeX \ accompagnent un cours synthétique destiné à des étudiants de master en sciences de l'information et à des futurs responsables de bibliothèques. Tous étaient de profil <<littéraire>>. 
+
+C'est donc aux étudiants de sciences humaines et sociales que cette notice et ses exemples s'adressent. Autrement dit, ce traité est conçu afin que quiconque puisse faire ses premiers pas avec \LaTeX, même si sa culture informatique lui semble faible.
+
+C'est aussi pourquoi j'ai mis l'accent sur les formes d'écriture contemporaine permises et pensées par \LaTeX: accès hypertexte à des URL, des images, des notes, références croisées, bibliographie, etc.
+Il me semble que c'est le meilleur moyen de comprendre l'unité de l'écriture électronique et les capacités intellectuelles qu'elle induit: à force d'expérimenter des langages à balises, de se spécialiser en html, CSS, XML, etc., nous réalisons, au moins intuitivement, qu'une conception commune de l'écriture régit ces applications, formats et inventions. 
+
+Or, \LaTeX \ est l'intersection commune à ces syntaxes, ce qui en fait le point de départ pratique et conceptuel des écritures électroniques du \sie{xxi} et de l'imagination qui les porte.
+
+Penser l'hypertexte, c'est aujourd'hui aussi penser les supports qui vont le soutenir, les pratiques qui vont le réaliser: avec le papier, l'hypertexte est possible si le lecteur en a la culture et s'il y a surenchère informationnelle (la référence à un objet doit souvent se doubler de sa localisation; exemples: cf. le tableau t \emph{page p}, en \emph{annexe}, etc.). 
+Avec l'électronique, ce sont les formats (rtf, pdf, html, etc.) qui vont proposer plus ou moins de souplesse, plus ou moins de tissage entre les divers points du document.
+Et c'est bien la façon dont \LaTeX \ organise le régime hypertextuel le plus large, en amont de tous ces formats, et en se déclinant sur tous les supports qui prouve autant la puissance de ce logiciel que cette unicité du noyau de l'écriture électronique.
+
+%\medskip
+Contact: \texttt{Eric point Guichard at enssib point fr}
+
+\medskip
+
+\textbf{LICENCE}: de type \emph{Creative Commons}. Reproduction, publication et transformations permises dans un contexte non commercial à condition que mon nom soit mentionné et que la licence consécutive soit la même que celle que je propose. Pour tout usage \textbf{commercial} de tout ou partie de ce document, me contacter.
+
+
+\medskip
+
+\textbf{Note}: La table des matières de ce tutoriel \emph{pdf} est en fin de document.
+\section{Attitude}
+Cette partie m'est essentielle pour détailler ce que permet \LaTeX, et les capacités intellectuelles qu'il offre. Toute personne pressée d'apprendre et d'expérimenter \LaTeX \ peut passer à la partie suivante.
+\subsection{Un outil que j'utilise quotidiennement}
+Logiciel ou système? Metteur en forme?
+
+\begin{itemize}
+
+\item Souple, aisé d'emploi, d'une fiabilité à toute épreuve.
+
+\item Notion de source: montrer les dangers de Word.
+
+\item Multiformat: rtf, pdf, html, et imports possibles.
+
+\item Tous les caractères possibles...
+
+\item Gratuit.
+\end{itemize}
+
+\subsection{Un outil pour des professionnels de l'intellect}
+\begin{itemize}
+
+\item Rédaction d'articles, de thèse.
+ Mais aussi courrier à son assureur...
+
+\item Présentations lors de conférences (abandon de \emph{Powerpoint}).
+
+\item Le texte, sa structure, son \href{http://www.cnrtl.fr/lexicographie/apparat#}{apparat}: bibliographie, graphiques, tableaux, notes, références croisées, renvois URL. Le tout sous des formes discrètement et efficacement hypertextuelles.
+
+\item Technique ou pensée?
+\end{itemize}
+
+\subsection{Élégance, esthétique}
+\begin{itemize}
+\item Approches de paires, de groupe, espaces \emph{fines}, ligatures...
+
+\item Images en fond, écriture verticale, notes marginales...
+
+\item Macros et abréviations, lien forme-fond; formats \textsc{PostScript} (\emph{ps}), \emph{pdf}, html et aussi  XML.
+
+\end{itemize}
+
+\subsection{Taylor}
+\begin{itemize}
+\item Cliquer: fatigue musculaire \emph{versus} économie intellectuelle.
+Compter le temps passé à apprendre un logiciel de type Word ($+$ coût en termes de réseau social $+$ salaires des enseignants et des tuteurs).
+
+\item Arrêter définitivement de s'énerver sur les points suivants:
+
+\begin{itemize}
+
+\item Changer le format des notes sur Word, sans toucher aux appels de note.
+
+\item Redresser les appels de note <<tombés>> lors d'un changement de la forme du paragraphe.
+
+\item Tenter sans espoir que la dernière note de bas de page soit sur la même page que son appel. Etc.
+\end{itemize}
+
+\item Désagréments du clicodrome. Exemple des balises superposées: Roman = somme des ital - ital global: superpositions des balises souvent lourdes en octets et désagréables. Mieux vaut alors comprendre ce que fait la machine.
+\end{itemize}
+
+\subsection{Notion de confiance}
+\begin{itemize}
+\item N'avoir qu'une confiance limitée envers les logiciels censés tout faire à votre place.
+
+\item Avoir (enfin) confiance en un logiciel créé par des humains intelligents pour des humains intelligents.
+\end{itemize}
+
+\section{Installer \LaTeX }
+\subsection{Mode d'emploi}
+\LaTeX \ est en fait un \emph{moteur} (un programme) qui va analyser ce que vous avez écrit dans un fichier texte et va produire un résultat en le format de votre choix. 
+
+Et donc, vous écrirez votre texte avec un \emph{éditeur} (sorte de traitement de texte à la fois sommaire et très sophistiqué, il y en a de nombreux, et majoritairement gratuits); ensuite, vous lancerez une commande qui fait opérer le logiciel \LaTeX \ sur votre fichier texte.
+
+Cf. \url{http://barthes.enssib.fr/cours/Linux/Linux-1.pdf} pour plus de précisions sur les éditeurs et sur Linux.
+
+\subsection{Solutions clicables}
+Une sorte de méta-logiciel intègre \emph{et} l'éditeur \emph{et} le noyau \LaTeX. Vous saisissez alors votre texte dans l'éditeur et, dans un de ses menus, vous demandez qu'il soit compilé dans \LaTeX. En général, le fichier résultat est automatiquement ouvert.
+
+\begin{itemize}
+
+\item Windows: 
+
+\begin{enumerate}
+\item \texttt{Miktex}: \url{http://miktex.org} (équiv. noyau \LaTeX)
+
+\item \texttt{TeXnicCenter} (éditeur lançant automatiquement \texttt{Miktex}): \url{http://texniccenter.sourceforge.net/}
+
+\end{enumerate}
+
+\item Mac: \texttt{Oztex}: \url{http://www.trevorrow.com/oztex/}
+
+\end{itemize}
+
+\subsection{Solutions traditionnelles}
+Elles ont ma préférence pour Mac et Linux. Vous saisissez quelques commandes dans une fenêtre \emph{terminal}, et vous ouvrirez vous-même le fichier résultat.
+\begin{itemize}
+
+\item Unix, Linux: installer \LaTeX \ est aisé, et souvent il est déjà pré-installé.
+
+\item Mac: cf. \texttt{Fink}: \url{http://www.finkproject.org/download/index.php?phpLang=fr}.
+
+\end{itemize}
+
+\subsection{Quelques documentations}
+\url{http://www.tuteurs.ens.fr/logiciels/latex/} 
+
+\url{http://www.grappa.univ-lille3.fr/FAQ-LaTeX/}
+
+\section{Structure générale d'un document \LaTeX}
+Un fichier \LaTeX \ simple peut être décomposé en un préambule, le corps du texte, le signal de fin du document, et d'autres choses qui ne serviront pas.
+\subsection{Le préambule}
+Il se compose de deux parties, l'une, fixe, l'autre variable.
+
+\subsubsection{Préambule fixe}
+Il n'est pas nécessaire de comprendre ces quelques lignes et je montrerai au point \ref{nez} comment ne plus jamais y penser.
+ Elles décrivent les modules dont on aura besoin, l'encodage et le type du document. Exemple: 
+
+\begin{verbatim}
+\documentclass[a4paper,oneside,12pt]{article}
+\usepackage{epic,multicol,rotating,url,hyperref}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+%Ceci est un commentaire
+\usepackage[latin1]{inputenc}
+%ligne à remplacer par 
+%\usepackage[mac]{inputenc} %encodage Macintoch
+%ou par
+%\usepackage[utf8]{inputenc}
+\end{verbatim}
+
+Éventuellement, vous pouvez modifier la première ligne en remplaçant \texttt{article} par \texttt{letter} ou \texttt{book}.
+
+\subsubsection{Préambule variable}
+Cette seconde partie génèrera l'en-tête du document: titre, auteur, etc. Exemple:
+
+\begin{verbatim}
+\title{\LaTeX, tout un programme...}
+\author{Éric Guichard}
+%\date %souvent inutile
+\begin{document} 
+\maketitle
+\end{verbatim}
+
+\subsection{Le texte}
+À vous de le rédiger, en profitant des structures et des mises en forme offertes par \LaTeX. Exemple élémentaire\footnote{Attention: dans votre texte, vous aurez peut-être à remplacer l'apostrophe penchée \texttt{'} par une apostrophe droite.}:
+
+\begin{verbatim}
+Ces notes d'initiation sont destinées aux étudiants
+de sciences humaines et sociales.
+
+Après lecture de ce court traité, quiconque pourra faire ses 
+premiers pas avec \LaTeX. 
+\end{verbatim}
+
+\subsection{Le signal de fin de document}
+Il est explicite:
+\texttt{$\backslash$end\{document\}}
+
+Tout ce qui suit cette commande ne sera pas pris en compte par \LaTeX.
+
+\subsection{Ce qui ne sera pas pris en compte}
+Et donc, après ce signal \texttt{$\backslash$end\{document\}}, vous pouvez écrire, copier, insérer vos brouillons, idées à garder, paragraphes remaniés, etc. Je trouve cette possibilité fort utile et j'en abuse.
+
+
+\section{Quelques commandes et balises}
+Je me limite ici à quelques exemples, et je décris leurs effets et fonctions de façon intuitive. N'hésitez-pas à consulter le \href{LaTeX-pour-litteraires.tex}{source de ce document} pour comprendre le fonctionnement de ces commandes.
+
+
+\subsection{Premières commandes structurelles}
+\begin{itemize}
+\item \texttt{$\backslash$input\{Ici le nom du fichier que j'importe\}} (ex.: 3$^e$ partie de votre mémoire).
+Cette commande sera \emph{déterminante} pour vous simplifier la vie. Cf. le point \ref{nez}.
+
+\item \texttt{$\backslash$section\{Ici le titre de ma partie\}}
+
+\item \texttt{$\backslash$subsection\{Titre de ma sous-partie\}}
+
+\item \texttt{$\backslash$footnote\{Contenu de ma note\}}
+
+\item \texttt{$\backslash$begin\{itemize\}} \%Début d'une liste
+
+\texttt{$\backslash$item} \%Ici le premier point de ma liste
+
+\texttt{$\backslash$item} \%Ici celui qui viendra après
+
+ \texttt{$\backslash$end\{itemize\}} \%Fin de la liste
+
+\item \texttt{$\backslash$url\{Un URL clicable\}}
+
+\item \texttt{$\backslash$href\{Ici le lien \emph{interne ou externe}\}\{Là le texte clicable\}}
+\end{itemize}
+
+\subsection{Commandes plutôt liées à la forme}
+\begin{itemize}
+
+\item \texttt{$\backslash$textbf\{}\textbf{Le texte entre accolades apparaîtra en gras}\texttt{\}}
+
+
+\item \texttt{$\backslash$emph\{}\emph{Ici, en italique}\texttt{\}}
+
+\item \texttt{$\backslash$textsc\{}\textsc{Ici des petites capitales}\texttt{\}}
+
+Exemple: «Au \textsc{xix}$^e$ siècle...»
+
+\item \texttt{$\backslash$newpage} Ici un saut de page 
+\end{itemize}
+
+\subsection{Tabulation}
+
+\emph{Mais à quoi sert une tabulation?}
+\begin{itemize}
+\item Indentation de début de paragraphe? Style? 
+
+Essayez alors \texttt{$\backslash$advance$\backslash$parindent by .6 cm}, ou lisez la documentation sur \texttt{verbatim}.
+
+\item Signifier une énumération? Cf. \texttt{$\backslash$begin\{itemize\}}
+
+\item Symboliser une mise en tableau? Cf. le point \ref{tabl}.
+\end{itemize}
+
+\medskip
+
+\subsection{Références croisées}
+
+On peut jouer sans peine avec des références croisées: 
+on inscrit à l'endroit désiré du texte une étiquette, par exemple:\\
+\texttt{$\backslash$label\{MonNomDetiquette\}}
+
+On y fera référence avec un rappel du type\\
+\texttt{$\backslash$ref\{MonNomDetiquette\}}
+
+Exemple:\\
+\texttt{Cf. le point $\backslash$ref\{MonNomDetiquette\} de la \\
+page $\backslash$pageref\{MonNomDetiquette\}}\footnote{On compilera alors deux fois le document pour que ce référencement apparaisse. Ce qui est logique: la première fois, la mise en page du texte est effectuée, la seconde, les référencements sont calculés avec les repères précis des numéros de partie et de page. Cf. le point \ref{compil} page \pageref{compil}. \label{noteXX} }». \label{XX}
+
+\subsection{Votre premier fichier \LaTeX}
+
+Vous le trouverez en ligne à l'URL \url{fichierdemo.tex}.
+
+Sinon, copiez ce qui suit, collez-le dans un éditeur de texte, et sauvegardez-le sous le nom \texttt{fichierdemo.tex}
+
+\begin{verbatim}
+%Préambule général
+\documentclass[a4paper,oneside,12pt]{article}
+\usepackage{epic,multicol,rotating,url}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+%Ici moyen rapide de générer du pdf "propre":
+\usepackage{times}
+\usepackage[pdftex,letterpaper,colorlinks=true,urlcolor=blue,
+pdfstartview=FitH,plainpages=false]{hyperref} 
+%Préambule local
+\title{\LaTeX, quel programme!}
+\author{John Lambda}
+\begin{document} 
+\maketitle
+
+\section{Présentation}
+Cet exercice accompagne un cours destiné à des étudiants
+de profil <<littéraire>>. 
+
+\section{Formats produits par \LaTeX} \label{memoformats}
+Les principaux sont les suivants:
+
+\begin{itemize}
+\item pdf
+\item html (avec tth ou tex4ht ou d'autres)
+\item ps (vieux)
+\item rtf
+\end{itemize}
+
+\section{Usage courant}
+Insistons sur le fait que le format \textbf{le plus populaire} 
+est aujourd'hui le \emph{pdf}.
+Voir le point \ref{memoformats} page \pageref{memoformats} pour
+connaître les autres formats de sortie.
+
+De ce fait, la commande la plus courante sera \texttt{pdflatex}: 
+elle utilise le noyau \LaTeX \ (en fait \TeX) pour produire 
+le format \emph{pdf} désiré.
+
+Pour ce fichier intitulé \emph{fichierdemo.tex}, lancez donc 
+deux fois\footnote{C'est la présence de références croisées 
+qui est la cause de cette \emph{double compilation}.} 
+la commande 
+
+\texttt{pdflatex fichierdemo.tex}
+
+Ceci vous produira un fichier \texttt{fichierdemo.pdf}.
+
+\medskip
+Voilà, vous savez à peu près tout sur \LaTeX
+\end{document}
+\end{verbatim}
+
+\section{Réaliser le document final}
+\subsection{Distinction fond-forme}
+Jusque là, on est resté au plan de la structure et du contenu du document. Celui-ci est écrit en un format \emph{texte}, lisible par tous les types d'ordinateurs, par tous les traitements de texte, et sa structure est aussi lisible.
+
+Nous n'avons encore aucune visualisation de cet objet cognitivement satisfaisant.
+
+C'est normal: la mise en forme n'est-elle pas à la fois dépendante du destinataire et du support?
+
+\begin{itemize}
+
+\item Destinataire: celui-ci est peut-être attaché à une typographie donnée, à une mise en forme spécifique (texte en deux colonnes...). 
+
+\item Support: veut-on imprimer le document (ps ou pdf), le publier sur le web (html ou pdf), en faire un objet retravaillable par des logiciels grand-public (rtf), le graver sur du marbre?
+
+\item Les deux: réaliser un document projetable sur écran pour une conférence?
+
+\end{itemize}
+
+\subsection{Lancer \LaTeX}
+\emph{Par la suite, le nom générique du document sur lequel on travaille aura pour nom} \texttt{fichierdemo.tex}.
+
+
+On «compile»\footnote{Cette partie est moyennement utile si vous vous servez de \texttt{TeXnicCenter}.} le document en lançant, via une fenêtre de type \emph{terminal} (ou \emph{cmd} sur Windows), une des commandes suivantes:
+
+~
+
+\begin{itemize}
+\item \texttt{latex fichierdemo.tex}
+
+Ceci produira un fichier \texttt{fichierdemo.dvi} (détails oraux...)
+
+~
+
+\item ou, préférablement: \texttt{pdflatex fichierdemo.tex}
+
+Ceci produira un fichier \texttt{fichierdemo.pdf}
+
+~
+
+\item ou encore \texttt{latex2rtf fichierdemo.tex}
+
+Ceci produira un fichier \texttt{fichierdemo.rtf}
+
+~
+
+\item ou encore \texttt{tth fichierdemo.tex}
+
+Ceci produira un fichier \texttt{fichierdemo.html}
+\end{itemize}
+
+\subsection{Compléments}
+\label{compil}
+Pour des raisons logiques (cf. note \ref{noteXX} page \pageref{noteXX}), il peut s'avérer nécessaire de réaliser plusieurs compilations du document. Exemples:
+
+\begin{itemize}
+\item Cas des références croisées (cf. \ref{XX}) ou, analogue, de la création d'une table des matières: commande \texttt{$\backslash$tableofcontents}
+
+\item Création d'index (tout aussi prévisible!)
+
+\item Bibliographie. Cf. le point \ref{bibliog}.
+\end{itemize}
+
+\section{Construction d'une bibliographie} \label{bibliog}
+
+\subsection{Le fichier bibliographique}
+Cf. toutes les documentations.
+
+Le fichier bibliographique n'est pas attaché à votre document: il peut être unique (ce qui est mon cas), et alors seules les références \emph{évoquées} dans ce document \LaTeX \ seront extraites et reproduites en fin d'article.
+Il peut y avoir aussi plusieurs fichiers bibliographiques (un par thème, par exemple).
+
+Dans la suite, on appellera \texttt{exemplebiblio.bib} ce fichier. 
+
+La structure de ce fichier est on ne peut plus explicite: vous l'écrivez en mode texte (avec votre éditeur préféré).
+
+Chaque objet à décrire est précédé d'une arobase \texttt{@}, suivie de son type (\texttt{book} pour un livre, \texttt{article} pour un article, etc.), d'une accolade ouvrante, et de votre abrégé mnémotechnique personnel\footnote{C'est lui qui vous servira d'appel bibliographique dans votre texte.}.
+Ensuite, vous décrivez les champs (auteur, titre, etc.) de la façon indiquée ci-dessous, et vous concluez la description par une accolade fermante.
+
+Exemple:
+\begin{verbatim}
+@book{Aigrain, 
+title="Cause commune", 
+author="Aigrain, Philippe", 
+publisher="Fayard", 
+address="Paris", 
+year="2005", 
+Note="Aussi gratuitement disponible en ligne." 
+} 
+\end{verbatim}
+
+%\medskip
+\emph{On ne peut faire plus simple ni plus fiable.}
+
+\subsection{Exemples} 
+Voici un extrait du fichier \url{exemplebiblio.bib}.
+
+\begin{verbatim}
+@book{Aigrain, 
+title="Cause commune", 
+author="Aigrain, Philippe", 
+publisher="Fayard", 
+address="Paris", 
+year="2005", 
+} 
+
+@unpublished{JLM, 
+title="Ce que le <<terrain>> fait aux concepts: 
+\emph{Vers une théorie des composites}", 
+author="{L}e {M}arec, Joëlle", 
+year="2002", 
+Note="Habilitation à diriger des recherches. 
+Université Paris 7" 
+} 
+
+@incollection{Rasmussen, 
+title="Les revues scientifiques et la dynamique de la recherche", 
+author=" Duclert, Vincent and Rasmussen, Anne", 
+publisher="éd de l'IMEC", 
+year="2002", 
+pages="237--254", 
+booktitle="La belle époque des revues" 
+} 
+
+@article{TLFI, 
+author="Dendien, Jacques and Pierrel, Jean-Marie", 
+title="Le Trésor de la Langue Française informatisé. 
+Un exemple d'informatisation d'un dictionnaire de 
+langue de référence", 
+year="2003", 
+journal="Traitement automatique des langues", 
+pages="12--37", 
+volume="44" 
+}
+\end{verbatim}
+
+\subsection{L'appel dans le texte} \label{retour}
+Il s'effectue avec la commande \texttt{$\backslash$cite\{}\emph{abrégé-mnémotechnique-personnel}\texttt{\}} (le tilde \texttt{$\sim$} est un insécable).
+Exemples:
+
+\begin{verbatim}
+Il est notoire que les enquêtes sur les usages donnent plus
+à voir les représentations sociales de leurs commanditaires 
+que les pratiques réelles des usagers étudiés~\cite{JLM}.
+\end{verbatim}
+
+\begin{verbatim}
+Même au \textsc{xix}$^e$ siècle, le savant n'était pas dans 
+sa tour d'ivoire~\cite{Rasmussen}.
+\end{verbatim}
+
+Ce qui donnera:
+
+\begin{itemize}
+\item Il est notoire que les enquêtes sur les usages donnent plus à voir les représentations sociales de leurs commanditaires que les pratiques réelles des usagers étudiés~\cite{JLM}.
+
+et
+
+\item Même au \textsc{xix}$^e$ siècle, le savant n'était pas dans sa tour d'ivoire~\cite{Rasmussen}.
+\end{itemize}
+
+\medskip
+
+Note: Pour \LaTeX, l'ouvrage de référence est \cite{latex}!
+
+\subsection{Référencer la bibliographie}
+À l'endroit où l'on désire voir apparaître la bibliographie, il faut préciser le nom de son fichier, \emph{sans son extension} \texttt{.bib}:
+
+\texttt{$\backslash$bibliography\{exemplebiblio\}}
+
+suivi de la façon dont on veut la voir mise en forme. Par exemple:
+
+\texttt{$\backslash$bibliographystyle\{alpha\}}
+
+Note: je montrerai au point \ref{bibliofr} un moyen d'obtenir une bibliographie à la française, appels inclus.
+
+\medskip
+En général, on cite cette bibliographie à la fin.
+
+\subsection{La compilation finale}
+Exemples donnés pour un résultat au format \emph{pdf}
+\begin{enumerate}
+\item On compile une première fois le document (première mise en page globale):
+
+\texttt{pdflatex fichierdemo.tex} 
+
+\item On s'occupe de la bibliographie du \emph{document}:
+
+\texttt{bibtex fichierdemo} (sans son extension \texttt{.tex}!)
+
+\item On recompile:
+
+\texttt{pdflatex fichierdemo.tex} 
+
+\item Et on récidive pour la bonne gestion des références croisées (y compris de la bibliographie):
+
+\texttt{pdflatex fichierdemo.tex} 
+
+\item \textbf{C'est fini!} On peut ouvrir le fichier \texttt{fichierdemo.pdf}
+
+\end{enumerate}
+
+%\newpage
+
+\section{Insérer des figures}
+On peut aussi créer soi-même ses figures géométriques mais ce point ne sera pas développé ici (cf. la figure \ref{rang} page \pageref{rang}).
+
+\subsection{Syntaxe simple}
+\begin{verbatim}
+\begin{figure}[h]} 
+\includegraphics[height=y cm, width=x cm]{Fichier-de-ma-figure}
+\caption{Ma légende}
+\label{Ma-référence} 
+\end{figure}
+\end{verbatim}
+
+\medskip
+
+Où...
+
+\begin{itemize}
+\item le \texttt{[h]} demande à l'image d'être au plus près de l'endroit où elle est invoquée\footnote{Les figures et tableaux sont des éléments «flottants»: comme vous le voyez, en usage courant de \LaTeX, ils ne se positionnent pas nécessairement à l'endroit exact où on les appelle.} (\emph{here!}). 
+
+\item $x$ et $y$ sont les largeur et hauteur de l'image dans la page finale (réduction non proportionnelle). Si l'image prend une page entière, elle risque fort d'être déplacée. On peut se limiter à préciser la largeur (ou la hauteur) de la figure. En ce cas, les proportions d'origine seront respectées.
+
+\item \texttt{Fichier-de-ma-figure} est le fichier contenant l'image désirée. Il faut parfois en préciser l'extension (cas de plusieurs extensions pour une même image, productions en html).
+
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=7 cm]{Ital36sur31.pdf}
+\caption{On remarque un phénomène désormais bien connu, impensé entre les deux guerres: malgré les nombreuses expulsions d'étrangers entre 1931 et 1936, visibles dans les départements industrialisés (en bleu), des Italiens viennent, de ces départements, mais surtout d'Italie, s'établir dans les zone rurales du Sud-Ouest de la France pour entretenir et moderniser l'agriculture. \url{http://barthes.enssib.fr/atlasclio}}
+\label{ital}
+\end{figure}
+
+\subsection{Quelques exemples}
+Considérons la figure \ref{ital} (page \pageref{ital}), relative à l'immigration italienne entre les deux guerres, et le graphe de l'internet produit par CAIDA (fig. \ref{caida} page \pageref{caida}), qui sont importées, contrairement à la figure \ref{rang} (page \pageref{rang}), qui est construite \emph{dans} \LaTeX.
+
+%
+\begin{figure}[h]
+\centering
+\includegraphics[height=6 cm]{ascore.png}
+\caption{Carte topologique des \emph{AS} de l'internet. \emph{AS}: collection de routeurs dont la politique d'acheminement unique est coordonnée par un exploitant de réseau (propriétaire). Copyright 2005 The Regents of the University of California All Rights Reserved. \url{http://www.caida.org/research/topology/as_core_network/}}
+\label{caida}
+\end{figure}
+
+\begin{figure}[h]
+\begin{picture} (100, 100) 
+%\put (0,0){\framebox(40,30){test}}
+\put (0,0) {\vector(1,0){80}}
+\put (0,0) {\vector(0,1){80}}
+\put (90,0) {Rang}
+\put (0,90) {Freq}
+\qbezier (10,80) (20,20) (80,10)
+\end{picture}
+\caption{Cas des rangs.} \label{rang}
+\end{figure}
+
+\section{Tableaux et macros}
+
+
+\subsection{Tableaux} \label{tabl}
+Je serai bref: c'est la même logique que pour les figures. Le \texttt{\&} sépare les colonnes.
+Le tableau \ref{pcc2} est le même que le tableau \ref{pcc}, mais sans séparateurs horizontaux ni verticaux. Voici le source du premier tableau (sans les flèches horizontale ni verticale):
+
+\begin{verbatim}
+%source du tableau 1
+\begin{table} 
+\begin{tabular}{|l||r|r|r|r||r|} \hline	
+Webmois $\backslash$ Heures TV & 0h & <2h & 2 à 4h & >4h \\ \hline 
+non	\& ss obj & 27	& 42 & 52 & 76 \\ \hline 
+oui & 73 & 58 & 48 & 24 \\ \hline \hline 
+Tot col & 100 & 100 & 100 & 100 \\ \hline 
+\end{tabular} 
+\caption{Pourcentages colonnes. \label{pcc}} 
+\end{table}
+\end{verbatim}
+
+\begin{table} 
+\begin{tabular}{|l||r|r|r|r||r|} \hline	
+$\downarrow$ Webmois $\backslash$ Heures TV $\rightarrow$ 
+& 0h & <2h & 2 à 4h	& >4h	\\ \hline 
+non	\& ss obj & 27	& 42 & 52 & 76 \\ \hline 
+oui & 73 & 58 & 48 & 24 \\ \hline \hline 
+Tot col & 100 & 100 & 100 & 100 \\ \hline 
+\end{tabular} 
+\caption{Pourcentages colonnes. \label{pcc}} 
+\end{table}
+
+\begin{table} 
+\begin{tabular}{l r r r r r} 
+$\downarrow$ Webmois $\backslash$ Heures TV $\rightarrow$ 	& 0h & <2h & 2 à 4h & >4h	\\ 
+non	\& ss obj & 27	& 42 & 52 & 76 \\ 
+oui & 73 & 58 & 48 & 24 \\ 
+Tot col & 100 & 100 & 100 & 100 \\ 
+\end{tabular} 
+\caption{Pourcentages colonnes. \label{pcc2}} 
+\end{table}
+
+\subsection{Macros}
+Je présente brièvement les deux usages les plus fréquents:
+\begin{enumerate}
+\item Abréviations: 
+\begin{verbatim}
+\newcommand{\eq}{équipe \emph{Réseaux, Savoirs \& Territoires}}
+\end{verbatim}
+
+Il suffit alors de saisir \texttt{$\backslash$eq} et le texte complet sera affiché (après compilation).
+
+\item Avec un paramètre:
+\begin{verbatim}
+\newcommand{\sie}[1]{\textsc{#1}$^e$ siècle}}
+\end{verbatim}
+
+$\backslash$sie\{xix\} deviendra, après compilation, \sie{xix}.
+\end{enumerate}
+
+\section{Historique, compléments}
+
+\subsection{Historique}
+\begin{itemize}
+
+\item \TeX, Knuth, 1978.
+\item \LaTeX, Lamport, 1982: jeu de macros au-dessus de \TeX.
+\item \LaTeX2e, divers auteurs, 1994.
+\item Et une kyrielle d'extensions, macros, environnements, packages, etc., réalisés par de multiples auteurs. Cf. votre moteur de recherche préféré...
+
+\end{itemize}
+
+\subsection{Compléments}
+
+\begin{itemize}
+
+\item Parfois, des messages d'erreur...
+
+\item Réalisez aisément des slides avec \emph{Beamer}...
+
+
+\item Exemple de détournement de l'écriture mathématique\footnote{Le caractère \texttt{\$} permet l'usage de symboles mathématiques spécifiques: \texttt{\$$\backslash$rightarrow\$} crée ici une flèche vers la droite.}:
+
+La relation circulaire \emph{ culture $\rightarrow$ technique $\rightarrow$ écriture du monde $\rightarrow$ culture}
+
+Source de cette ligne:
+
+\begin{verbatim}
+La relation circulaire \emph{culture $\rightarrow$ technique 
+$\rightarrow$ écriture du monde $\rightarrow$ culture}
+\end{verbatim}
+
+\item Vers la civilisation: \texttt{rtf2latex2e UnFichier.rtf}
+
+\end{itemize}
+
+\section{Se simplifier la vie} 
+\subsection{Intégrer un préambule fixe et sophistiqué} \label{nez}
+
+On se perd vite avec le préambule fixe. Aussi, j'ai choisi d'en fabriquer un, assez complexe mais efficace, que j'appelle systématiquement avec la commande \texttt{$\backslash$input} quand je rédige un nouveau document \LaTeX.
+
+Si j'appelle ce préambule fixe \texttt{gabarit.tex}, il me suffira d'écrire en première ligne de mon document 
+
+\begin{verbatim}
+\input{gabarit.tex}
+\end{verbatim}
+
+En général, ce gabarit est dans un dossier précis, quand mes fichiers  \LaTeX \ sont en divers dossiers, et je rappellerai son chemin d'accès. Exemple à adapter:
+
+\begin{verbatim}
+\input{/Users/mon_dossier/gabarit.tex}
+\end{verbatim}
+
+De même pour les macros: une fois qu'on en a fabriqué une, on s'en sert tout le temps. Pourquoi ne pas les regrouper toutes dans un fichier et les appeler systématiquement?
+
+\begin{verbatim}
+\input{/Users/mon_dossier/mes_macros.tex}
+\end{verbatim}
+
+Vous trouverez en ligne le détail de ce préambule et des macros que j'utilise. Pour ne pas me perdre dans les divers encodages, j'ai précisé ceux de ces fichiers dans leurs intitulés: \texttt{gabaritlatin1.tex} et \texttt{macroslatin1.tex}:
+
+\url{gabaritlatin1.tex}
+
+\url{macroslatin1.tex}
+
+\medskip
+Le début du fichier \texttt{fichierdemo.tex} est maintenant plus simple:
+
+\begin{verbatim}
+\input{gabaritlatin1.tex}
+\input{macroslatin1.tex}
+\title{\LaTeX, quel programme!}
+\author{John Lambda}
+\begin{document} 
+\maketitle
+
+\section{Présentation}
+Cet exercice accompagne un cours destiné à des étudiants
+de profil <<littéraire>>. 
+
+etc.
+\end{document}
+\end{verbatim}
+
+Voici le source du fichier \texttt{macroslatin1.tex}:
+\begin{verbatim}
+\newcommand{\eq}{équipe \emph{Réseaux, Savoirs \& Territoires}}
+\newcommand{\imp}[1]{\textbf{#1}} % remplacer par 
+%\newcommand{\imp}[1]{#1} % (rien) pour la version finale
+\newcommand{\sie}[1]{\textsc{#1}$^e$ siècle}
+\newtheorem{th-imp}{Théorème} %[section]
+\newtheorem{th-u}{Assertion} %[subsection]
+\end{verbatim}
+
+\subsection{Bibliographie à la française} \label{bibliofr}
+Souvent, les littéraires se plaignent de ce que la bibliographie ne soit pas totalement adaptée à nos coutumes: par exemple, les appels sont un peu brefs (\texttt{[DR02]} pour \texttt{[Duclert et Rasmussen 2002]}), et le détail est anglicisé (Vincent Duclert \emph{and} Anne Rasmussen).
+
+Il y a moyen de remédier à la chose en travaillant à la main (ou avec un petit programme) le fichier d'extension \texttt{.bbl}.
+On peut aussi solliciter un format bibliographique spécifique. Mon style préféré se trouve à l'URL \url{http://www.lsv.ens-cachan.fr/~markey/BibTeX/bst/apalike-fr.bst}
+
+Pour s'en servir, il faut:
+\begin{enumerate}
+\item Appeler si nécessaire  le  \emph{package} \texttt{apalike} dans le préambule (c'est inutile si vous utilisez le fichier \texttt{gabaritlatin1.tex} car je l'y ai intégré):
+
+\begin{verbatim}
+\usepackage{apalike}
+\end{verbatim}
+
+\item Sauvegarder quelque part ce fichier \texttt{apalike-fr.bst}. Par exemple à l'endroit où vous avez glissé les autres fichiers importants: \texttt{gabaritlatin1.tex} et \texttt{macroslatin1.tex}. Je suppose pour simplifier que les trois sont dans le même dossier que le fichier \texttt{.tex} sur lequel vous travaillez.
+
+\item 
+Appeler ce \emph{style} bibliographique en remplaçant la ligne
+\begin{verbatim}
+\bibliographystyle{...}
+\end{verbatim}
+
+par
+\begin{verbatim}
+\bibliographystyle{apalike-fr}
+\end{verbatim}
+\end{enumerate}
+
+Voyez le fichier \url{LaTeX-pour-litteraires-bis.pdf} pour un exemple.
+
+\subsection{Deux autres astuces}
+Deux dernières choses que j'apprécie:
+
+\subsubsection{Écrire dans la marge gauche}
+Il peut arriver que vous ayez envie de signaler en marge gauche certains points importants, comme des notes ou remarques. 
+Voici une solution simple:
+\begin{verbatim}
+\hspace{-1.5cm}\textbf{Remarque}
+\end{verbatim}
+
+mettra le mot \emph{Remarque} en gras, et l'avancera d'un cm et demi.
+
+Voici le résultat:
+\medskip
+
+\hspace{-1.5cm}\textbf{Remarque}:
+Vous avez désormais suffisamment de connaissances sur \LaTeX \ pour explorer les documentations en ligne et imprimées.
+
+\subsubsection{Produire une note marginale}
+\marginpar{Voici un essai de note marginale.}
+
+Si je désire une note marginale, c'est facile, mais en général, elle sera étroite et écrite trop gros:
+\begin{verbatim}
+\marginpar{Voici un essai de note marginale.}
+\end{verbatim}
+
+On peut alors choisir d'élargir cette note, avec la commande:
+\begin{verbatim}
+\advance\marginparwidth by 40pt
+\end{verbatim}
+
+\advance\marginparwidth by 40pt
+
+Alors, quand nous écrivons
+\begin{verbatim}
+\marginpar{Faisons un second essai de note marginale.}
+\end{verbatim}
+Le résultat apparaît ainsi: \marginpar{Faisons un second essai de note marginale.}
+\medskip
+
+Et si nous désirons que son corps soit plus petit, nous pouvons assurément insérer un 
+\texttt{$\backslash$scriptsize} devant le texte.
+La commande devient alors:
+\begin{verbatim}
+\marginpar{\scriptsize{Faisons un 3$^e$ essai de note marginale.}}
+\end{verbatim}
+
+
+Cela commence à être satisfaisant. \marginpar{\scriptsize{Faisons un 3$^e$ essai de note marginale.}}
+Maintenant que nous avons trouvé les bons paramètres, pourquoi ne pas intégrer la commande 
+\begin{verbatim}
+\advance\marginparwidth by 40pt
+\end{verbatim}
+
+dans notre fichier \texttt{gabaritlatin1.tex} et rédiger une macro qui tienne compte de la réduction de taille de la note marginale? Si j'intitule cette macro \texttt{$\backslash$notemg}, je la définirai comme suit:
+\begin{verbatim}
+\newcommand{\notemg}[1]{\marginpar{\scriptsize{#1}}}
+\end{verbatim}
+
+%ici la nouvelle commande
+\newcommand{\notemg}[1]{\marginpar{\scriptsize{#1}}}
+%fin de la nouvelle commande
+et, pour réaliser une note marginale, il me suffira d'écrire
+\begin{verbatim}
+\notemg{Voici ma dernière note marginale.}
+\end{verbatim}
+\notemg{Voici ma dernière note marginale.}
+
+
+%\hspace{-1.5cm}\textbf{Ultime remarque}: pour ce dernier fichier, les exemples de note marginale ne seront peut-être pas aussi explicites, puisque l'élargissement de ces notes sera intégré dans le fichier \texttt{gabaritlatin1.tex}.
+
+
+
+\bibliography{exemplebiblio}
+\bibliographystyle{apalike-fr}
+
+Retour éventuel au point \ref{retour}
+
+\medskip
+
+\section*{Liste des fichiers cités} \label{fics}
+\small
+\begin{enumerate}
+\item Vous trouverez cette documentation simplifiée au format html à l'URL \\
+\url{http://barthes.enssib.fr/cours/informatique-pour-litteraires/LaTeX-pour-litteraires.html}
+
+\item L'original de  cette documentation en mode texte est accessible à l'URL \\
+\url{http://barthes.enssib.fr/cours/informatique-pour-litteraires/LaTeX-pour-litteraires-bis.tex}
+
+et
+
+\url{http://barthes.enssib.fr/cours/informatique-pour-litteraires/LaTeX-pour-litteraires.tex} pour sa première version.
+
+\item Le fichier \texttt{fichierdemo.tex}: \url{http://barthes.enssib.fr/cours/informatique-pour-litteraires/fichierdemo.tex}
+
+\item Le fichier \texttt{exemplebiblio.bib}:  \url{http://barthes.enssib.fr/cours/informatique-pour-litteraires/exemplebiblio.bib}
+
+\item Le préambule fixe:\\
+\url{http://barthes.enssib.fr/cours/informatique-pour-litteraires/gabaritlatin1.tex}
+
+\item Quelques macros: \\
+\url{http://barthes.enssib.fr/cours/informatique-pour-litteraires/macroslatin1.tex}
+
+\item Le fichier \texttt{apalike-fr.bst}: \url{http://www.lsv.ens-cachan.fr/~markey/BibTeX/bst/apalike-fr.bst}
+ou
+
+\url{http://barthes.enssib.fr/cours/informatique-pour-litteraires/apalike-fr.bst}
+\end{enumerate}
+
+\medskip
+\tableofcontents
+
+\end{document}
+

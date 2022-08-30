@@ -1,0 +1,263 @@
+\documentclass{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+
+% For the shell command
+\usepackage[usenames,dvipsnames]{color}
+% For the multi column fancy style
+\usepackage{multicol}
+% For urls
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{definition}{Definition}{\bfseries}{\itshape}
+\newtheorem{proposition}{Proposition}{\bfseries}{\itshape}
+\newtheorem{theorem}{Theorem}{\bfseries}{\itshape}
+\newtheorem{lemma}{Lemma}{\bfseries}{\itshape}
+\newtheorem{corollary}{Corollary}{\bfseries}{\itshape}
+\newtheorem{notation}{Notation}{\itshape}{\itshape}
+\newenvironment{myproof}{\proof}{\qed}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\zint}{\mathbb{Z}}
+\newcommand{\shell}[1]{{\color{Mahogany}{{$\boldsymbol{\$}$}~\texttt{#1}}}}
+\newcommand{\shortcut}[1]{{\color{Mahogany}{\textsf{#1}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+\title{Initiation Latex}
+\author{Simon Halfon, ENS Cachan}
+\maketitle
+
+\date{}
+
+
+\section{Installation}
+
+
+Selon votre plateforme: 
+\begin{itemize}
+\item Linux: \shell{apt-get texlive}
+
+\item MacOS: 
+\begin{enumerate}
+\item installer MacPort ou HomeBrew
+\item \shell{sudo port install tex-live}
+\end{enumerate}
+
+\item Windows: allez voir sur OpenClassroom, par exemple.
+\end{itemize}
+
+\section{Editeur et compilation}
+
+Latex est un langage de programmation, vous pouvez donc \'ecrire le code Latex dans n'importe quel \'editeur. Bien s\^ur, certains sont plus adapt\'es.
+
+\begin{multicols}{2}
+  \begin{itemize}
+\item[] \textbf{EDITEUR}
+\item Emacs + Auctex
+\item Votre \'editeur pr\'ef\'er\'e + terminal
+\item Kile (Linux)
+\item TexShop (MacOS)
+\item TexNicCenter (Windows)
+\item[] \textbf{COMPILATION}
+\item \shortcut{C-c C-c}
+\item \shell{pdflatex monfichier.tex}
+\item Interface newbie
+\item Interface newbie
+\item Interface newbie
+  \end{itemize}
+\end{multicols}
+
+
+\section{Structure d'un document}
+
+\subsection{Version primitive}
+
+La structure d'un document est la suivante:
+\begin{itemize}
+\item Votre document commence par 
+\begin{verbatim}
+\documentclass{article}
+\end{verbatim}
+
+\item Le header: les packages, les environnement, les d\'efinitions et les commandes que vous d\'efinissez
+
+\item Enfin, le corps du document: commence par
+\begin{verbatim}
+\begin{document}
+\end{verbatim}
+et se termine par
+\begin{verbatim}
+\end{document}
+\end{verbatim}
+\end{itemize}
+
+Je vous invite \`a consulter le code source du document que vous \^etes en train de lire. Vous le trouverez sur ma page (\url{www.lsv.ens-cachan.fr/~halfon/}). Ne vous alarmez pas pour ma fa\c con d'\'ecrire les accents, vous n'avez pas \`a en faire autant.
+
+
+\subsection{La commande input}
+
+Si votre document est long, par exemple un rapport de stage d'une vingtaine de page, il est pr\'ef\'erable de le s\'eparer en plusieurs fichiers, comme vous le faites (comme vous devriez le faire) pour du code classique.
+
+Le code source du pr\'esent document ressemblerait alors au code que vous pouvez voir dans \emph{exemple.tex}, disponible sur ma page \'egalement. Je n'ai pas \'ecrit les fichiers \emph{installation.tex}, \emph{editeur.tex}, \emph{structure.tex}, etc., mais ils contiendraient ni plus ni moins que le contenu exact de chaque section. Lorsque Latex voit un \emph{input}, c'est comme s'il collait le code du fichier \`a l'emplacement du \emph{input}.
+
+C'est particuli\`erement utile pour co-\'ecrire des articles: les diff\'erents auteurs peuvent modifier diff\'erentes parties de l'article sans avoir de difficult\'es de fusion lors de la synchronisation.
+
+\section{Un peu de syntaxe}
+
+
+Il y a \'enorm\'ement de litt\'erature sur Latex, \`a commencer par le Wiki. N\'eanmoins, si vous cherchez comment dessiner un symbole \'etrange, que vous ne sauriez nommer pour faire une recherche Web pertinente, vous pouvez utiliser \href{http://detexify.kirelabs.org/classify.html}{Detexify}. Par exemple, si vous d\'ecidez de faire votre DM de calculabilit\'e sur l'ordinateur, comment trouveriez vous le symbole $\bot$ ?
+
+Autre \'el\'ement de syntaxe incontournable: les commentaires, annonc\'es par le symbole \% (ligne courante seulement).
+
+Pour le reste, vous allez vous entrainer avec l'archive \emph{Squelette} que vous trouvez \'egalement sur ma page.
+
+
+\section{La bibliographie}
+\label{sec:biblio}
+
+De loin la fonctionnalit\'e la plus simple \`a utiliser dans Latex (c'est ironique). La page de r\'ef\'erence bibliographie est g\'en\'er\'ee automatiquement par Latex, lorsqu'il lit les deux lignes suivantes en toute fin de code:
+\begin{verbatim}
+\bibliographystyle{plain}
+\bibliography{biblio}
+\end{verbatim}
+La premi\`ere donne le style de la bibliographie. Il y en a plein, allez jeter un oeil sur Internet. Le style d\'efinit l'affichage des r\'ef\'erences: \textit{Auteur - Titre - Ann\'ee}, ou dans tel ou tel sens, avec ou sans ann\'ee etc. Le style modifie aussi l'encart devant la r\'ef\'erence: soit chaque r\'ef\'erence se voit attribuer un num\'ero (par exemple \cite{AKS02}), et lorsque vous citez cet article dans le texte, \`a l'aide de la commande
+\begin{verbatim}
+\cite{tag}
+\end{verbatim} 
+il s'affiche alors~\cite{AKS02}. Vous pouvez aussi obtenir des r\'ef\'erences de la forme [AKS02] si l'article cit\'e est \'ecrit par Agrawal, Kayal et Saxena en 2002; ou encore des encart custom.
+
+La seconde ligne donne le nom du fichier dans lequel se trouve vos r\'ef\'erences bibliographique, ici \emph{biblio.bib} (vous savez o\`u le trouver). Vous pouvez aller jeter un oeil \`a la syntaxe d'un .bib, mais \c ca a peu d'importance: si vous voulez citer l'article \emph{PRIMES is in P}, tapez \emph{PRIMES is in P bibtex} dans un moteur de recherche, et vous obtiendrez ce que vous voulez:
+\begin{verbatim}
+@ARTICLE{AKS02,
+    author = {Manindra Agrawal and Neeraj Kayal and Nitin Saxena},
+    title = {PRIMES is in P},
+    journal = {Ann. of Math},
+    year = {2002},
+    volume = {2},
+    pages = {781--793}
+}
+\end{verbatim}
+ Retenez simplement que le premier mot (ici j'ai mis AKS02) est le tag, pour citer l'article il faudra \'ecrire:
+\begin{verbatim}
+\cite{AKS02}
+\end{verbatim}
+C'est une convention de nommage de tag relativement pratique, je vous la recommande (vous verrez qu'elle n'est pas respect\'ee dans mon .bib, bien s\^ur). Autre convention: il est tr\`es moche que la r\'ef\'erence soit en d\'ebut de ligne, on utilise donc l'espace ins\'eccable:
+\begin{verbatim}
+[...] comme on le voit dans~\cite{AKS02}.
+\end{verbatim}
+
+Et l\`a, c'est le plus dr\^ole, pour compiler le tout:
+\begin{itemize}
+\item \shell{pdflatex monfichier.tex} une premi\`ere fois;
+\item \shell{bibtex monfichier} Attention, pas d'extension, et il s'agit bien du nom du fichier .tex, pas du .bib;
+\item \shell{pdflatex monfichier.tex} une seconde fois;
+\item \shell{pdflatex monfichier.tex} une troisi\`eme fois ! J'avais pr\'evenu que c'\'etait simple.
+\end{itemize}
+Ceci ne vaut que lorsque vous modifier le .bib. Le reste du temps, compilez normalement, \'eventuellement deux fois s'il y a eu des changements de labels (\emph{cf} section suivante).
+
+Derni\`ere chose: vous remarquerez que j'ai en fait utiliser le m\^eme fichier \emph{biblio.bib} pour \emph{latex.tex} et \emph{beamer.tex}, et que ces deux documents ne citent pas les m\^emes articles. Par d\'efaut, Latex ne met sur la page de r\'ef\'erence que les articles que vous citez explicitement dans votre texte, votre fichier .bib peut donc contenir tous les articles du monde, seuls ceux que vous citez seront affich\'es. Si vous voulez tout de m\^eme qu'un article que vous ne citez pas apparaisse en r\'ef\'erence, il faut ajouter la commande
+\begin{verbatim}
+\nocite{Nadine}
+\end{verbatim}
+en fin de fichier. Observez que \emph{Nadine} apparait bien dans mes r\'ef\'erences, alors que je ne la cite jamais.
+
+\section{Les labels et les r\'ef\'erences}
+
+\begin{definition}
+\label{def:label}
+Un label est un machin qui permet de faire r\'ef\'erence \`a un truc.
+\end{definition}
+Vous remarquerez que la d\'efinition~\ref{def:label} est un peu opaque. Elle contrate parfaitement la clart\'e de la section~\ref{sec:biblio}. Dans le code source, vous verrez que j'utilise des conventions pour nommer mes labels, \textit{sec:section} pour une section, \textit{def:definition} pour une d\'efinition, etc. Il s'agit simplement d'une convention, Latex s'en contre fiche. Moi non, respectez cette convention.
+
+Autre chose: n'\'ecrivez \textbf{JAMAIS} ``\texttt{comme vous le voyez \`a la section 2}'' dans votre code source ! Le but de Latex est de vous simplifier la vie: votre code fonctionne toujours si vous ajoutez une section. Pour les labels comme pour les citations, il faut deux compilations \`a Latex pour tout comprendre.
+
+\section{Les Beamers}
+
+Pour cette section, t\'el\'echargez l'archive \emph{beamer.zip}.
+
+Pour faire un beamer, il faut commencer par donner la bonne classe \`a votre document:
+\begin{verbatim}
+\documentclass{beamer}
+\end{verbatim}
+Vous pouvez ensuite sp\'ecifier un th\`eme pour votre beamer: le th\`eme d\'eterminera la position et la forme de votre menu, les choses qui s'affichent ou non sur vos slides, etc. Vous trouverez une nomenclature de th\`eme sur Internet.
+
+La suite du document est la m\^eme que d'habitude: les packages, les commandes que vous d\'efinissez, le titre du beamer, puis:
+\begin{verbatim}
+\begin{document}
+\end{verbatim}
+
+\noindent Quelques commandes sp\'ecifiques aux beamers:
+\begin{itemize}
+\item Une slide est d\'elimit\'ee par 
+\begin{verbatim}
+\begin{frame}
+\end{frame}
+\end{verbatim}
+
+\item Vous pouvez demander la g\'en\'eration automatique d'une slide de sommaire, ainsi que le rappel du sommaire \`a chaque d\'ebut de section (voir le code comment\'e apr\`es la slide de titre dans \emph{beamer.tex}).
+
+\item La commande 
+\begin{verbatim}
+\pause
+\end{verbatim}
+vous permet d'afficher votre slide en plusieurs fois. C'est tr\`es pratique si vous avez un slide charg\'e et que vous voulez forcer votre auditoire \`a ne lire que la partie dont vous parlez actuellement. En effet, sachez que lorsque vous d\'evoilez un slide, votre public le lira, temps pendant lequel il ne vous \'ecoute plus (pour vous en convaincre, ``observez vous'' \`a la prochaine conf\'erence \`a laquelle vous assistez, c'est effectivement ce que vous faites). C'est la raison pour laquelle on vous recommande de ne pas mettre de texte du tout dans une slide. S'il y a du texte, alors d\'evoilez le au fur et \`a mesure, pour que l'auditoire ne lise que la partie dont vous parlez.
+
+Remarque: notez le num\'ero de la slide 3 et de la suivante. C'est un petit d\'etail qui devrait vous encourager \`a utiliser \texttt{\textbackslash pause} et pas \`a copier votre slide deux fois. L'autre raison de ne pas faire \c ca est une raison d'alignement: Latex g\`ere la mise en page tout seul, et notamment centre votre texte. Si vous utilisez la commande pause, Latex tient compte du texte \`a venir et lui laisse la place.
+
+\item Les images: ce n'est absolument pas sp\'ecifique aux beamers, et la syntaxe pour les mettre dans les autres types de documents Latex est exactement la m\^eme. N\'eanmoins, comme je n'en ai pas mis avant, j'en profite pour vous indiquer d'observer cette syntaxe.
+
+Il faut distinguer les images flottantes des figures. Cela a moins d'importance dans un beamer, puisque une slide est spatialement petite, mais dans un article, Latex placera la figure o\`u bon lui semble, pas forc\'ement l\`a o\`u vous l'avez indiqu\'e dans le code. L'id\'ee est qu'une figure a une l\'egende (\texttt{\textbackslash caption}) et id\'ealement un label, auquel vous faites r\'ef\'erence dans le texte. Donc votre figure n'a pas besoin d'\^etre pr\'esente directement sous le texte qui lui fait r\'ef\'erence.
+
+Si vous voulez forcer la position d'une image, alors ne mettez pas l'environnement figure. En contre partie, vous perdez la possibilit\'e de mettre une l\'egende. C'est tout \`a fait naturel: plus besoin de mettre un l\'egende puisque vous savez pr\'ecis\'ement o\`u la figure atterrira, vous pouvez donc la d\'ecrire dans le texte.
+
+\item Le package Tikz: n'est pas non plus sp\'ecifique au beamer. C'est un outil tr\`es puissant, et son utilisation demande un peu d'apprentissage. Il y a \'enorm\'ement de documentation en ligne (officielle pour commencer, et de r\'eponses aux questions sur divers forums).
+
+\item Les block
+
+\end{itemize}
+
+
+\section{Conclusion}
+
+Latex permet de faire beaucoup de chose, mais demande une certaines prise en main. Je vous conseille de miser sur l'exp\'erience: vous apprendrez les choses au fur et \`a mesure, d\`es lors que vous en aurez besoin. Je ne pense pas qu'il soit utile de se bourrer le crane avec tout un gros tas de syntaxe que vous aurez vite fait d'oublier si vous ne l'utilisez pas rapidement et/ou r\'eguli\`erement. 
+
+La communaut\'e Latex est assez d\'evelopp\'ee, vos questions ``comment faire ce truc qui serait bien pratique de faire ?'' ou ``que signifie cette erreur obscure ?'' ont sans doute \'et\'e d\'ej\`a pos\'ee et r\'esolue sur des forums (le plus s\'erieux \'etant sans doute StackOverflow). 
+
+
+
+
+%% Bibliographie
+\nocite{Nadine}
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+
+\end{document}
+

@@ -1,0 +1,902 @@
+\documentclass[12pt]{beamer}
+\usetheme{Darmstadt}
+%\usetheme{AnnArbor} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%..............................................1
+\title[Block Partitioning and Perfect Phylogenies] 
+{
+  Soutenance de mémoire de fin d'étude
+}
+\author[Gramm, Hartman, Nierhoff, Sharan, Tantau]
+{
+                    intitulée\\
+  \and 
+  \textcolor{green}{ETUDE DE LA SUITE DE KOLAKOSKI-(1,3)}
+}
+\institute[T�bingen and others]
+{
+                    Présentée par
+  \and
+  \vskip-2mm
+  \textcolor{blue}{Abdelhakim BOUCHIAR} et   
+  \textcolor{blue}{Ismail ELMARJANI}
+  \and
+  \vskip-2mm
+              Devant le jury composé par
+  \and
+  \vskip-2mm
+  \textcolor{red}{Pr.Abdellah HAMMAM}
+  \and
+  \vskip-2mm
+  \textcolor{red}{Pr.Lhassane SADDEK}
+  \and
+  \vskip-2mm
+  \textcolor{red}{Pr.Jilali ASSIM}
+}
+\date[WABI 2006]
+   {\textcolor{blue}{Le 07/07/2017}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%   The main document   %%%%%%%%%%%%%%
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+%...............................................2
+\begin{frame}{Plan de la présentation}
+  \tableofcontents
+\end{frame}
+
+%================================================
+\section{Terminologie}
+%...............................................3
+\begin{frame}[t]{Définitions}
+  \begin{block}{Alphabet}
+    \begin{itemize}
+    \item On appelle Alphabet tout ensemble fini d'entiers naturels. 
+    \end{itemize}
+  \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Définitions}
+  \begin{block}{Alphabet}
+    \begin{itemize}
+    \item On appelle Alphabet tout ensemble fini d'entiers naturels. 
+    \end{itemize}
+  \end{block}
+  \begin{block}{Lettre}
+    \begin{itemize}
+    \item Les éléments d'un alphabet s'appellent des lettres.
+    \end{itemize}
+  \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Définitions}
+  \begin{block}{Alphabet}
+    \begin{itemize}
+    \item On appelle Alphabet tout ensemble fini d'entiers naturels. 
+    \end{itemize}
+  \end{block}
+  \begin{block}{Lettre}
+    \begin{itemize}
+    \item Les éléments d'un alphabet s'appellent des lettres.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Notation}
+    \begin{itemize}
+    \item On note $\Sigma^*$, l'ensemble des mots formés par les lettres de $\Sigma$.
+    \end{itemize}
+  \end{block}
+\end{frame}
+%...............................................4
+\begin{frame}[t]{Définitions}
+  \begin{block}{Mot fini}
+    \begin{itemize}
+    \item Soit $\Sigma$ un alphabet. Un mot fini est une suite finie d'éléments de $\Sigma$.
+    \item<alert@1->
+      Soit M un mot fini, alors $\exists n \in \mathbb{N}^*$ tel que $M: \{ 1,2,...,n\} \underset{i \longmapsto M_i}{\longrightarrow} \Sigma$ . On écrit $M=M_1M_2...M_n$.
+    \item<alert@1->
+      On dit que M est de longueur n, et on note long(M)=n.
+    \end{itemize}
+  \end{block}
+\end{frame}
+%...............................................5
+\begin{frame}[t]{Définitions} 
+  \begin{block}{Mot infini}
+    \begin{itemize}
+    \item Soit $\Sigma$ un alphabet. On appelle mot infini, toute suite infinie d'éléments de $\Sigma$.
+    \item<alert@1->
+      Soit K un mot infini, donc  $K: \mathbb{N}^* \underset{i \longmapsto K_i}{\longrightarrow} \Sigma $.
+    \item<alert@1->
+      On écrit dans ce cas $K=K_1K_2...$ .
+    \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................
+\begin{frame}{Définitions.}
+  On considère un mot M non vide (fini ou infini).
+  \begin{block}{Bloc}
+    \begin{itemize}
+    \item On appelle bloc, toute chaîne $M_k...M_{k+p}$ avec $k \geq 1$ et $p \geq 0$ deux entiers telle que:
+  \item<alert@1->
+   Si $k=1, M_1=M_2=...=M_{p+1}$ et $M_{p+1} \neq M_{p+2}$. 
+  \item<alert@1->
+   Si $k \geq 2$,\\
+    $M_k=M_{k+1}=...=M_{k+p}$ et  \left\{ \begin{array}{l}
+                                         M_{k-1} \neq M_{k} \\
+                                            M_{k+p} \neq M_{k+p+1}
+                                           \end{array} \left.   
+  
+    \end{itemize}
+  \end{block}
+  \end{frame}
+%...............................................
+\begin{frame}{Définitions.}
+  \begin{block}{Exemple}
+    \begin{itemize}
+    \item $M=1331$.
+    \item<alert@1-> $M_1 \neq M_2 \Rightarrow B_1=1$.  
+    \item<alert@1->
+     $M_1 \neq M_2=M_3 \neq M_4 \Rightarrow B_2=33$.
+    \item<alert@1-> $M_3 \neq M_4 \Rightarrow B_3=1$.
+    \item $M=B_1B_2B_3$.
+     \end{itemize}
+  \end{block}
+  \end{frame}
+%...............................................8
+\begin{frame}[t]{Définitions}
+  \begin{block}{Densité}
+    \begin{itemize}
+    \item<alert@1->
+      Soit $\Sigma$ un alphabet, et soit $\alpha \in \Sigma$ une lettre.
+    \item La densité de $\alpha$ dans un mot M de longueur n est donnée par la formule suivante: 
+ $$\rho_n = \frac{|\{ 1 \leq j \leq n : M_j =\alpha \} |}{n}$$
+    \end{itemize}
+  \end{block}
+\end{frame}
+%...............................................9
+\begin{frame}[t]{Définitions}
+  \begin{block}{Fonction de codage par blocs}
+   Soit $\Sigma$ un alphabet.
+    \begin{itemize}
+    \item  La fonction de codage par blocs est définie par:   
+     $$\Delta: \Sigma^* \longrightarrow \Sigma^* $$ telle que $$M \longmapsto M'=long(B_1)long(B_2)...$$ 
+où  $B_i$    est le i-iéme bloc du mot M pour tout $i\in \mathbb{N}^*$
+     \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................
+\begin{frame}[t]{Définitions}
+   \begin{block}{Exemple d'application}
+    \begin{itemize}
+    \item  M=1333113331311
+    \item $M=\underset{1}{\underbrace{1}} \underset{3}{\underbrace{333}} \underset{2}{\underbrace{11}} \underset{3}{\underbrace{333}} \underset{1}{\underbrace{1}} \underset{1}{\underbrace{3}} \underset{2}{\underbrace{11}}$
+    \item<alert@1->
+    $\Delta(M)=1323112$.
+  \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................11
+\begin{frame}[t]{Définitions}
+  \begin{block}{Exemple d'utilisation}
+   \item Les imprimantes et les photocopieuses se basent sur l'application de la fonction de codage par blocs lors de l'impression.
+  \end{block}
+\end{frame}
+%..............................................12
+\begin{frame}[t]{Définitions}
+ Soit $\Sigma = \{ a,b \}$ , avec $a \neq b$, un alphabet.
+  \begin{block}{Fonction pseudo-inverse} 
+    \begin{itemize}
+    \item La fonction pseudo-inverse est définie par l'opération inverse de la fonction de codage par blocs.\\ On la note $\Delta^{-1}$.
+\end{itemize}
+\end{block}
+\end{frame}
+%..............................................12
+\begin{frame}[t]{Définitions}
+ Soit $\Sigma = \{ a,b \}$ , avec $a \neq b$, un alphabet.
+  \begin{block}{Fonction pseudo-inverse} 
+    \begin{itemize}
+    \item La fonction pseudo-inverse est définie par l'opération inverse de la fonction de codage par blocs.\\ On la note $\Delta^{-1}$.
+\end{itemize}
+\end{block}
+ \begin{itemize}   
+    \item<alert@1->
+    On a $$\Delta^{-1}: \Sigma^* \underset{M \longmapsto W}{\longrightarrow} \Sigma^*=\{a,b\}^*$$ 
+avec $W= W_1 W_2 ...$ où $W_1=w_1^1=a$, et $\forall i \geq 2$ on a:  $ W_i=w_1^iw_2^i...w_{M_i}^i$  tel que pour $j=1,...,M_{i}$ , 
+$$\left\{ \begin{array}{lll} 
+w_j^i = a & si & w_1^{i-1} = b \\
+w_j^i = b & si & w_1^{i-1} = a$$
+\end{array} 
+\end{itemize}
+\end{frame}
+%..............................................13
+\begin{frame}[t]{Définitions}
+  \begin{block}{Exemple d'application}
+    \begin{itemize}
+    \item  $M=1333111$
+    \item $M=\underset{1}{\underbrace{1}} 
+            \underset{333}{\underbrace{3}} 
+            \underset{111}{\underbrace{3}} 
+            \underset{333}{\underbrace{3}} 
+            \underset{1}{\underbrace{1}}
+            \underset{3}{\underbrace{1}}
+            \underset{1}{\underbrace{1}}$
+    \item<alert@1->
+    $\Delta^{-1}(M)= 1333111333131$.
+  \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................14
+\begin{frame}[t]{Définitions}
+Désormais on prend $\Sigma = \{ 1,3 \}$.
+  \begin{block}{Mot de Kolakoski}  
+    \begin{itemize}
+    \item On appelle mot de Kolakoski, le point fixe sous l'opérateur $\Delta$ ayant 1 comme première lettre.
+    \item<alert@1->
+     On note K le mot de Kolakoski.
+    \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................17
+\begin{frame}[t]{Construction du mot de Kolakoski}
+ Notation: $K^p=K_1K_2...K_p \hspace{1\baselineskip} \forall p \in \mathbb{N}^*.$ \\
+    \begin{itemize}
+    \item $K_1=1$ \Rightarrow $K_2=3$ \Rightarrow $K^2=13$ 
+    \item $\Delta^{-1}(K^2)=1333=K^4$, 
+    \item   
+$\Delta^{-1}(K^4)=1333111333=K^{10}$.
+    \item $\Delta^{-1}(K^{10})=1333111333131333111333=K^{22}$
+    \item $\Delta^{-1}(K^{22})=13331113331313331113331313...=K^{52}$
+    \end{itemize}
+\end{frame}
+%..............................................18
+\begin{frame}[t]{Propriétés}
+Soit M un mot fini.
+ \begin{block}{Propriétés de la longueur}
+    \begin{itemize}
+\item  $long(\Delta(M))\leq long(M).$
+\item  $long(M) \leq long(\Delta^{-1}(M)).$
+    \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................19
+\begin{frame}[t]{Propriétés}
+  \begin{block}{Propriétés du mot de Kolakoski}
+Le mot de Kolakoski est un mot:    
+    \begin{itemize}
+\item  Lisse: $\forall k \in \mathbb{N}, \Delta^k(M) \in \Sigma^*= \{ 1,3 \}^*$.  
+\item  Infini: $\forall n \in \mathbb{N}^* , K^n$ existe.
+\item  Unique.
+    \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................20
+\begin{frame}[t]{Propriétés}
+\begin{block}{Propriétés de passage de K à $\Delta^{-1}(K)$}
+    \begin{itemize}
+\item  $S_n:= \sum_{i=1}^{n}K_i=long(\Delta^{-1}(K^n)), \forall n \in \mathbb{N}^*$. 
+\item 
+\begin{tabular}{||c||c||} 
+\hline \hline
+K & \Delta^{-1}(K) \\
+\hline \hline
+ (1)^i &(1)^i \\ 
+\hline 
+ (1)^p & (3)^p\\ 
+\hline 
+(3)^i  & (111)=2\times (1)^i+(1)^p \\ 
+\hline 
+(3)^p & (333)=2\times(3)^p+(3)^i \\ 
+\hline \hline
+\end{tabular}
+ \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................21
+\begin{frame}[t]{Propriétés}
+Soit $n \in \mathbb{N}^*$.
+ \begin{block}{Propriétés de passage de $K^n$ à $\Delta^{-1}(K^n)$}
+\begin{itemize}
+\item 
+$\left\{ \begin{array}{l}
+1_{S_n}^i=1_n^i+2 \times 3_n^i \\ 
+1_{S_n}^p=3_n^i \\ 
+3_{S_n}^i=3_n^p \\ 
+3_{S_n}^p=1_n^p+2 \times 3_n^p
+\end{array}$
+\item 
+$\left( \begin{array}{c}
+1_{S_n}^i \\ 
+1_{S_n}^p \\ 
+3_{S_n}^i \\ 
+3_{S_n}^p
+\end{array} \right) = 
+\left( \begin{array}{cccc}
+1 & 0 & 2 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 2
+\end{array} \right)
+\left( \begin{array}{c}
+1_n^i \\ 
+1_n^p \\ 
+3_n^i \\ 
+3_n^p
+\end{array} \right)$
+    \end{itemize}
+  \end{block}
+\end{frame}
+%%===============================================
+\section{Problème étudié}
+%..............................................22
+\begin{frame}[t]{Problème et Objectifs}
+ \begin{block}{Problème principal}
+    \begin{itemize}
+     \item  Etude de la suite Kol(1,3).
+    \end{itemize}
+  \end{block}
+\end{frame}
+%%%%%%%%%%%%%%
+\begin{frame}[t]{Problème et Objectifs}
+\begin{block}{Problème principal}
+    \begin{itemize}
+     \item  Etude de la suite Kol(1,3).
+    \end{itemize}
+  \end{block}
+ \begin{block}{Objectif principal}
+    \begin{itemize} 
+  \item Calcul de la densité de 3 dans K.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+%%===============================================
+\section{Méthodes de résolutions}
+%..............................................24
+\begin{frame}[t]{Première méthode}
+  \begin{block}{Objectif}
+    \begin{itemize}
+\item Calcul de la densité de 3 dans le mot de Kolakoski. 
+    \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................25
+\begin{frame}[t]{Première méthode}
+  \begin{block}{Objectif}
+    \begin{itemize}
+    \item Calcul de la densité de 3 dans le mot de Kolakoski. 
+    \end{itemize}
+  \end{block}
+  \begin{block}{L'idée}
+    \begin{itemize}
+    \item on applique successivement $\Delta^{-1}$ à $K^2=13 \equiv \left( \begin{array}{c}
+1 \\ 
+0 \\ 
+0\\ 
+1
+\end{array} \right) =X_0$.
+\item On construit une suite récurrente $X_{n+1}=f(X_n)$ afin de déterminer les composantes de $X_n$, $\forall n \in \mathbb{N}$.
+\item On calcule la densité par passage à la limite.
+   \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................26
+\begin{frame}[t]{Première méthode}
+ La rédaction est en plusieurs étapes!
+  \begin{block}{Rappel}
+ \begin{center}
+ $\left( \begin{array}{c}
+1_{S_n}^i \\ 
+1_{S_n}^p \\ 
+3_{S_n}^i \\ 
+3_{S_n}^p
+\end{array} \right) = 
+\left( \begin{array}{cccc}
+1 & 0 & 2 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 2
+\end{array} \right)
+\left( \begin{array}{c}
+1_n^i \\ 
+1_n^p \\ 
+3_n^i \\ 
+3_n^p
+\end{array} \right)$
+ \end{center}
+  \end{block}
+  On pose \begin{center}
+  $M=\left( \begin{array}{cccc}
+1 & 0 & 2 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 2
+\end{array} \right)$
+  \end{center}
+\end{frame}
+%..............................................27
+\begin{frame}[t]{Première méthode}
+  \begin{block}{Etape 1: Polyn\^ome caractéristique de M}
+
+ $$P_M(\lambda)=det(M-\lambda I_4)=(\lambda-1)(\lambda^3-2\lambda^2-1)$$
+
+  \end{block}
+\end{frame}
+%..............................................28
+\begin{frame}[t]{Première méthode}
+  \begin{block}{Etape 2: Les valeurs propres de M}
+Le spectre de M est composé de 1 et les valeurs suivantes:
+\begin{itemize}
+\item 
+$\lambda_1=(\dfrac{43}{54}+\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}+(\dfrac{43}{54}-\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}+\dfrac{2}{3}$ \\ avec $|\lambda_1|=2,205569... >1$.
+\item 
+$\lambda_2$ avec $|\lambda_2|=0,67 < 1$.
+\item 
+$\lambda_3$ avec $|\lambda_3|=0,67 < 1$.
+\end{itemize}
+  \end{block}
+\end{frame}
+%..............................................29
+\begin{frame}[t]{Première méthode}
+  \begin{block}{Etape 3: Recherche d'un vecteur propre.}
+  \end{block}
+  On cherche un vecteur propre $\overrightarrow{V_1}=\left( \begin{array}{c}
+x \\ 
+y \\ 
+z \\ 
+t
+\end{array} \right)$ associé à la valeur propre  $\lambda_1$.\\
+ Donc $\overrightarrow{V_1}$ est tel que $M\overrightarrow{V_1}=\lambda_1\overrightarrow{V_1}$, ce qui est équivalent au système suivant:
+\begin{center}
+$(S): \left\{ \begin{array}{rcl}
+x+2z & = & \lambda_1 x \\
+z & = & \lambda_1 y \\
+t & = & \lambda_1 z \\
+y+2t&= & \lambda_1 t
+\end{array} $
+\end{center}
+\end{frame}
+%................................................
+\begin{frame}[t]{Première méthode}
+  \begin{block}{Etape 3: Recherche d'un vecteur propre.}
+  \end{block}
+ La résolution du système (S) donne: $$\overrightarrow{V_1}=\left(\begin{array}{c}
+\dfrac{2\lambda_1}{\lambda_1-1} \\ 
+1 \\ 
+ \lambda_1\\ 
+\lambda_1^2
+\end{array} \right)$$ 
+\end{frame}
+%..............................................30
+\begin{frame}[t]{Première méthode}
+ \begin{block}{Etape 4: Relation entre $\overrightarrow{X_0}$ et les vecteurs propres }
+  \end{block}
+  Soient $\overrightarrow{V_1}$, $\overrightarrow{V_2}$, $\overrightarrow{V_3}$ et $\overrightarrow{V_4}$ respectivement les vecteurs propres associés aux valeurs propres $\lambda_1$, $\lambda_2$, $\lambda_3$ et $1$. \\
+\end{frame}
+%..............................................30
+\begin{frame}[t]{Première méthode}
+ \begin{block}{Etape 4: Relation entre $\overrightarrow{X_0}$ et les vecteurs propres }
+  \end{block}
+  Soient $\overrightarrow{V_1}$, $\overrightarrow{V_2}$, $\overrightarrow{V_3}$ et $\overrightarrow{V_4}$ respectivement les vecteurs propres associés aux valeurs propres $\lambda_1$, $\lambda_2$, $\lambda_3$ et $1$. \\
+Alors il existe des constantes a, b, c et d réelles telles que $$\overrightarrow{X_0}=a\overrightarrow{V_1}+b\overrightarrow{V_2}+c\overrightarrow{V_3}+d\overrightarrow{V_4}$$   
+\end{frame}
+%..............................................30
+\begin{frame}[t]{Première méthode}
+ \begin{block}{Etape 4: Relation entre $\overrightarrow{X_0}$ et les vecteurs propres }
+  \end{block}
+  Soient $\overrightarrow{V_1}$, $\overrightarrow{V_2}$, $\overrightarrow{V_3}$ et $\overrightarrow{V_4}$ respectivement les vecteurs propres associés aux valeurs propres $\lambda_1$, $\lambda_2$, $\lambda_3$ et $1$. \\
+Alors il existe des constantes a, b, c et d réelles telles que $$\overrightarrow{X_0}=a\overrightarrow{V_1}+b\overrightarrow{V_2}+c\overrightarrow{V_3}+d\overrightarrow{V_4}$$   
+\begin{center}
+\begin{tabular}{rl}
+\overrightarrow{X_1}=M\overrightarrow{X_0}&=aM\overrightarrow{V_1}+bM\overrightarrow{V_2}+cM\overrightarrow{V_3}+dM\overrightarrow{V_4} \\
+&=a\lambda_1\overrightarrow{V_1}+b\lambda_2\overrightarrow{V_2}+c\lambda_3\overrightarrow{V_3}+d\overrightarrow{V_4}
+\end{tabular}
+\end{center}
+\end{frame}
+%..............................................30
+\begin{frame}[t]{Première méthode}
+ \begin{block}{Etape 4: Relation entre $\overrightarrow{X_0}$ et les vecteurs propres }
+  \end{block}
+  Soient $\overrightarrow{V_1}$, $\overrightarrow{V_2}$, $\overrightarrow{V_3}$ et $\overrightarrow{V_4}$ respectivement les vecteurs propres associés aux valeurs propres $\lambda_1$, $\lambda_2$, $\lambda_3$ et $1$. \\
+Alors il existe des constantes a, b, c et d réelles telles que $$\overrightarrow{X_0}=a\overrightarrow{V_1}+b\overrightarrow{V_2}+c\overrightarrow{V_3}+d\overrightarrow{V_4}$$   
+\begin{center}
+\begin{tabular}{rl}
+\overrightarrow{X_1}=M\overrightarrow{X_0}&=aM\overrightarrow{V_1}+bM\overrightarrow{V_2}+cM\overrightarrow{V_3}+dM\overrightarrow{V_4} \\
+&=a\lambda_1\overrightarrow{V_1}+b\lambda_2\overrightarrow{V_2}+c\lambda_3\overrightarrow{V_3}+d\overrightarrow{V_4}
+\end{tabular}\\
+\end{center}
+\begin{center}
+\begin{tabular}{rl}
+\overrightarrow{X_2}=M\overrightarrow{X_1} & =a\lambda_1M\overrightarrow{V_1}+b\lambda_2M\overrightarrow{V_2}+c\lambda_3M\overrightarrow{V_3}+dM\overrightarrow{V_4} \\
+&=a\lambda_1^2\overrightarrow{V_1}+b\lambda_2^2\overrightarrow{V_2}+c\lambda_3^2\overrightarrow{V_3}+d\overrightarrow{V_4}.
+\end{tabular}
+\end{center}
+\end{frame}
+%..............................................30
+\begin{frame}[t]{Première méthode}
+ \begin{block}{Etape 4: Relation entre $\overrightarrow{X_0}$ et les vecteurs propres }
+  \end{block}
+  Soient $\overrightarrow{V_1}$, $\overrightarrow{V_2}$, $\overrightarrow{V_3}$ et $\overrightarrow{V_4}$ respectivement les vecteurs propres associés aux valeurs propres $\lambda_1$, $\lambda_2$, $\lambda_3$ et $1$. \\
+Alors il existe des constantes a, b, c et d réelles telles que $$\overrightarrow{X_0}=a\overrightarrow{V_1}+b\overrightarrow{V_2}+c\overrightarrow{V_3}+d\overrightarrow{V_4}$$   
+\begin{center}
+\begin{tabular}{rl}
+\overrightarrow{X_1}=M\overrightarrow{X_0}&=aM\overrightarrow{V_1}+bM\overrightarrow{V_2}+cM\overrightarrow{V_3}+dM\overrightarrow{V_4} \\
+&=a\lambda_1\overrightarrow{V_1}+b\lambda_2\overrightarrow{V_2}+c\lambda_3\overrightarrow{V_3}+d\overrightarrow{V_4}
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tabular}{rl}
+\overrightarrow{X_2}=M\overrightarrow{X_1} & =a\lambda_1M\overrightarrow{V_1}+b\lambda_2M\overrightarrow{V_2}+c\lambda_3M\overrightarrow{V_3}+dM\overrightarrow{V_4} \\
+&=a\lambda_1^2\overrightarrow{V_1}+b\lambda_2^2\overrightarrow{V_2}+c\lambda_3^2\overrightarrow{V_3}+d\overrightarrow{V_4}.
+\end{tabular}
+\end{center}
+\begin{center}
+$\overrightarrow{X_n}=M^n\overrightarrow{X_0}=a\lambda_1^n\overrightarrow{V_1}+b\lambda_2^n\overrightarrow{V_2}+c\lambda_3^n\overrightarrow{V_3}+d\overrightarrow{V_4}$
+\end{center}
+\end{frame}
+%..............................................31
+\begin{frame}[t]{Première méthode}
+  \begin{block}{Etape 5: Calcul de la densité}
+  \end{block}
+On a $$\overrightarrow{X_n}\underset{n\rightarrow + \infty}{\sim}a\lambda_1^n\overrightarrow{V_1}.$$
+\end{frame}
+%..............................................31
+\begin{frame}[t]{Première méthode}
+  \begin{block}{Etape 5: Calcul de la densité}
+  \end{block}
+On a $$\overrightarrow{X_n}\underset{n\rightarrow + \infty}{\sim}a\lambda_1^n\overrightarrow{V_1}.$$
+c'est-à-dire $$\overrightarrow{X_n}\underset{n\rightarrow + \infty}{\sim}a\lambda_1^n\left(
+\begin{array}{c}
+\dfrac{-2\lambda_1}{1-\lambda_1} \\ 
+1 \\ 
+ \lambda_1\\ 
+\lambda_1^2
+\end{array} \right)$$ 
+\end{frame}
+%..............................................31
+\begin{frame}[t]{Première méthode}
+  \begin{block}{Etape 5: Calcul de la densité}
+  \end{block}
+On a $$\overrightarrow{X_n}\underset{n\rightarrow + \infty}{\sim}a\lambda_1^n\overrightarrow{V_1}.$$
+c'est-a-dire $$\overrightarrow{X_n}\underset{n\rightarrow + \infty}{\sim}a\lambda_1^n\left(
+\begin{array}{c}
+\dfrac{-2\lambda_1}{1-\lambda_1} \\ 
+1 \\ 
+ \lambda_1\\ 
+\lambda_1^2
+\end{array} \right)$$ 
+Dans $\overrightarrow{X_n}$ on peut calculer $1_n^i$, $1_n^p$, $3_n^i$ et $3_n^p$.
+\end{frame}
+%..............................................32
+\begin{frame}[t]{Première méthode}
+On a
+$$\rho_3=\dfrac{\lambda_1+\lambda_1^2}{\dfrac{-2\lambda_1}{1-\lambda_1}+1+\lambda_1+\lambda_1^2}=\dfrac{(1-\lambda_1)(\lambda_1+\lambda_1^2)}{-2\lambda_1+(1-\lambda_1)(1+\lambda_1+\lambda_1^2)}$$
+\end{frame}
+%..............................................32
+\begin{frame}[t]{Première méthode}
+On a
+$$\rho_3=\dfrac{\lambda_1+\lambda_1^2}{\dfrac{-2\lambda_1}{1-\lambda_1}+1+\lambda_1+\lambda_1^2}=\dfrac{(1-\lambda_1)(\lambda_1+\lambda_1^2)}{-2\lambda_1+(1-\lambda_1)(1+\lambda_1+\lambda_1^2)}$$ 
+Or $$-2\lambda_1^2=1-\lambda_1^3=(1-\lambda_1)(1+\lambda_1+\lambda_1^2) $$
+\end{frame}
+%..............................................32
+\begin{frame}[t]{Première méthode}
+On a
+$$\rho_3=\dfrac{\lambda_1+\lambda_1^2}{\dfrac{-2\lambda_1}{1-\lambda_1}+1+\lambda_1+\lambda_1^2}=\dfrac{(1-\lambda_1)(\lambda_1+\lambda_1^2)}{-2\lambda_1+(1-\lambda_1)(1+\lambda_1+\lambda_1^2)}$$ 
+Or $$-2\lambda_1^2=1-\lambda_1^3=(1-\lambda_1)(1+\lambda_1+\lambda_1^2) $$ \\
+ Donc $$\rho_3=\dfrac{(1-\lambda_1)(\lambda_1+\lambda_1^2)}{-2(\lambda_1+\lambda_1^2)}$$
+\end{frame}
+%..............................................32
+\begin{frame}[t]{Première méthode}
+On a
+$$\rho_3=\dfrac{\lambda_1+\lambda_1^2}{\dfrac{-2\lambda_1}{1-\lambda_1}+1+\lambda_1+\lambda_1^2}=\dfrac{(1-\lambda_1)(\lambda_1+\lambda_1^2)}{-2\lambda_1+(1-\lambda_1)(1+\lambda_1+\lambda_1^2)}$$ 
+Or $$-2\lambda_1^2=1-\lambda_1^3=(1-\lambda_1)(1+\lambda_1+\lambda_1^2) $$ \\
+ Donc $$\rho_3=\dfrac{(1-\lambda_1)(\lambda_1+\lambda_1^2)}{-2(\lambda_1+\lambda_1^2)}$$ \\
+ D'où\begin{center}
+  $\rho_3=\dfrac{\lambda_1-1}{2}\simeq0,6027847152$
+ \end{center}
+\end{frame}
+%...........................................
+\begin{frame}[t]{Deuxième méthode}
+  \begin{block}{Objectif}
+    \begin{itemize}
+    \item Calcul de la densité de 3 dans le mot de Kolakoski. 
+    \end{itemize}
+  \end{block}
+\end{frame}
+%...........................................
+\begin{frame}[t]{Deuxième méthode}
+  \begin{block}{Objectif}
+    \begin{itemize}
+    \item Calcul de la densité de 3 dans le mot de Kolakoski. 
+    \end{itemize}
+  \end{block}
+  \begin{block}{Principe}
+    \begin{itemize}
+    \item Le principe sur lequel on se base dans  cette méthode, consiste à établir une relation de récurrence entre $\rho_n ,\rho_{S_n}$ et $\rho_{S_{S_n}}=\rho_{S_{2,n}}$. 
+ Puis puisque  $(\rho_{S_n})_n$ et $(\rho_{S_{2,n}})_n$
+  sont deux suites extraites de $(\rho_n)_n$, 
+  alors si elles convergent, elles convergent vers la 
+  m\^eme limite. Et donc la limite de la densité est 
+  solution d'une équation à résoudre
+   \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................36
+\begin{frame}[t]{Deuxième méthode}
+  \begin{block}{Démonstration}
+  \end{block}
+  Soit $n \in \mathbb{N}^*$, on a $S_n=1_{S_n}^i+1_{S_n}^p+3_{S_n}^i+3_{S_n}^p $. Donc\\
+ $S_n=1_n^i+1_n^p+3_n^i+3_n^p+2 \times (3_n^i+3_n^p) 
+ =n+2n \rho_n =n(1+2 \rho_n)$.\\
+\end{frame}
+%..............................................36
+\begin{frame}[t]{Deuxième méthode}
+  \begin{block}{Démonstration}
+  \end{block}
+  Soit $n \in \mathbb{N}^*$, on a $S_n=1_{S_n}^i+1_{S_n}^p+3_{S_n}^i+3_{S_n}^p $. Donc\\
+ $S_n=1_n^i+1_n^p+3_n^i+3_n^p+2 \times (3_n^i+3_n^p) 
+ =n+2n \rho_n =n(1+2 \rho_n)$.\\
+D'où \, \, \, \, $S_n=n(1+2 \rho_n)$.
+\end{frame}
+%..............................................36
+\begin{frame}[t]{Deuxième méthode}
+  \begin{block}{Démonstration}
+  \end{block}
+  Soit $n \in \mathbb{N}^*$, on a $S_n=1_{S_n}^i+1_{S_n}^p+3_{S_n}^i+3_{S_n}^p $. Donc\\
+ $S_n=1_n^i+1_n^p+3_n^i+3_n^p+2 \times (3_n^i+3_n^p) 
+ =n+2n \rho_n =n(1+2 \rho_n)$.\\
+D'où \, \, \, \, $S_n=n(1+2 \rho_n)$.\\
+Alors $ S_{2,n}=S_n(1+2 \rho_{S_n})$ et comme $ S_{2,n}=\sum_{j=1}^n K_j(2+(-1)^j)$
+\end{frame}
+%..............................................36
+\begin{frame}[t]{Deuxième méthode}
+  \begin{block}{Démonstration}
+  \end{block}
+  Soit $n \in \mathbb{N}^*$, on a $S_n=1_{S_n}^i+1_{S_n}^p+3_{S_n}^i+3_{S_n}^p $. Donc\\
+ $S_n=1_n^i+1_n^p+3_n^i+3_n^p+2 \times (3_n^i+3_n^p) 
+ =n+2n \rho_n =n(1+2 \rho_n)$.\\
+D'où \, \, \, \, $S_n=n(1+2 \rho_n)$.\\
+Alors $ S_{2,n}=S_n(1+2 \rho_{S_n})$ et comme $ S_{2,n}=\sum_{j=1}^n K_j(2+(-1)^j)$\\ 
+Donc $(1+2 \rho_{S_n})S_n= 2S_n+ \sum_{j=1}^n(-1)^jK_j$$
+\end{frame}
+%..............................................36
+\begin{frame}[t]{Deuxième méthode}
+  \begin{block}{Démonstration}
+  \end{block}
+  Soit $n \in \mathbb{N}^*$, on a $S_n=1_{S_n}^i+1_{S_n}^p+3_{S_n}^i+3_{S_n}^p $. Donc\\
+ $S_n=1_n^i+1_n^p+3_n^i+3_n^p+2 \times (3_n^i+3_n^p) 
+ =n+2n \rho_n =n(1+2 \rho_n)$.\\
+D'où \, \, \, \, $S_n=n(1+2 \rho_n)$.\\
+Alors $ S_{2,n}=S_n(1+2 \rho_{S_n})$ et comme $ S_{2,n}=\sum_{j=1}^n K_j(2+(-1)^j)$\\ 
+Donc $(1+2 \rho_{S_n})S_n= 2S_n+ \sum_{j=1}^n(-1)^jK_j$$\\
+\Rightarrow  \, \, $$(2\rho_{S_n}-1)S_n =\sum_{j=1}^n(-1)^jK_j
+ =\sum_{j=1,K_j=3}^n(-1)^jK_j+\sum_{j=1,K_j=1}^n(-1)^jK_j
+ =3(3_n^p-3_n^i)+(1_n^p-1_n^i)
+$
+\end{frame}
+%..............................................37
+\begin{frame}[t]{Deuxième méthode}
+si on fait le bilan des indices dans $K^n$, on trouve $$ 3_n^p+1_n^p=3_n^i+1_n^i+\dfrac{(-1)^n-1}{2}$$
+\end{frame}
+%..............................................37
+\begin{frame}[t]{Deuxième méthode}
+si on fait le bilan des indices dans $K^n$, on trouve $$ 3_n^p+1_n^p=3_n^i+1_n^i+\dfrac{(-1)^n-1}{2}$$ \\ donc 
+$$(2\rho_{S_n}-1)S_n=2(3_n^p-3_n^i)+\frac{(-1)^n-1}{2},$$
+\end{frame}%..............................................37
+\begin{frame}[t]{Deuxième méthode}
+si on fait le bilan des indices dans $K^n$, on trouve $$ 3_n^p+1_n^p=3_n^i+1_n^i+\dfrac{(-1)^n-1}{2}$$ \\ donc 
+$$(2\rho_{S_n}-1)S_n=2(3_n^p-3_n^i)+\frac{(-1)^n-1}{2},$$\\ 
+et si l'on remplace $n$ par $S_n$, on obtient \\$(2\rho_{S_{2,n}}-1)S_{2,n}=2(2 \times 3_n^p+1_n^p-3_n^p)+ \frac{(-1)^n-1}{2}$ \\ $$=2(3_n^p+1_n^p)+\frac{(-1)^n-1}{2},$$
+\end{frame}
+%..............................................38
+\begin{frame}[t]{Deuxième méthode}
+Or $$3_n^p+1_n^p=3_n^i+1_n^i+\frac{(-1)^n-1}{2}=\frac{1}{2}(n+\frac{(-1)^n-1}{2})=\frac{n}{2}+\frac{(-1)^n-1}{4}$$
+\end{frame}
+%..............................................38
+\begin{frame}[t]{Deuxième méthode}
+Or $$3_n^p+1_n^p=3_n^i+1_n^i+\frac{(-1)^n-1}{2}=\frac{1}{2}(n+\frac{(-1)^n-1}{2})=\frac{n}{2}+\frac{(-1)^n-1}{4}$$
+donc $$(2\rho_S_{2,n}-1)S_{2,n}=n+\frac{(-1)^n-1}{2}+\frac{(-1)^n-1}{2}=n+(-1)^n-1.$$ 
+\end{frame}%..............................................38
+\begin{frame}[t]{Deuxième méthode}
+Or $$3_n^p+1_n^p=3_n^i+1_n^i+\frac{(-1)^n-1}{2}=\frac{1}{2}(n+\frac{(-1)^n-1}{2})=\frac{n}{2}+\frac{(-1)^n-1}{4}$$
+donc $$(2\rho_S_{2,n}-1)S_{2,n}=n+\frac{(-1)^n-1}{2}+\frac{(-1)^n-1}{2}=n+(-1)^n-1.$$ 
+ou bien, sachant que $S_{2,n}=(1+2\rho_{S_n})(1+2\rho_n),$ $$(2\rho_{S_{2,n}}-1)(1+2\rho_{S_n})(1+2\rho_n)=1+\frac{(-1)^n-1}{n}$$ 
+\end{frame}
+%..............................................38
+\begin{frame}[t]{Deuxième méthode}
+Or $$3_n^p+1_n^p=3_n^i+1_n^i+\frac{(-1)^n-1}{2}=\frac{1}{2}(n+\frac{(-1)^n-1}{2})=\frac{n}{2}+\frac{(-1)^n-1}{4}$$
+donc $$(2\rho_S_{2,n}-1)S_{2,n}=n+\frac{(-1)^n-1}{2}+\frac{(-1)^n-1}{2}=n+(-1)^n-1.$$ 
+ou bien, sachant que $S_{2,n}=(1+2\rho_{S_n})(1+2\rho_n),$ $$(2\rho_{S_{2,n}}-1)(1+2\rho_{S_n})(1+2\rho_n)=1+\frac{(-1)^n-1}{n}$$
+ On suppose que $(\rho_n)_n$ converge, soit alors $l=\underset{n\rightarrow + \infty}{l i m}\rho_n$,\\
+ donc 
+$\underset{n\rightarrow + \infty}{l i m}\rho_{S_n}=\underset{n\rightarrow + \infty}{l i m}\rho_{S_{2,n}}=l$
+\end{frame}
+%..............................................38
+\begin{frame}[t]{Deuxième méthode}
+Or $$3_n^p+1_n^p=3_n^i+1_n^i+\frac{(-1)^n-1}{2}=\frac{1}{2}(n+\frac{(-1)^n-1}{2})=\frac{n}{2}+\frac{(-1)^n-1}{4}$$
+donc $$(2\rho_S_{2,n}-1)S_{2,n}=n+\frac{(-1)^n-1}{2}+\frac{(-1)^n-1}{2}=n+(-1)^n-1.$$ 
+ou bien, sachant que $S_{2,n}=(1+2\rho_{S_n})(1+2\rho_n),$ $$(2\rho_{S_{2,n}}-1)(1+2\rho_{S_n})(1+2\rho_n)=1+\frac{(-1)^n-1}{n}$$
+ On suppose que $(\rho_n)_n$ converge, soit alors $l=\underset{n\rightarrow + \infty}{l i m}\rho_n$,\\
+ donc 
+$\underset{n\rightarrow + \infty}{l i m}\rho_{S_n}=\underset{n\rightarrow + \infty}{l i m}\rho_{S_{2,n}}=l$,
+donc $$(2l-1)(1+2l)^2=1$$
+\end{frame}
+%..............................................38
+\begin{frame}[t]{Deuxième méthode}
+ Ceci est équivalent, à
+$$
+L^3+L^2-L-2=0 \quad \quad \quad (1)
+$$ \\
+où $L=2l$.
+\end{frame}
+%..............................................38
+\begin{frame}[t]{Deuxième méthode}
+ Ceci est équivalent, à
+$$
+L^3+L^2-L-2=0 \quad \quad \quad (1)
+$$ \\
+où $L=2l$. \\
+Il y a deux racines complexes et une racine réelle.
+\end{frame}
+
+%..............................................38
+\begin{frame}[t]{Deuxième méthode}
+ Ceci est équivalent, à
+ $$
+L^3+L^2-L-2=0 \quad \quad \quad (1)
+$$\\
+où $L=2l$. \\
+Il y a deux racines complexes et une racine réelle. \\ 
+La densité est $\rho_3=\dfrac{L}{2}$, où L est la racine réelle de l'équation (1).
+\end{frame}
+
+%..............................................38
+\begin{frame}[t]{Deuxième méthode}
+ Ceci est équivalent, à
+$$
+L^3+L^2-L-2=0 \quad \quad \quad (1)
+$$\\
+où $L=2l$. \\
+Il y a deux racines complexes et une racine réelle. \\ 
+La densité est $\rho_3=\dfrac{L}{2}$, où L est la racine réelle de l'équation (1).\\
+Finalement 
+$$\rho_3=\dfrac{1}{2} 
+\left[(\dfrac{43}{54}+\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}+(\dfrac{43}{54}-\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}-\dfrac{1}{3}\right]$$ \\
+$$\rho_3\simeq0,6027847152$$
+\end{frame}
+
+
+
+%%===============================================
+\section{Synthèse}
+%..............................................39
+\begin{frame}[t]{comparaison des formules obtenues}
+  \begin{block}{Rappel}
+    \begin{itemize}
+    \item $\lambda_1=(\dfrac{43}{54}+\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}+(\dfrac{43}{54}-\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}+\dfrac{2}{3}$
+    \end{itemize}
+  \end{block}
+  \begin{block}{Formule de la première méthode}
+    \begin{itemize}
+    $\item \rho_3=\dfrac{\lambda_1-1}{2}$
+    \end{itemize}
+  \end{block}
+  \begin{block}{Formule de la deuxième méthode}
+    \begin{itemize}
+    \item $\rho_3=\dfrac{1}{2} 
+\left[(\dfrac{43}{54}+\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}+(\dfrac{43}{54}-\dfrac{\sqrt{177}}{18})^{\dfrac{1}{3}}-\dfrac{1}{3}\right]$
+    \end{itemize}
+  \end{block}
+\end{frame}
+%..............................................40
+\begin{frame}[t]{Représentation graphique}
+    \begin{itemize}
+    \item $\rho_3\simeq0,6027847152$ 
+    \end{itemize}
+ \begin{center}
+  \includegraphics[scale=1]{KOLAKO13.jpg}
+ \end{center}
+\end{frame}
+%................................................
+\begin{frame}[t]{comparaison des méthodes} 
+       \begin{itemize}
+  \item<alert@1-> La première méthode.
+  \item 
+  \item 
+  \item 
+       \end{itemize}
+       \begin{itemize}
+  \item<alert@1-> La deuxième méthode.
+  \item 
+  \item 
+  \item 
+       \end{itemize}
+\end{frame}
+\begin{frame}[t]{comparaison des méthodes} 
+       \begin{itemize}
+  \item<alert@1-> La première méthode.
+  \item Méthode algébrique.
+  \item 
+  \item 
+         \end{itemize}
+       \begin{itemize}
+  \item<alert@1-> La deuxième méthode.
+  \item Méthode analytique.
+  \item 
+  \item 
+       \end{itemize}
+\end{frame}
+
+%........................................
+\begin{frame}[t]{comparaison des méthodes} 
+       \begin{itemize}
+  \item<alert@1-> La première méthode.
+  \item Méthode algébrique.
+  \item N'est pas précise.
+  \item 
+       \end{itemize}
+       \begin{itemize}
+  \item<alert@1-> La deuxième méthode.
+  \item Méthode analytique.
+  \item Exacte.
+  \item 
+       \end{itemize}
+\end{frame}
+
+%......................................
+\begin{frame}[t]{comparaison des méthodes} 
+       \begin{itemize}
+  \item<alert@1-> La première méthode.
+  \item Méthode algébrique.
+  \item N'est pas précise.
+  \item Généralisable sur $\Sigma=\{2p+1,2q+1\}$.
+       \end{itemize}
+       \begin{itemize}
+  \item<alert@1-> La deuxième méthode.
+  \item Méthode analytique.
+  \item Exacte.
+  \item Généralisable sur $\Sigma=\{2p+1,2q+1\}$.
+       \end{itemize}
+\end{frame}
+%.........................................
+\begin{frame}[t]{comparaison des méthodes} 
+       \begin{itemize}
+  \item<alert@1-> La première méthode.
+  \item Méthode algébrique.
+  \item N'est pas précise.
+  \item Généralisable sur $\Sigma=\{2p+1,2q+1\}$.
+       \end{itemize}
+       \begin{itemize}
+  \item<alert@1-> La deuxième méthode.
+  \item Méthode analytique.
+  \item Exacte.
+  \item Généralisable sur $\Sigma=\{2p+1,2q+1\}$.
+       \end{itemize}
+\begin{center}
+Le même résultat.
+\end{center}
+\end{frame}
+
+%................................................
+\begin{frame}[t]{C'est la fin de la présentation}
+ \begin{Huge}
+  \begin{center}
+    \textcolor{green}{\emph{MERCI}} \\ 
+    \textcolor{green}{\emph{pour}}  \\ 
+    \textcolor{green}{\emph{l'attention !}}
+  \end{center}
+ \end{Huge}
+\end{frame}
+%::::::::::::::::::::::::::::::::::::::::::::::::
+\end{document}  
+  
